@@ -30,7 +30,7 @@ func _initialize() -> void:
 		total_nodes += int(result.get("nodes", 0))
 		_write_json("res://data/campaign/level_%03d.json" % level_id, level)
 		index.append({"id": level_id, "world": level["world"], "seed": seed_value, "layout": level["layout_template"], "difficulty": level["difficulty"], "solver_nodes": result.get("nodes", 0), "solution_length": result.get("solution", []).size()})
-		report_lines.append("Level %03d %s | seed=%d | layout=%s | nodes=%d | depth=%d | solve_ms=%d | difficulty=%.3f" % [level_id, "PASS" if result["solved"] else "FAIL", seed_value, level["layout_template"], result.get("nodes", 0), result.get("max_depth", 0), result.get("solve_ms", 0), level["difficulty"]])
+		report_lines.append("Level %03d %s | seed=%d | layout=%s | nodes=%d | depth=%d | difficulty=%.3f" % [level_id, "PASS" if result["solved"] else "FAIL", seed_value, level["layout_template"], result.get("nodes", 0), result.get("max_depth", 0), level["difficulty"]])
 	_write_json("res://data/campaign/index.json", {"schema_version": 1, "content_version": 1, "levels": index})
 	report_lines.append("")
 	report_lines.append("%d/150 levels validated" % passed)
@@ -73,4 +73,3 @@ func _validate_structure(level: Dictionary) -> String:
 func _write_json(path: String, value: Variant) -> void:
 	var file := FileAccess.open(path, FileAccess.WRITE)
 	file.store_string(JSON.stringify(value, "  "))
-

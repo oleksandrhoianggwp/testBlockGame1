@@ -4,6 +4,8 @@ var players: Array[AudioStreamPlayer] = []
 var music_player: AudioStreamPlayer
 
 func _ready() -> void:
+	if DisplayServer.get_name() == "headless":
+		return
 	for index in 4:
 		var player := AudioStreamPlayer.new()
 		player.name = "SfxPlayer%d" % index
