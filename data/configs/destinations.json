@@ -1,0 +1,15 @@
+[
+  {"id":"par","name_key":"destination.paris","code":"PAR","symbol":"Eiffel","color":"#E95D72","pattern":"stripes"},
+  {"id":"tyo","name_key":"destination.tokyo","code":"TYO","symbol":"Torii","color":"#EF8D43","pattern":"sun"},
+  {"id":"iev","name_key":"destination.kyiv","code":"IEV","symbol":"Chestnut","color":"#F3C34F","pattern":"leaves"},
+  {"id":"rom","name_key":"destination.rome","code":"ROM","symbol":"Arch","color":"#57B87A","pattern":"arches"},
+  {"id":"cai","name_key":"destination.cairo","code":"CAI","symbol":"Pyramid","color":"#2BB7A8","pattern":"triangles"},
+  {"id":"sel","name_key":"destination.seoul","code":"SEL","symbol":"Gate","color":"#3FA6D8","pattern":"waves"},
+  {"id":"syd","name_key":"destination.sydney","code":"SYD","symbol":"Sail","color":"#5D7BE7","pattern":"sails"},
+  {"id":"rio","name_key":"destination.rio","code":"RIO","symbol":"Sun","color":"#9B70D9","pattern":"rays"},
+  {"id":"osl","name_key":"destination.oslo","code":"OSL","symbol":"Snow","color":"#4D8CBF","pattern":"snow"},
+  {"id":"yto","name_key":"destination.toronto","code":"YTO","symbol":"Tower","color":"#D968A7","pattern":"checks"},
+  {"id":"lim","name_key":"destination.lima","code":"LIM","symbol":"Step","color":"#B8894E","pattern":"steps"},
+  {"id":"nbo","name_key":"destination.nairobi","code":"NBO","symbol":"Acacia","color":"#718F47","pattern":"dots"}
+]
+

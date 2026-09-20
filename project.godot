@@ -1,0 +1,44 @@
+; Engine configuration file.
+; Lost & Sorted 1.0.0 / build 1
+config_version=5
+
+[application]
+config/name="Lost & Sorted"
+config/description="Offline layered luggage sorting puzzle"
+run/main_scene="res://app/main.tscn"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+boot_splash/bg_color=Color(0.058824, 0.086275, 0.145098, 1)
+config/icon="res://assets/icons/app_icon.svg"
+
+[autoload]
+SaveService="*res://services/save_service.gd"
+AudioService="*res://services/audio_service.gd"
+HapticsService="*res://services/haptics_service.gd"
+AdService="*res://services/mock_ad_service.gd"
+
+[display]
+window/size/viewport_width=432
+window/size/viewport_height=768
+window/size/window_width_override=432
+window/size/window_height_override=768
+window/stretch/mode="canvas_items"
+window/handheld/orientation=1
+window/energy_saving/keep_screen_on=true
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/default_filters/use_nearest_mipmap_filter=false
+
+[internationalization]
+locale/translations=PackedStringArray("res://data/localization/strings.en.translation", "res://data/localization/strings.uk.translation")
+locale/fallback="en"
+
+[audio]
+default_bus_layout="res://assets/audio/default_bus_layout.tres"
+
+[input]
+ui_cancel={"deadzone": 0.5, "events": [Object(InputEventKey,"physical_keycode":4194305)]}
+
+[debug]
+settings/stdout/print_fps=false

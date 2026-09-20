@@ -1,0 +1,17 @@
+.godot/
+.import/
+build/*
+!build/.gitkeep
+android/build/
+android/.gradle/
+*.keystore
+*.jks
+*.apk
+*.aab
+local.properties
+.env
+.env.local
+export_credentials.cfg
+user_data/
+*.tmp
+

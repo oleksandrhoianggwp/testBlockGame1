@@ -1,0 +1,16 @@
+{
+  "game_version": "1.0.0",
+  "build": 1,
+  "content_version": 1,
+  "package_id": "com.lostandsorted.game",
+  "tray_capacity": 7,
+  "initial_coins": 200,
+  "initial_boosters": {"undo": 3, "shuffle": 3, "extra_slot": 2},
+  "campaign_reward": {"base": 40, "star": 10, "first_clear": 20, "priority": 15},
+  "airport_costs": [100, 150, 220],
+  "world_unlock_levels": [1, 31, 61, 91, 121],
+  "interstitial_session_gap": 4,
+  "interstitial_seconds_gap": 120,
+  "daily_salt": "lost-sorted-v1-daily"
+}
+
