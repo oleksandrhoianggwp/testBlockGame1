@@ -18,6 +18,7 @@ func _initialize() -> void:
 func generate_svg_assets() -> void:
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path("res://assets/art/destinations"))
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path("res://assets/art/backgrounds"))
+	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path("res://assets/art/airport"))
 	for destination in DESTINATIONS:
 		var svg := """<svg xmlns="http://www.w3.org/2000/svg" width="256" height="176" viewBox="0 0 256 176">
 <rect x="8" y="24" width="240" height="144" rx="30" fill="%s" stroke="#18223b" stroke-width="8"/>
@@ -43,6 +44,9 @@ func generate_svg_assets() -> void:
 <text x="348" y="134" font-family="Arial,sans-serif" font-weight="800" font-size="76" fill="#18223b">LOST &amp;</text><text x="348" y="218" font-family="Arial,sans-serif" font-weight="800" font-size="76" fill="#18223b">SORTED</text>
 </svg>"""
 	_write_text("res://assets/art/logo.svg", logo)
+	var splash_image := Image.load_from_file("res://assets/art/logo.svg")
+	if splash_image:
+		splash_image.save_png("res://assets/art/splash.png")
 	var icon := """<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="#18223b"/><path d="M112 115h288a48 48 0 0148 48v238a48 48 0 01-48 48H112a48 48 0 01-48-48V163a48 48 0 0148-48z" fill="#ef6f6c"/><circle cx="205" cy="282" r="78" fill="#fffaf0"/><path d="M165 282l31 32 62-78" fill="none" stroke="#18223b" stroke-width="23" stroke-linecap="round"/><path d="M175 116V89c0-18 14-32 32-32h98c18 0 32 14 32 32v27" fill="none" stroke="#f6bd60" stroke-width="22"/></svg>"""
 	_write_text("res://assets/icons/app_icon.svg", icon)
 	_write_text("res://assets/icons/adaptive_foreground.svg", icon)
@@ -52,6 +56,15 @@ func generate_svg_assets() -> void:
 		var initial: String = icon_name.substr(0, 1).to_upper()
 		var simple := "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"128\" height=\"128\"><circle cx=\"64\" cy=\"64\" r=\"56\" fill=\"#f6bd60\" stroke=\"#18223b\" stroke-width=\"8\"/><text x=\"64\" y=\"82\" text-anchor=\"middle\" font-family=\"Arial\" font-weight=\"700\" font-size=\"52\" fill=\"#18223b\">%s</text></svg>" % initial
 		_write_text("res://assets/icons/%s.svg" % icon_name, simple)
+	var airport_objects := ["entrance", "seating", "checkin", "cafe", "departures", "runway"]
+	for object_index in airport_objects.size():
+		for stage in 4:
+			var window_count := stage + 1
+			var windows := ""
+			for window_index in window_count:
+				windows += "<rect x=\"%d\" y=\"%d\" width=\"18\" height=\"18\" rx=\"4\" fill=\"#fffaf0\"/>" % [38 + (window_index % 3) * 28, 82 + int(window_index / 3) * 28]
+			var airport_svg := "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"150\" height=\"150\"><rect x=\"12\" y=\"%d\" width=\"126\" height=\"%d\" rx=\"18\" fill=\"%s\" stroke=\"#18223b\" stroke-width=\"7\"/>%s<text x=\"75\" y=\"58\" text-anchor=\"middle\" font-family=\"Arial\" font-weight=\"700\" font-size=\"25\" fill=\"#18223b\">%s%d</text></svg>" % [60 - stage * 7, 78 + stage * 7, ["#b8c1c8", "#72c7a5", "#f6bd60", "#ef6f6c"][stage], windows, airport_objects[object_index].substr(0, 1).to_upper(), stage]
+			_write_text("res://assets/art/airport/%s_%d.svg" % [airport_objects[object_index], stage], airport_svg)
 	var feature := """<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="500"><rect width="1024" height="500" fill="#dff3f4"/><path d="M0 420l210-150 170 90 190-210 220 190 234-170v330H0z" fill="#72c7a5"/><text x="70" y="145" font-family="Arial" font-size="82" font-weight="800" fill="#18223b">LOST &amp; SORTED</text><text x="76" y="220" font-family="Arial" font-size="34" fill="#18223b">Tap. Match. Clear the terminal.</text><path d="M720 80h220v280H720z" rx="40" fill="#ef6f6c" stroke="#18223b" stroke-width="12"/></svg>"""
 	_write_text("res://store/feature_graphic.svg", feature)
 

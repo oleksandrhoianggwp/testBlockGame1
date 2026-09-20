@@ -530,7 +530,17 @@ func show_airport() -> void:
 	var scene_panel := PanelContainer.new()
 	scene_panel.custom_minimum_size.y = 180
 	scene_panel.add_theme_stylebox_override("panel", _panel(Color("c7e6ee"), 22))
-	var skyline := _make_label("✈       ▥  ▤  ▧       ☕\n━━━━━━━━━━━━━━━━━━━━", 28, true)
+	var skyline := HBoxContainer.new()
+	skyline.alignment = BoxContainer.ALIGNMENT_CENTER
+	for object_id in AIRPORT_OBJECTS:
+		var stage := int(progress.get(object_id, 0))
+		var preview := TextureRect.new()
+		preview.custom_minimum_size = Vector2(55, 120)
+		preview.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		preview.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		preview.texture = load("res://assets/art/airport/%s_%d.svg" % [object_id, stage])
+		preview.tooltip_text = tr("airport.%s" % object_id)
+		skyline.add_child(preview)
 	scene_panel.add_child(skyline)
 	column.add_child(scene_panel)
 	var grid := GridContainer.new()
