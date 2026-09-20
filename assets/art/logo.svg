@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300">
+<path d="M83 42h185a35 35 0 0135 35v154a35 35 0 01-35 35H83a35 35 0 01-35-35V77a35 35 0 0135-35z" fill="#ef6f6c" stroke="#18223b" stroke-width="14"/>
+<circle cx="128" cy="152" r="42" fill="#fffaf0"/><path d="M106 152l17 18 34-42" fill="none" stroke="#18223b" stroke-width="12" stroke-linecap="round"/>
+<path d="M216 119h54M216 153h54M216 187h54" stroke="#18223b" stroke-width="12" stroke-linecap="round"/>
+<text x="348" y="134" font-family="Arial,sans-serif" font-weight="800" font-size="76" fill="#18223b">LOST &amp;</text><text x="348" y="218" font-family="Arial,sans-serif" font-weight="800" font-size="76" fill="#18223b">SORTED</text>
+</svg>

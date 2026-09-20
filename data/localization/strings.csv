@@ -1,0 +1,74 @@
+key,en,uk
+app.title,Lost & Sorted,Загублено й відсортовано
+menu.play,Play,Грати
+menu.daily,Daily Challenge,Щоденне випробування
+menu.endless,Endless,Нескінченний режим
+menu.airport,Airport,Аеропорт
+menu.settings,Settings,Налаштування
+menu.credits,Credits & Privacy,Автори та приватність
+menu.info,Info,Інфо
+menu.back,Back,Назад
+menu.home,Home,На головну
+menu.retry,Retry,Ще раз
+menu.continue,Continue,Далі
+menu.resume,Resume,Продовжити
+menu.quit,Quit,Вийти
+campaign.title,Campaign,Кампанія
+campaign.locked,Complete the previous terminal first,Спочатку завершіть попередній термінал
+game.level,Level,Рівень
+game.score,Score,Рахунок
+game.coins,Coins,Монети
+game.tray,Sorting tray,Сортувальний лоток
+game.win,Terminal cleared!,Термінал очищено!
+game.lose,Sorting stopped,Сортування зупинено
+game.tray_full,Sorting tray full,Сортувальний лоток заповнено
+game.priority_failed,Priority flight departed,Пріоритетний рейс відправився
+game.priority,Priority flight,Пріоритетний рейс
+game.moves,moves remaining,ходів залишилось
+game.stars,Stars,Зірки
+game.reward,Reward,Нагорода
+booster.undo,Undo,Скасувати
+booster.shuffle,Shuffle,Перемішати
+booster.extra_slot,Extra Slot,+1 місце
+tutorial.tap,Tap an available suitcase,Натисніть на доступну валізу
+tutorial.match,Collect three matching destination tags,Зберіть три однакові позначки напрямку
+tutorial.covered,Covered luggage unlocks after the items above it,Накрита валіза відкриється після верхніх
+tutorial.tray,Plan ahead: the tray holds seven pieces,Плануйте: у лотку лише сім місць
+tutorial.mystery,Mystery tags reveal when accessible,Таємна позначка відкриється коли стане доступною
+tutorial.key,Pick up the key to unlock matching luggage,Підберіть ключ щоб відкрити валізи
+tutorial.priority,Dispatch the marked triplet before moves run out,Відправте позначену трійку до завершення ходів
+settings.language,Language,Мова
+settings.sound,Sound,Звук
+settings.music,Music,Музика
+settings.sfx,Effects,Ефекти
+settings.haptics,Haptics,Вібрація
+settings.motion,Reduced motion,Менше анімацій
+settings.text,Large text,Збільшений текст
+settings.replay,Replay tutorials,Повторити навчання
+settings.reset,Reset save,Скинути прогрес
+airport.title,Airport Renovation,Оновлення аеропорту
+airport.progress,Completion,Готовність
+airport.upgrade,Upgrade,Покращити
+airport.complete,Complete,Завершено
+airport.entrance,Entrance,Вхід
+airport.seating,Seating,Місця
+airport.checkin,Check-in,Реєстрація
+airport.cafe,Café,Кафе
+airport.departures,Departures,Табло
+airport.runway,Runway,Злітна смуга
+daily.complete,Completed today,Сьогодні виконано
+daily.streak,Streak,Серія
+endless.locked,Unlocks after level 20,Відкриється після 20 рівня
+privacy.summary,Offline game. Progress stays on this device. Optional ads are disabled unless configured.,Офлайн-гра. Прогрес зберігається на цьому пристрої. Необов'язкова реклама вимкнена без налаштування.
+destination.paris,Paris,Париж
+destination.tokyo,Tokyo,Токіо
+destination.kyiv,Kyiv,Київ
+destination.rome,Rome,Рим
+destination.cairo,Cairo,Каїр
+destination.seoul,Seoul,Сеул
+destination.sydney,Sydney,Сідней
+destination.rio,Rio,Ріо
+destination.oslo,Oslo,Осло
+destination.toronto,Toronto,Торонто
+destination.lima,Lima,Ліма
+destination.nairobi,Nairobi,Найробі
