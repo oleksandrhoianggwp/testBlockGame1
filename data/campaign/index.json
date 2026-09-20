@@ -1,0 +1,1356 @@
+{
+  "content_version": 1,
+  "levels": [
+    {
+      "difficulty": 0.0,
+      "id": 1,
+      "layout": "pyramid",
+      "seed": 24930,
+      "solution_length": 6,
+      "solver_nodes": 6,
+      "world": 1
+    },
+    {
+      "difficulty": 0.007,
+      "id": 2,
+      "layout": "wings",
+      "seed": 32849,
+      "solution_length": 9,
+      "solver_nodes": 9,
+      "world": 1
+    },
+    {
+      "difficulty": 0.013,
+      "id": 3,
+      "layout": "diamond",
+      "seed": 40768,
+      "solution_length": 9,
+      "solver_nodes": 9,
+      "world": 1
+    },
+    {
+      "difficulty": 0.02,
+      "id": 4,
+      "layout": "double_stack",
+      "seed": 48687,
+      "solution_length": 9,
+      "solver_nodes": 9,
+      "world": 1
+    },
+    {
+      "difficulty": 0.027,
+      "id": 5,
+      "layout": "spiral",
+      "seed": 56606,
+      "solution_length": 9,
+      "solver_nodes": 9,
+      "world": 1
+    },
+    {
+      "difficulty": 0.034,
+      "id": 6,
+      "layout": "terminals",
+      "seed": 64525,
+      "solution_length": 9,
+      "solver_nodes": 9,
+      "world": 1
+    },
+    {
+      "difficulty": 0.04,
+      "id": 7,
+      "layout": "bridge",
+      "seed": 72444,
+      "solution_length": 9,
+      "solver_nodes": 9,
+      "world": 1
+    },
+    {
+      "difficulty": 0.047,
+      "id": 8,
+      "layout": "cross",
+      "seed": 80363,
+      "solution_length": 9,
+      "solver_nodes": 9,
+      "world": 1
+    },
+    {
+      "difficulty": 0.054,
+      "id": 9,
+      "layout": "split_islands",
+      "seed": 88282,
+      "solution_length": 9,
+      "solver_nodes": 9,
+      "world": 1
+    },
+    {
+      "difficulty": 0.06,
+      "id": 10,
+      "layout": "staircase",
+      "seed": 96201,
+      "solution_length": 9,
+      "solver_nodes": 9,
+      "world": 1
+    },
+    {
+      "difficulty": 0.067,
+      "id": 11,
+      "layout": "ring",
+      "seed": 104120,
+      "solution_length": 9,
+      "solver_nodes": 9,
+      "world": 1
+    },
+    {
+      "difficulty": 0.074,
+      "id": 12,
+      "layout": "compact_box",
+      "seed": 112039,
+      "solution_length": 9,
+      "solver_nodes": 9,
+      "world": 1
+    },
+    {
+      "difficulty": 0.081,
+      "id": 13,
+      "layout": "fan",
+      "seed": 119958,
+      "solution_length": 9,
+      "solver_nodes": 9,
+      "world": 1
+    },
+    {
+      "difficulty": 0.087,
+      "id": 14,
+      "layout": "twin_towers",
+      "seed": 127877,
+      "solution_length": 9,
+      "solver_nodes": 9,
+      "world": 1
+    },
+    {
+      "difficulty": 0.094,
+      "id": 15,
+      "layout": "runway",
+      "seed": 135796,
+      "solution_length": 9,
+      "solver_nodes": 9,
+      "world": 1
+    },
+    {
+      "difficulty": 0.101,
+      "id": 16,
+      "layout": "pyramid",
+      "seed": 143715,
+      "solution_length": 12,
+      "solver_nodes": 12,
+      "world": 1
+    },
+    {
+      "difficulty": 0.107,
+      "id": 17,
+      "layout": "wings",
+      "seed": 151634,
+      "solution_length": 12,
+      "solver_nodes": 12,
+      "world": 1
+    },
+    {
+      "difficulty": 0.114,
+      "id": 18,
+      "layout": "diamond",
+      "seed": 159553,
+      "solution_length": 12,
+      "solver_nodes": 12,
+      "world": 1
+    },
+    {
+      "difficulty": 0.121,
+      "id": 19,
+      "layout": "double_stack",
+      "seed": 167472,
+      "solution_length": 12,
+      "solver_nodes": 12,
+      "world": 1
+    },
+    {
+      "difficulty": 0.128,
+      "id": 20,
+      "layout": "spiral",
+      "seed": 175391,
+      "solution_length": 12,
+      "solver_nodes": 12,
+      "world": 1
+    },
+    {
+      "difficulty": 0.134,
+      "id": 21,
+      "layout": "terminals",
+      "seed": 183310,
+      "solution_length": 12,
+      "solver_nodes": 12,
+      "world": 1
+    },
+    {
+      "difficulty": 0.141,
+      "id": 22,
+      "layout": "bridge",
+      "seed": 191229,
+      "solution_length": 12,
+      "solver_nodes": 12,
+      "world": 1
+    },
+    {
+      "difficulty": 0.148,
+      "id": 23,
+      "layout": "cross",
+      "seed": 199148,
+      "solution_length": 12,
+      "solver_nodes": 12,
+      "world": 1
+    },
+    {
+      "difficulty": 0.154,
+      "id": 24,
+      "layout": "split_islands",
+      "seed": 207067,
+      "solution_length": 12,
+      "solver_nodes": 12,
+      "world": 1
+    },
+    {
+      "difficulty": 0.161,
+      "id": 25,
+      "layout": "staircase",
+      "seed": 214986,
+      "solution_length": 12,
+      "solver_nodes": 12,
+      "world": 1
+    },
+    {
+      "difficulty": 0.168,
+      "id": 26,
+      "layout": "ring",
+      "seed": 222905,
+      "solution_length": 12,
+      "solver_nodes": 12,
+      "world": 1
+    },
+    {
+      "difficulty": 0.174,
+      "id": 27,
+      "layout": "compact_box",
+      "seed": 230824,
+      "solution_length": 12,
+      "solver_nodes": 12,
+      "world": 1
+    },
+    {
+      "difficulty": 0.181,
+      "id": 28,
+      "layout": "fan",
+      "seed": 238743,
+      "solution_length": 12,
+      "solver_nodes": 12,
+      "world": 1
+    },
+    {
+      "difficulty": 0.188,
+      "id": 29,
+      "layout": "twin_towers",
+      "seed": 246662,
+      "solution_length": 12,
+      "solver_nodes": 12,
+      "world": 1
+    },
+    {
+      "difficulty": 0.195,
+      "id": 30,
+      "layout": "runway",
+      "seed": 254581,
+      "solution_length": 12,
+      "solver_nodes": 12,
+      "world": 1
+    },
+    {
+      "difficulty": 0.201,
+      "id": 31,
+      "layout": "pyramid",
+      "seed": 262500,
+      "solution_length": 15,
+      "solver_nodes": 15,
+      "world": 2
+    },
+    {
+      "difficulty": 0.208,
+      "id": 32,
+      "layout": "wings",
+      "seed": 270419,
+      "solution_length": 15,
+      "solver_nodes": 15,
+      "world": 2
+    },
+    {
+      "difficulty": 0.215,
+      "id": 33,
+      "layout": "diamond",
+      "seed": 278338,
+      "solution_length": 15,
+      "solver_nodes": 15,
+      "world": 2
+    },
+    {
+      "difficulty": 0.221,
+      "id": 34,
+      "layout": "double_stack",
+      "seed": 286257,
+      "solution_length": 15,
+      "solver_nodes": 15,
+      "world": 2
+    },
+    {
+      "difficulty": 0.228,
+      "id": 35,
+      "layout": "spiral",
+      "seed": 294176,
+      "solution_length": 15,
+      "solver_nodes": 15,
+      "world": 2
+    },
+    {
+      "difficulty": 0.235,
+      "id": 36,
+      "layout": "terminals",
+      "seed": 302095,
+      "solution_length": 15,
+      "solver_nodes": 15,
+      "world": 2
+    },
+    {
+      "difficulty": 0.242,
+      "id": 37,
+      "layout": "bridge",
+      "seed": 310014,
+      "solution_length": 15,
+      "solver_nodes": 15,
+      "world": 2
+    },
+    {
+      "difficulty": 0.248,
+      "id": 38,
+      "layout": "cross",
+      "seed": 317933,
+      "solution_length": 15,
+      "solver_nodes": 15,
+      "world": 2
+    },
+    {
+      "difficulty": 0.255,
+      "id": 39,
+      "layout": "split_islands",
+      "seed": 325852,
+      "solution_length": 15,
+      "solver_nodes": 15,
+      "world": 2
+    },
+    {
+      "difficulty": 0.262,
+      "id": 40,
+      "layout": "staircase",
+      "seed": 333771,
+      "solution_length": 15,
+      "solver_nodes": 15,
+      "world": 2
+    },
+    {
+      "difficulty": 0.268,
+      "id": 41,
+      "layout": "ring",
+      "seed": 341690,
+      "solution_length": 15,
+      "solver_nodes": 15,
+      "world": 2
+    },
+    {
+      "difficulty": 0.275,
+      "id": 42,
+      "layout": "compact_box",
+      "seed": 349609,
+      "solution_length": 15,
+      "solver_nodes": 15,
+      "world": 2
+    },
+    {
+      "difficulty": 0.282,
+      "id": 43,
+      "layout": "fan",
+      "seed": 357528,
+      "solution_length": 15,
+      "solver_nodes": 15,
+      "world": 2
+    },
+    {
+      "difficulty": 0.289,
+      "id": 44,
+      "layout": "twin_towers",
+      "seed": 365447,
+      "solution_length": 15,
+      "solver_nodes": 15,
+      "world": 2
+    },
+    {
+      "difficulty": 0.295,
+      "id": 45,
+      "layout": "runway",
+      "seed": 373366,
+      "solution_length": 15,
+      "solver_nodes": 15,
+      "world": 2
+    },
+    {
+      "difficulty": 0.302,
+      "id": 46,
+      "layout": "pyramid",
+      "seed": 381285,
+      "solution_length": 18,
+      "solver_nodes": 18,
+      "world": 2
+    },
+    {
+      "difficulty": 0.309,
+      "id": 47,
+      "layout": "wings",
+      "seed": 389204,
+      "solution_length": 18,
+      "solver_nodes": 18,
+      "world": 2
+    },
+    {
+      "difficulty": 0.315,
+      "id": 48,
+      "layout": "diamond",
+      "seed": 397123,
+      "solution_length": 18,
+      "solver_nodes": 18,
+      "world": 2
+    },
+    {
+      "difficulty": 0.322,
+      "id": 49,
+      "layout": "double_stack",
+      "seed": 405042,
+      "solution_length": 18,
+      "solver_nodes": 18,
+      "world": 2
+    },
+    {
+      "difficulty": 0.329,
+      "id": 50,
+      "layout": "spiral",
+      "seed": 412961,
+      "solution_length": 18,
+      "solver_nodes": 18,
+      "world": 2
+    },
+    {
+      "difficulty": 0.336,
+      "id": 51,
+      "layout": "terminals",
+      "seed": 420880,
+      "solution_length": 18,
+      "solver_nodes": 18,
+      "world": 2
+    },
+    {
+      "difficulty": 0.342,
+      "id": 52,
+      "layout": "bridge",
+      "seed": 428799,
+      "solution_length": 18,
+      "solver_nodes": 18,
+      "world": 2
+    },
+    {
+      "difficulty": 0.349,
+      "id": 53,
+      "layout": "cross",
+      "seed": 436718,
+      "solution_length": 18,
+      "solver_nodes": 18,
+      "world": 2
+    },
+    {
+      "difficulty": 0.356,
+      "id": 54,
+      "layout": "split_islands",
+      "seed": 444637,
+      "solution_length": 18,
+      "solver_nodes": 18,
+      "world": 2
+    },
+    {
+      "difficulty": 0.362,
+      "id": 55,
+      "layout": "staircase",
+      "seed": 452556,
+      "solution_length": 18,
+      "solver_nodes": 18,
+      "world": 2
+    },
+    {
+      "difficulty": 0.369,
+      "id": 56,
+      "layout": "ring",
+      "seed": 460475,
+      "solution_length": 18,
+      "solver_nodes": 18,
+      "world": 2
+    },
+    {
+      "difficulty": 0.376,
+      "id": 57,
+      "layout": "compact_box",
+      "seed": 468394,
+      "solution_length": 18,
+      "solver_nodes": 18,
+      "world": 2
+    },
+    {
+      "difficulty": 0.383,
+      "id": 58,
+      "layout": "fan",
+      "seed": 476313,
+      "solution_length": 18,
+      "solver_nodes": 18,
+      "world": 2
+    },
+    {
+      "difficulty": 0.389,
+      "id": 59,
+      "layout": "twin_towers",
+      "seed": 484232,
+      "solution_length": 18,
+      "solver_nodes": 18,
+      "world": 2
+    },
+    {
+      "difficulty": 0.396,
+      "id": 60,
+      "layout": "runway",
+      "seed": 492151,
+      "solution_length": 18,
+      "solver_nodes": 18,
+      "world": 2
+    },
+    {
+      "difficulty": 0.403,
+      "id": 61,
+      "layout": "pyramid",
+      "seed": 500070,
+      "solution_length": 22,
+      "solver_nodes": 22,
+      "world": 3
+    },
+    {
+      "difficulty": 0.409,
+      "id": 62,
+      "layout": "wings",
+      "seed": 507989,
+      "solution_length": 22,
+      "solver_nodes": 22,
+      "world": 3
+    },
+    {
+      "difficulty": 0.416,
+      "id": 63,
+      "layout": "diamond",
+      "seed": 515908,
+      "solution_length": 22,
+      "solver_nodes": 22,
+      "world": 3
+    },
+    {
+      "difficulty": 0.423,
+      "id": 64,
+      "layout": "double_stack",
+      "seed": 523827,
+      "solution_length": 22,
+      "solver_nodes": 22,
+      "world": 3
+    },
+    {
+      "difficulty": 0.43,
+      "id": 65,
+      "layout": "spiral",
+      "seed": 531746,
+      "solution_length": 22,
+      "solver_nodes": 22,
+      "world": 3
+    },
+    {
+      "difficulty": 0.436,
+      "id": 66,
+      "layout": "terminals",
+      "seed": 539665,
+      "solution_length": 22,
+      "solver_nodes": 22,
+      "world": 3
+    },
+    {
+      "difficulty": 0.443,
+      "id": 67,
+      "layout": "bridge",
+      "seed": 547584,
+      "solution_length": 22,
+      "solver_nodes": 22,
+      "world": 3
+    },
+    {
+      "difficulty": 0.45,
+      "id": 68,
+      "layout": "cross",
+      "seed": 555503,
+      "solution_length": 22,
+      "solver_nodes": 22,
+      "world": 3
+    },
+    {
+      "difficulty": 0.456,
+      "id": 69,
+      "layout": "split_islands",
+      "seed": 563422,
+      "solution_length": 22,
+      "solver_nodes": 22,
+      "world": 3
+    },
+    {
+      "difficulty": 0.463,
+      "id": 70,
+      "layout": "staircase",
+      "seed": 571341,
+      "solution_length": 22,
+      "solver_nodes": 22,
+      "world": 3
+    },
+    {
+      "difficulty": 0.47,
+      "id": 71,
+      "layout": "ring",
+      "seed": 579260,
+      "solution_length": 22,
+      "solver_nodes": 22,
+      "world": 3
+    },
+    {
+      "difficulty": 0.477,
+      "id": 72,
+      "layout": "compact_box",
+      "seed": 587179,
+      "solution_length": 22,
+      "solver_nodes": 22,
+      "world": 3
+    },
+    {
+      "difficulty": 0.483,
+      "id": 73,
+      "layout": "fan",
+      "seed": 595098,
+      "solution_length": 22,
+      "solver_nodes": 22,
+      "world": 3
+    },
+    {
+      "difficulty": 0.49,
+      "id": 74,
+      "layout": "twin_towers",
+      "seed": 603017,
+      "solution_length": 22,
+      "solver_nodes": 22,
+      "world": 3
+    },
+    {
+      "difficulty": 0.497,
+      "id": 75,
+      "layout": "runway",
+      "seed": 610936,
+      "solution_length": 22,
+      "solver_nodes": 22,
+      "world": 3
+    },
+    {
+      "difficulty": 0.503,
+      "id": 76,
+      "layout": "pyramid",
+      "seed": 618855,
+      "solution_length": 25,
+      "solver_nodes": 25,
+      "world": 3
+    },
+    {
+      "difficulty": 0.51,
+      "id": 77,
+      "layout": "wings",
+      "seed": 626774,
+      "solution_length": 25,
+      "solver_nodes": 25,
+      "world": 3
+    },
+    {
+      "difficulty": 0.517,
+      "id": 78,
+      "layout": "diamond",
+      "seed": 634693,
+      "solution_length": 25,
+      "solver_nodes": 25,
+      "world": 3
+    },
+    {
+      "difficulty": 0.523,
+      "id": 79,
+      "layout": "double_stack",
+      "seed": 642612,
+      "solution_length": 25,
+      "solver_nodes": 25,
+      "world": 3
+    },
+    {
+      "difficulty": 0.53,
+      "id": 80,
+      "layout": "spiral",
+      "seed": 650531,
+      "solution_length": 25,
+      "solver_nodes": 25,
+      "world": 3
+    },
+    {
+      "difficulty": 0.537,
+      "id": 81,
+      "layout": "terminals",
+      "seed": 658450,
+      "solution_length": 25,
+      "solver_nodes": 25,
+      "world": 3
+    },
+    {
+      "difficulty": 0.544,
+      "id": 82,
+      "layout": "bridge",
+      "seed": 666369,
+      "solution_length": 25,
+      "solver_nodes": 25,
+      "world": 3
+    },
+    {
+      "difficulty": 0.55,
+      "id": 83,
+      "layout": "cross",
+      "seed": 674288,
+      "solution_length": 25,
+      "solver_nodes": 25,
+      "world": 3
+    },
+    {
+      "difficulty": 0.557,
+      "id": 84,
+      "layout": "split_islands",
+      "seed": 682207,
+      "solution_length": 25,
+      "solver_nodes": 25,
+      "world": 3
+    },
+    {
+      "difficulty": 0.564,
+      "id": 85,
+      "layout": "staircase",
+      "seed": 690126,
+      "solution_length": 25,
+      "solver_nodes": 25,
+      "world": 3
+    },
+    {
+      "difficulty": 0.57,
+      "id": 86,
+      "layout": "ring",
+      "seed": 698045,
+      "solution_length": 25,
+      "solver_nodes": 25,
+      "world": 3
+    },
+    {
+      "difficulty": 0.577,
+      "id": 87,
+      "layout": "compact_box",
+      "seed": 705964,
+      "solution_length": 25,
+      "solver_nodes": 25,
+      "world": 3
+    },
+    {
+      "difficulty": 0.584,
+      "id": 88,
+      "layout": "fan",
+      "seed": 713883,
+      "solution_length": 25,
+      "solver_nodes": 25,
+      "world": 3
+    },
+    {
+      "difficulty": 0.591,
+      "id": 89,
+      "layout": "twin_towers",
+      "seed": 721802,
+      "solution_length": 25,
+      "solver_nodes": 25,
+      "world": 3
+    },
+    {
+      "difficulty": 0.597,
+      "id": 90,
+      "layout": "runway",
+      "seed": 729721,
+      "solution_length": 25,
+      "solver_nodes": 25,
+      "world": 3
+    },
+    {
+      "difficulty": 0.604,
+      "id": 91,
+      "layout": "pyramid",
+      "seed": 737640,
+      "solution_length": 28,
+      "solver_nodes": 28,
+      "world": 4
+    },
+    {
+      "difficulty": 0.611,
+      "id": 92,
+      "layout": "wings",
+      "seed": 745559,
+      "solution_length": 28,
+      "solver_nodes": 28,
+      "world": 4
+    },
+    {
+      "difficulty": 0.617,
+      "id": 93,
+      "layout": "diamond",
+      "seed": 753478,
+      "solution_length": 28,
+      "solver_nodes": 28,
+      "world": 4
+    },
+    {
+      "difficulty": 0.624,
+      "id": 94,
+      "layout": "double_stack",
+      "seed": 761397,
+      "solution_length": 28,
+      "solver_nodes": 28,
+      "world": 4
+    },
+    {
+      "difficulty": 0.631,
+      "id": 95,
+      "layout": "spiral",
+      "seed": 769316,
+      "solution_length": 28,
+      "solver_nodes": 28,
+      "world": 4
+    },
+    {
+      "difficulty": 0.638,
+      "id": 96,
+      "layout": "terminals",
+      "seed": 777235,
+      "solution_length": 28,
+      "solver_nodes": 28,
+      "world": 4
+    },
+    {
+      "difficulty": 0.644,
+      "id": 97,
+      "layout": "bridge",
+      "seed": 785154,
+      "solution_length": 28,
+      "solver_nodes": 28,
+      "world": 4
+    },
+    {
+      "difficulty": 0.651,
+      "id": 98,
+      "layout": "cross",
+      "seed": 793073,
+      "solution_length": 28,
+      "solver_nodes": 28,
+      "world": 4
+    },
+    {
+      "difficulty": 0.658,
+      "id": 99,
+      "layout": "split_islands",
+      "seed": 800992,
+      "solution_length": 28,
+      "solver_nodes": 28,
+      "world": 4
+    },
+    {
+      "difficulty": 0.664,
+      "id": 100,
+      "layout": "staircase",
+      "seed": 808911,
+      "solution_length": 28,
+      "solver_nodes": 28,
+      "world": 4
+    },
+    {
+      "difficulty": 0.671,
+      "id": 101,
+      "layout": "ring",
+      "seed": 816830,
+      "solution_length": 28,
+      "solver_nodes": 28,
+      "world": 4
+    },
+    {
+      "difficulty": 0.678,
+      "id": 102,
+      "layout": "compact_box",
+      "seed": 824749,
+      "solution_length": 28,
+      "solver_nodes": 28,
+      "world": 4
+    },
+    {
+      "difficulty": 0.685,
+      "id": 103,
+      "layout": "fan",
+      "seed": 832668,
+      "solution_length": 28,
+      "solver_nodes": 28,
+      "world": 4
+    },
+    {
+      "difficulty": 0.691,
+      "id": 104,
+      "layout": "twin_towers",
+      "seed": 840587,
+      "solution_length": 28,
+      "solver_nodes": 28,
+      "world": 4
+    },
+    {
+      "difficulty": 0.698,
+      "id": 105,
+      "layout": "runway",
+      "seed": 848506,
+      "solution_length": 28,
+      "solver_nodes": 28,
+      "world": 4
+    },
+    {
+      "difficulty": 0.705,
+      "id": 106,
+      "layout": "pyramid",
+      "seed": 856425,
+      "solution_length": 31,
+      "solver_nodes": 31,
+      "world": 4
+    },
+    {
+      "difficulty": 0.711,
+      "id": 107,
+      "layout": "wings",
+      "seed": 864344,
+      "solution_length": 31,
+      "solver_nodes": 31,
+      "world": 4
+    },
+    {
+      "difficulty": 0.718,
+      "id": 108,
+      "layout": "diamond",
+      "seed": 872263,
+      "solution_length": 31,
+      "solver_nodes": 31,
+      "world": 4
+    },
+    {
+      "difficulty": 0.725,
+      "id": 109,
+      "layout": "double_stack",
+      "seed": 880182,
+      "solution_length": 31,
+      "solver_nodes": 31,
+      "world": 4
+    },
+    {
+      "difficulty": 0.732,
+      "id": 110,
+      "layout": "spiral",
+      "seed": 888101,
+      "solution_length": 31,
+      "solver_nodes": 31,
+      "world": 4
+    },
+    {
+      "difficulty": 0.738,
+      "id": 111,
+      "layout": "terminals",
+      "seed": 896020,
+      "solution_length": 31,
+      "solver_nodes": 31,
+      "world": 4
+    },
+    {
+      "difficulty": 0.745,
+      "id": 112,
+      "layout": "bridge",
+      "seed": 903939,
+      "solution_length": 31,
+      "solver_nodes": 31,
+      "world": 4
+    },
+    {
+      "difficulty": 0.752,
+      "id": 113,
+      "layout": "cross",
+      "seed": 911858,
+      "solution_length": 31,
+      "solver_nodes": 31,
+      "world": 4
+    },
+    {
+      "difficulty": 0.758,
+      "id": 114,
+      "layout": "split_islands",
+      "seed": 919777,
+      "solution_length": 31,
+      "solver_nodes": 31,
+      "world": 4
+    },
+    {
+      "difficulty": 0.765,
+      "id": 115,
+      "layout": "staircase",
+      "seed": 927696,
+      "solution_length": 31,
+      "solver_nodes": 31,
+      "world": 4
+    },
+    {
+      "difficulty": 0.772,
+      "id": 116,
+      "layout": "ring",
+      "seed": 935615,
+      "solution_length": 31,
+      "solver_nodes": 31,
+      "world": 4
+    },
+    {
+      "difficulty": 0.779,
+      "id": 117,
+      "layout": "compact_box",
+      "seed": 943534,
+      "solution_length": 31,
+      "solver_nodes": 31,
+      "world": 4
+    },
+    {
+      "difficulty": 0.785,
+      "id": 118,
+      "layout": "fan",
+      "seed": 951453,
+      "solution_length": 31,
+      "solver_nodes": 31,
+      "world": 4
+    },
+    {
+      "difficulty": 0.792,
+      "id": 119,
+      "layout": "twin_towers",
+      "seed": 959372,
+      "solution_length": 31,
+      "solver_nodes": 31,
+      "world": 4
+    },
+    {
+      "difficulty": 0.799,
+      "id": 120,
+      "layout": "runway",
+      "seed": 967291,
+      "solution_length": 31,
+      "solver_nodes": 31,
+      "world": 4
+    },
+    {
+      "difficulty": 0.805,
+      "id": 121,
+      "layout": "pyramid",
+      "seed": 975210,
+      "solution_length": 34,
+      "solver_nodes": 34,
+      "world": 5
+    },
+    {
+      "difficulty": 0.812,
+      "id": 122,
+      "layout": "wings",
+      "seed": 983129,
+      "solution_length": 34,
+      "solver_nodes": 34,
+      "world": 5
+    },
+    {
+      "difficulty": 0.819,
+      "id": 123,
+      "layout": "diamond",
+      "seed": 991048,
+      "solution_length": 34,
+      "solver_nodes": 34,
+      "world": 5
+    },
+    {
+      "difficulty": 0.826,
+      "id": 124,
+      "layout": "double_stack",
+      "seed": 998967,
+      "solution_length": 34,
+      "solver_nodes": 34,
+      "world": 5
+    },
+    {
+      "difficulty": 0.832,
+      "id": 125,
+      "layout": "spiral",
+      "seed": 1006886,
+      "solution_length": 34,
+      "solver_nodes": 34,
+      "world": 5
+    },
+    {
+      "difficulty": 0.839,
+      "id": 126,
+      "layout": "terminals",
+      "seed": 1014805,
+      "solution_length": 34,
+      "solver_nodes": 34,
+      "world": 5
+    },
+    {
+      "difficulty": 0.846,
+      "id": 127,
+      "layout": "bridge",
+      "seed": 1022724,
+      "solution_length": 34,
+      "solver_nodes": 34,
+      "world": 5
+    },
+    {
+      "difficulty": 0.852,
+      "id": 128,
+      "layout": "cross",
+      "seed": 1030643,
+      "solution_length": 34,
+      "solver_nodes": 34,
+      "world": 5
+    },
+    {
+      "difficulty": 0.859,
+      "id": 129,
+      "layout": "split_islands",
+      "seed": 1038562,
+      "solution_length": 34,
+      "solver_nodes": 34,
+      "world": 5
+    },
+    {
+      "difficulty": 0.866,
+      "id": 130,
+      "layout": "staircase",
+      "seed": 1046481,
+      "solution_length": 34,
+      "solver_nodes": 34,
+      "world": 5
+    },
+    {
+      "difficulty": 0.872,
+      "id": 131,
+      "layout": "ring",
+      "seed": 1054400,
+      "solution_length": 34,
+      "solver_nodes": 34,
+      "world": 5
+    },
+    {
+      "difficulty": 0.879,
+      "id": 132,
+      "layout": "compact_box",
+      "seed": 1062319,
+      "solution_length": 34,
+      "solver_nodes": 34,
+      "world": 5
+    },
+    {
+      "difficulty": 0.886,
+      "id": 133,
+      "layout": "fan",
+      "seed": 1070238,
+      "solution_length": 34,
+      "solver_nodes": 34,
+      "world": 5
+    },
+    {
+      "difficulty": 0.893,
+      "id": 134,
+      "layout": "twin_towers",
+      "seed": 1078157,
+      "solution_length": 34,
+      "solver_nodes": 34,
+      "world": 5
+    },
+    {
+      "difficulty": 0.899,
+      "id": 135,
+      "layout": "runway",
+      "seed": 1086076,
+      "solution_length": 34,
+      "solver_nodes": 34,
+      "world": 5
+    },
+    {
+      "difficulty": 0.906,
+      "id": 136,
+      "layout": "pyramid",
+      "seed": 1093995,
+      "solution_length": 37,
+      "solver_nodes": 37,
+      "world": 5
+    },
+    {
+      "difficulty": 0.913,
+      "id": 137,
+      "layout": "wings",
+      "seed": 1101914,
+      "solution_length": 37,
+      "solver_nodes": 37,
+      "world": 5
+    },
+    {
+      "difficulty": 0.919,
+      "id": 138,
+      "layout": "diamond",
+      "seed": 1109833,
+      "solution_length": 37,
+      "solver_nodes": 37,
+      "world": 5
+    },
+    {
+      "difficulty": 0.926,
+      "id": 139,
+      "layout": "double_stack",
+      "seed": 1117752,
+      "solution_length": 37,
+      "solver_nodes": 37,
+      "world": 5
+    },
+    {
+      "difficulty": 0.933,
+      "id": 140,
+      "layout": "spiral",
+      "seed": 1125671,
+      "solution_length": 37,
+      "solver_nodes": 37,
+      "world": 5
+    },
+    {
+      "difficulty": 0.94,
+      "id": 141,
+      "layout": "terminals",
+      "seed": 1133590,
+      "solution_length": 37,
+      "solver_nodes": 37,
+      "world": 5
+    },
+    {
+      "difficulty": 0.946,
+      "id": 142,
+      "layout": "bridge",
+      "seed": 1141509,
+      "solution_length": 37,
+      "solver_nodes": 37,
+      "world": 5
+    },
+    {
+      "difficulty": 0.953,
+      "id": 143,
+      "layout": "cross",
+      "seed": 1149428,
+      "solution_length": 37,
+      "solver_nodes": 37,
+      "world": 5
+    },
+    {
+      "difficulty": 0.96,
+      "id": 144,
+      "layout": "split_islands",
+      "seed": 1157347,
+      "solution_length": 37,
+      "solver_nodes": 37,
+      "world": 5
+    },
+    {
+      "difficulty": 0.966,
+      "id": 145,
+      "layout": "staircase",
+      "seed": 1165266,
+      "solution_length": 37,
+      "solver_nodes": 37,
+      "world": 5
+    },
+    {
+      "difficulty": 0.973,
+      "id": 146,
+      "layout": "ring",
+      "seed": 1173185,
+      "solution_length": 37,
+      "solver_nodes": 37,
+      "world": 5
+    },
+    {
+      "difficulty": 0.98,
+      "id": 147,
+      "layout": "compact_box",
+      "seed": 1181104,
+      "solution_length": 37,
+      "solver_nodes": 37,
+      "world": 5
+    },
+    {
+      "difficulty": 0.987,
+      "id": 148,
+      "layout": "fan",
+      "seed": 1189023,
+      "solution_length": 37,
+      "solver_nodes": 37,
+      "world": 5
+    },
+    {
+      "difficulty": 0.993,
+      "id": 149,
+      "layout": "twin_towers",
+      "seed": 1196942,
+      "solution_length": 37,
+      "solver_nodes": 37,
+      "world": 5
+    },
+    {
+      "difficulty": 1.0,
+      "id": 150,
+      "layout": "runway",
+      "seed": 1204861,
+      "solution_length": 37,
+      "solver_nodes": 37,
+      "world": 5
+    }
+  ],
+  "schema_version": 1
+}

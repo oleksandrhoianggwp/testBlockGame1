@@ -1,0 +1,119 @@
+{
+  "content_version": 1,
+  "difficulty": 0.0,
+  "id": 1,
+  "items": [
+    {
+      "blocker_ids": [],
+      "destination_id": "sel",
+      "id": "l001_g00_0",
+      "lock_group": "",
+      "position": [
+        0.24,
+        0.24
+      ],
+      "rotation": -2.9521427154541,
+      "scale": 1.0,
+      "special_data": {},
+      "special_type": "",
+      "z_index": 2
+    },
+    {
+      "blocker_ids": [],
+      "destination_id": "sel",
+      "id": "l001_g00_1",
+      "lock_group": "",
+      "position": [
+        0.5,
+        0.24
+      ],
+      "rotation": -3.3921492099762,
+      "scale": 1.0,
+      "special_data": {},
+      "special_type": "",
+      "z_index": 2
+    },
+    {
+      "blocker_ids": [],
+      "destination_id": "sel",
+      "id": "l001_g00_2",
+      "lock_group": "",
+      "position": [
+        0.76,
+        0.24
+      ],
+      "rotation": 6.60265254974365,
+      "scale": 1.0,
+      "special_data": {},
+      "special_type": "",
+      "z_index": 2
+    },
+    {
+      "blocker_ids": [
+        "l001_g00_0",
+        "l001_g00_1",
+        "l001_g00_2"
+      ],
+      "destination_id": "syd",
+      "id": "l001_g01_0",
+      "lock_group": "",
+      "position": [
+        0.24,
+        0.345
+      ],
+      "rotation": -2.78860378265381,
+      "scale": 1.0,
+      "special_data": {},
+      "special_type": "",
+      "z_index": 1
+    },
+    {
+      "blocker_ids": [
+        "l001_g00_0",
+        "l001_g00_1",
+        "l001_g00_2"
+      ],
+      "destination_id": "syd",
+      "id": "l001_g01_1",
+      "lock_group": "",
+      "position": [
+        0.5,
+        0.345
+      ],
+      "rotation": 0.489356994628906,
+      "scale": 1.0,
+      "special_data": {},
+      "special_type": "",
+      "z_index": 1
+    },
+    {
+      "blocker_ids": [
+        "l001_g00_0",
+        "l001_g00_1",
+        "l001_g00_2"
+      ],
+      "destination_id": "syd",
+      "id": "l001_g01_2",
+      "lock_group": "",
+      "position": [
+        0.76,
+        0.345
+      ],
+      "rotation": -1.56749629974365,
+      "scale": 1.0,
+      "special_data": {},
+      "special_type": "",
+      "z_index": 1
+    }
+  ],
+  "layout_template": "pyramid",
+  "mechanics": {
+    "locks": 0,
+    "mystery": 0,
+    "priority": {}
+  },
+  "schema_version": 1,
+  "seed": 24930,
+  "tray_capacity": 7,
+  "world": 1
+}

@@ -1,0 +1,290 @@
+{
+  "content_version": 1,
+  "difficulty": 0.268,
+  "id": 41,
+  "items": [
+    {
+      "blocker_ids": [],
+      "destination_id": "lim",
+      "id": "l041_g00_0",
+      "lock_group": "",
+      "position": [
+        0.32,
+        0.24
+      ],
+      "rotation": 5.10126399993896,
+      "scale": 1.0,
+      "special_data": {},
+      "special_type": "",
+      "z_index": 5
+    },
+    {
+      "blocker_ids": [],
+      "destination_id": "lim",
+      "id": "l041_g00_1",
+      "lock_group": "",
+      "position": [
+        0.573083636611408,
+        0.24
+      ],
+      "rotation": 2.95530223846436,
+      "scale": 1.0,
+      "special_data": {},
+      "special_type": "",
+      "z_index": 5
+    },
+    {
+      "blocker_ids": [],
+      "destination_id": "lim",
+      "id": "l041_g00_2",
+      "lock_group": "",
+      "position": [
+        0.813530448508709,
+        0.24
+      ],
+      "rotation": 6.87720680236816,
+      "scale": 1.0,
+      "special_data": {},
+      "special_type": "",
+      "z_index": 5
+    },
+    {
+      "blocker_ids": [
+        "l041_g00_0",
+        "l041_g00_1",
+        "l041_g00_2"
+      ],
+      "destination_id": "nbo",
+      "id": "l041_g01_0",
+      "lock_group": "",
+      "position": [
+        0.264721359549996,
+        0.345
+      ],
+      "rotation": -2.61105918884277,
+      "scale": 1.0,
+      "special_data": {},
+      "special_type": "mystery",
+      "z_index": 4
+    },
+    {
+      "blocker_ids": [
+        "l041_g00_0",
+        "l041_g00_1",
+        "l041_g00_2"
+      ],
+      "destination_id": "nbo",
+      "id": "l041_g01_1",
+      "lock_group": "",
+      "position": [
+        0.491637722938588,
+        0.345
+      ],
+      "rotation": 6.77343940734863,
+      "scale": 1.0,
+      "special_data": {},
+      "special_type": "mystery",
+      "z_index": 4
+    },
+    {
+      "blocker_ids": [
+        "l041_g00_0",
+        "l041_g00_1",
+        "l041_g00_2"
+      ],
+      "destination_id": "nbo",
+      "id": "l041_g01_2",
+      "lock_group": "",
+      "position": [
+        0.72,
+        0.345
+      ],
+      "rotation": -6.03867721557617,
+      "scale": 1.0,
+      "special_data": {},
+      "special_type": "mystery",
+      "z_index": 4
+    },
+    {
+      "blocker_ids": [
+        "l041_g01_0",
+        "l041_g01_1",
+        "l041_g01_2"
+      ],
+      "destination_id": "par",
+      "id": "l041_g02_0",
+      "lock_group": "",
+      "position": [
+        0.175278640450004,
+        0.45
+      ],
+      "rotation": 4.43910121917725,
+      "scale": 1.0,
+      "special_data": {},
+      "special_type": "",
+      "z_index": 3
+    },
+    {
+      "blocker_ids": [
+        "l041_g01_0",
+        "l041_g01_1",
+        "l041_g01_2"
+      ],
+      "destination_id": "par",
+      "id": "l041_g02_1",
+      "lock_group": "",
+      "position": [
+        0.421748191941296,
+        0.45
+      ],
+      "rotation": -4.34405088424683,
+      "scale": 1.0,
+      "special_data": {},
+      "special_type": "",
+      "z_index": 3
+    },
+    {
+      "blocker_ids": [
+        "l041_g01_0",
+        "l041_g01_1",
+        "l041_g01_2"
+      ],
+      "destination_id": "par",
+      "id": "l041_g02_2",
+      "lock_group": "",
+      "position": [
+        0.681748191941296,
+        0.45
+      ],
+      "rotation": 2.11959648132324,
+      "scale": 1.0,
+      "special_data": {},
+      "special_type": "",
+      "z_index": 3
+    },
+    {
+      "blocker_ids": [
+        "l041_g02_0",
+        "l041_g02_1",
+        "l041_g02_2"
+      ],
+      "destination_id": "tyo",
+      "id": "l041_g03_0",
+      "lock_group": "",
+      "position": [
+        0.175278640450004,
+        0.555
+      ],
+      "rotation": 3.88698768615723,
+      "scale": 1.0,
+      "special_data": {},
+      "special_type": "",
+      "z_index": 2
+    },
+    {
+      "blocker_ids": [
+        "l041_g02_0",
+        "l041_g02_1",
+        "l041_g02_2"
+      ],
+      "destination_id": "tyo",
+      "id": "l041_g03_1",
+      "lock_group": "",
+      "position": [
+        0.46,
+        0.555
+      ],
+      "rotation": 1.95340919494629,
+      "scale": 1.0,
+      "special_data": {},
+      "special_type": "",
+      "z_index": 2
+    },
+    {
+      "blocker_ids": [
+        "l041_g02_0",
+        "l041_g02_1",
+        "l041_g02_2"
+      ],
+      "destination_id": "tyo",
+      "id": "l041_g03_2",
+      "lock_group": "",
+      "position": [
+        0.751637722938588,
+        0.555
+      ],
+      "rotation": -1.99892330169678,
+      "scale": 1.0,
+      "special_data": {},
+      "special_type": "",
+      "z_index": 2
+    },
+    {
+      "blocker_ids": [
+        "l041_g03_0",
+        "l041_g03_1",
+        "l041_g03_2"
+      ],
+      "destination_id": "lim",
+      "id": "l041_g04_0",
+      "lock_group": "",
+      "position": [
+        0.264721359549996,
+        0.66
+      ],
+      "rotation": 4.41224479675293,
+      "scale": 1.0,
+      "special_data": {},
+      "special_type": "",
+      "z_index": 1
+    },
+    {
+      "blocker_ids": [
+        "l041_g03_0",
+        "l041_g03_1",
+        "l041_g03_2"
+      ],
+      "destination_id": "lim",
+      "id": "l041_g04_1",
+      "lock_group": "",
+      "position": [
+        0.553530448508709,
+        0.66
+      ],
+      "rotation": 6.49896335601807,
+      "scale": 1.0,
+      "special_data": {},
+      "special_type": "",
+      "z_index": 1
+    },
+    {
+      "blocker_ids": [
+        "l041_g03_0",
+        "l041_g03_1",
+        "l041_g03_2"
+      ],
+      "destination_id": "lim",
+      "id": "l041_g04_2",
+      "lock_group": "",
+      "position": [
+        0.833083636611408,
+        0.66
+      ],
+      "rotation": -0.912590026855469,
+      "scale": 1.0,
+      "special_data": {},
+      "special_type": "",
+      "z_index": 1
+    }
+  ],
+  "layout_template": "ring",
+  "mechanics": {
+    "locks": 0,
+    "mystery": 3,
+    "priority": {}
+  },
+  "schema_version": 1,
+  "seed": 341690,
+  "tray_capacity": 7,
+  "world": 2
+}

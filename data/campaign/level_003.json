@@ -1,0 +1,176 @@
+{
+  "content_version": 1,
+  "difficulty": 0.013,
+  "id": 3,
+  "items": [
+    {
+      "blocker_ids": [],
+      "destination_id": "rom",
+      "id": "l003_g00_0",
+      "lock_group": "",
+      "position": [
+        0.19,
+        0.24
+      ],
+      "rotation": -5.70171928405762,
+      "scale": 1.0,
+      "special_data": {},
+      "special_type": "",
+      "z_index": 3
+    },
+    {
+      "blocker_ids": [],
+      "destination_id": "rom",
+      "id": "l003_g00_1",
+      "lock_group": "",
+      "position": [
+        0.5,
+        0.24
+      ],
+      "rotation": -2.38788461685181,
+      "scale": 1.0,
+      "special_data": {},
+      "special_type": "",
+      "z_index": 3
+    },
+    {
+      "blocker_ids": [],
+      "destination_id": "rom",
+      "id": "l003_g00_2",
+      "lock_group": "",
+      "position": [
+        0.81,
+        0.24
+      ],
+      "rotation": -4.10239315032959,
+      "scale": 1.0,
+      "special_data": {},
+      "special_type": "",
+      "z_index": 3
+    },
+    {
+      "blocker_ids": [
+        "l003_g00_0",
+        "l003_g00_1",
+        "l003_g00_2"
+      ],
+      "destination_id": "cai",
+      "id": "l003_g01_0",
+      "lock_group": "",
+      "position": [
+        0.24,
+        0.345
+      ],
+      "rotation": -1.15747165679932,
+      "scale": 1.0,
+      "special_data": {},
+      "special_type": "",
+      "z_index": 2
+    },
+    {
+      "blocker_ids": [
+        "l003_g00_0",
+        "l003_g00_1",
+        "l003_g00_2"
+      ],
+      "destination_id": "cai",
+      "id": "l003_g01_1",
+      "lock_group": "",
+      "position": [
+        0.5,
+        0.345
+      ],
+      "rotation": 2.67078304290771,
+      "scale": 1.0,
+      "special_data": {},
+      "special_type": "",
+      "z_index": 2
+    },
+    {
+      "blocker_ids": [
+        "l003_g00_0",
+        "l003_g00_1",
+        "l003_g00_2"
+      ],
+      "destination_id": "cai",
+      "id": "l003_g01_2",
+      "lock_group": "",
+      "position": [
+        0.76,
+        0.345
+      ],
+      "rotation": 4.89031505584717,
+      "scale": 1.0,
+      "special_data": {},
+      "special_type": "",
+      "z_index": 2
+    },
+    {
+      "blocker_ids": [
+        "l003_g01_0",
+        "l003_g01_1",
+        "l003_g01_2"
+      ],
+      "destination_id": "rom",
+      "id": "l003_g02_0",
+      "lock_group": "",
+      "position": [
+        0.29,
+        0.45
+      ],
+      "rotation": -3.2855007648468,
+      "scale": 1.0,
+      "special_data": {},
+      "special_type": "",
+      "z_index": 1
+    },
+    {
+      "blocker_ids": [
+        "l003_g01_0",
+        "l003_g01_1",
+        "l003_g01_2"
+      ],
+      "destination_id": "rom",
+      "id": "l003_g02_1",
+      "lock_group": "",
+      "position": [
+        0.5,
+        0.45
+      ],
+      "rotation": -4.08092641830444,
+      "scale": 1.0,
+      "special_data": {},
+      "special_type": "",
+      "z_index": 1
+    },
+    {
+      "blocker_ids": [
+        "l003_g01_0",
+        "l003_g01_1",
+        "l003_g01_2"
+      ],
+      "destination_id": "rom",
+      "id": "l003_g02_2",
+      "lock_group": "",
+      "position": [
+        0.71,
+        0.45
+      ],
+      "rotation": 6.62220478057861,
+      "scale": 1.0,
+      "special_data": {},
+      "special_type": "",
+      "z_index": 1
+    }
+  ],
+  "layout_template": "diamond",
+  "mechanics": {
+    "locks": 0,
+    "mystery": 0,
+    "priority": {}
+  },
+  "schema_version": 1,
+  "seed": 40768,
+  "tray_capacity": 7,
+  "world": 1
+}
