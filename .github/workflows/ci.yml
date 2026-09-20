@@ -1,0 +1,29 @@
+name: Godot validation
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download Godot 4.7.2
+        run: |
+          curl -fL -o godot.zip https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip
+          unzip -q godot.zip -d "$RUNNER_TEMP/godot"
+          chmod +x "$RUNNER_TEMP/godot/Godot_v4.7.2-stable_linux.x86_64"
+          echo "$RUNNER_TEMP/godot" >> "$GITHUB_PATH"
+      - name: Import and parse
+        run: Godot_v4.7.2-stable_linux.x86_64 --headless --path . --editor --quit
+      - name: Unit and integration tests
+        run: Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/run_all.gd
+      - name: Validate baked campaign
+        run: Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tools/level_baker/bake_campaign.gd
+      - name: Check generated content is committed
+        run: git diff --exit-code -- data/campaign
+      - name: Headless smoke
+        run: Godot_v4.7.2-stable_linux.x86_64 --headless --path . --quit-after 120
+
