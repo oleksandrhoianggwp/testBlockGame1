@@ -4,6 +4,7 @@ build/*
 !build/.gitkeep
 android/build/
 android/.gradle/
+android/.build_version
 *.keystore
 *.jks
 *.apk
@@ -14,4 +15,3 @@ local.properties
 export_credentials.cfg
 user_data/
 *.tmp
-
