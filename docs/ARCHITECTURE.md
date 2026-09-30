@@ -2,66 +2,74 @@
 
 ## Boundaries
 
-The project is intentionally small in runtime surface but strict about ownership. `SortingGameState` is the authoritative serializable domain. UI nodes are disposable projections. `LevelGenerator` creates reproducible data. `LevelSolver` creates new domain states from snapshots and never touches a scene tree.
-
 ```mermaid
 flowchart LR
-  UI[App and item buttons] -->|item id| Domain[SortingGameState]
-  Domain -->|snapshot and events| UI
-  Generator --> JSON[Baked level JSON]
-  JSON --> Domain
-  JSON --> Solver[Independent DFS solver]
-  Domain --> Save[SaveService]
-  UI --> Services[Audio, Haptics, Ads]
+  Screens[Reusable screens] --> Main[App orchestration]
+  Components[Persistent views] --> Main
+  Main -->|item and optional destination| State[SortingGameState]
+  State -->|events and snapshots| Components
+  Config[Campaign config] --> Generator[LevelGenerator]
+  Generator --> Solver[LevelSolver]
+  Generator --> State
+  State --> Save[SaveService]
+  Main --> Services[Audio, haptics, optional ads]
 ```
 
-## Gameplay transaction
+`SortingGameState` is authoritative. UI code never decides blockers, matches, locks, transfer choices, deadlines, or terminal state. Generator and solver are `RefCounted` and scene-tree independent.
 
-```mermaid
-stateDiagram-v2
-  [*] --> LOADING
-  LOADING --> INTRO
-  INTRO --> PLAYING
-  PLAYING --> ANIMATING: accepted tap
-  ANIMATING --> RESOLVING: logical selection
-  RESOLVING --> PLAYING: no terminal state
-  RESOLVING --> WON
-  RESOLVING --> LOST
-  PLAYING --> PAUSED
-  PAUSED --> PLAYING
-```
+## Presentation
 
-Only `PLAYING` accepts item input. Before a selection, the domain records a bounded snapshot. The item is marked removed exactly once, keys unlock their group without occupying the tray, normal luggage enters the tray, deterministic batches of three resolve, priority state advances, then win/loss is evaluated. Loss is therefore impossible before pending matches finish.
+`app/main.gd` owns navigation and transactions. Screens are separate Controls under `app/screens/`. Reusable visuals live in `app/components/`.
 
-## Board and tray
+`GameplayScreen` creates luggage nodes once for a level. After a move it updates visibility, interaction, depth and tray content in place. The selected node lifts and travels to the exact tray slot before the domain mutation. Reduced motion skips travel while keeping state order unchanged.
 
-Items carry stable IDs, destination IDs, normalized position, z index, explicit blocker IDs and optional special data. Accessibility is graph-based, never inferred from physics overlap. The tray is an ordered array of destination IDs and presentation grouping cannot change its rules.
+## Domain transaction
 
-Undo restores data snapshots without Node references. Shuffle cyclically remaps complete remaining destination groups while keeping counts and priority items fixed, preserving the baked solution structure. Extra Slot changes capacity once for the current state.
+1. Accept only a selectable item during `PLAYING`.
+2. Require one of the advertised choices for Transfer Baggage.
+3. Record a deep pre-action snapshot.
+4. Remove the item; keys unlock without entering the tray.
+5. Insert the chosen destination, decrement move events, then resolve all triplets.
+6. Update Priority/VIP state, Mystery visibility, win, and loss.
+7. Emit a presentation event with item, destination, matches, and terminal state.
 
-## Generation and solver
+Undo restores item data, tray order, locks, deadlines, jam moves, score and move count. Booster-use accounting remains outside the restored move state.
 
-Campaign parameters choose a fixed seed, world, one of 15 layout families and mechanic counts. Generation lays down complete triplets in a known top-to-bottom removal order; each later group declares the previous triplet as blockers. Keys are accessible before their lock group. Priority destinations occupy the first reachable triplet with a six-move deadline.
+## Geometric generation
 
-The solver performs deterministic depth-first search with canonical state memoization, a 200,000-node cap and heuristics for keys, priority items, tray pairs and newly exposed items. Baking performs structural validation first, then solves every level without boosters. Runtime loads baked JSON and does not run campaign generation or validation.
+Destination groups and physical depth are independent. The generator creates individual luggage, seed-shuffles destinations and stack assignment, places them at normalized 2D anchors with jitter/rotation/scale, and computes blocker IDs from rectangle overlap plus z order.
+
+A constructive group order guarantees that a valid route can exist, but the top of different stacks exposes future destinations as meaningful alternatives. Locks, Mystery, Priority, Transfer, and Shift events are applied before an independent solver pass.
+
+The runtime solver has a bounded node budget. Rejected candidates derive their next layout seed deterministically from the saved base seed.
+
+## Solver and quality metrics
+
+The solver uses domain snapshots, canonical memoization, transfer-choice actions, and heuristics for exposed triplets, tray pairs, keys, Priority goals, and newly exposed luggage. It reports:
+
+- solved and reason;
+- solution depth;
+- expanded search states and inspected candidate nodes;
+- average branching factor;
+- initial and average selectable count;
+- meaningful decision count;
+- forced-move ratio;
+- expected peak tray pressure;
+- dead ends;
+- solve time and normalized difficulty score.
+
+Quality acceptance rejects unsolved boards, too few opening choices, low branching, excessive forced moves, low meaningful-decision coverage, and trivial pressure.
+
+## Data-driven campaign
+
+`data/configs/campaign.json` owns world and stage counts. No UI or save rule assumes 150 stages. The baker writes 75 representative artifacts for CI and review, while runtime campaign boards use persisted first-open seeds.
+
+Daily hashes date plus salt. Airport Shift hashes run seed plus round and then chooses a seeded event. All modes pass through the same validation pipeline.
 
 ## Persistence
 
-`SaveService` merges only known fields into defaults, retains unknown future fields on disk without using them, exposes a migration seam, writes a temporary file, flushes, rotates the primary to a backup, then atomically renames the temporary file. Missing, partial and malformed profiles fall back safely.
+Save schema 2 adds campaign seeds, campaign content version, Airport Shift state, airport perks, and the new progression shape. Migration maps old 150-stage completion into 75 stages, renames old renovation zones, imports Endless high score, and clears stale generated content. Writes use temp file, flush, backup rotation, and atomic rename.
 
-## Services
+## Android
 
-- Audio: four lightweight players, local WAV only, setting-aware.
-- Haptics: Android-only no-op elsewhere.
-- Ads: mock modes for desktop QA; optional pinned Android adapter; failures never block gameplay.
-- Local analytics: debug-only JSONL events in `user://`; no identifiers or external endpoint.
-- Localization: Godot translation CSV with complete EN/UK user-facing keys.
-
-## Navigation and lifecycle
-
-The root scene owns screen construction, Back routing and overlays. Gameplay focus loss pauses the move-based session, so background time cannot consume priority moves. Each screen is rebuilt from current state, making language and text scale changes immediate.
-
-## Android layer
-
-The project uses Compatibility rendering, portrait orientation, Gradle export, min SDK 24 and target SDK 36. APK and AAB are separate presets. Signing lives only in environment/editor configuration. Optional AdMob v7.0 is intentionally not vendored so desktop and CI remain deterministic and license upgrades are explicit.
-
+The project uses Compatibility rendering, portrait orientation, minimum SDK 24, target SDK 36, Gradle APK/AAB exports, and ETC2/ASTC texture imports. Signing inputs remain outside Git. Core gameplay has no network dependency.

@@ -1,7 +1,7 @@
 # Release checklist
 
 - [ ] Version name/code updated in config and both export presets.
-- [ ] `150/150 levels validated`, no duplicate seeds, stress run passes.
+- [ ] `75/75 levels validated`; 10,000-board stress has zero impossible boards and acceptable p95 solve time.
 - [ ] Import, parser, unit/integration and headless smoke tests pass in CI.
 - [ ] Debug menu and debug local analytics absent from release behavior.
 - [ ] Publisher-owned package ID replaces `com.lostandsorted.game`.
@@ -14,7 +14,7 @@
 - [ ] Store listing, Data Safety answers and content rating reviewed by publisher.
 - [ ] Release AAB built and uploaded to Play internal testing.
 - [ ] Install/update from Play internal track on at least two aspect ratios.
-- [ ] Airplane-mode, save-upgrade, force-close and corrupted-save tests pass.
+- [ ] Airplane-mode, schema-1 save migration, force-close and corrupted-save tests pass.
 - [ ] Ads tested only with test devices before switching to production units.
 - [ ] Crash/log check and final smoke test complete.
 

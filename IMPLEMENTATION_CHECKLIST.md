@@ -1,17 +1,18 @@
 # Implementation checklist
 
-- [x] Inspect repository, remote, Godot, JDK and Android SDK availability.
-- [x] Initialize Git and the Godot 4.7.2 Compatibility project.
-- [x] Implement and test the pure sorting domain.
-- [x] Implement deterministic generation, solver and campaign baker.
-- [x] Bake and validate all 150 campaign levels.
-- [x] Build complete responsive game navigation and gameplay presentation.
-- [x] Implement Mystery, Locks/Keys, Priority and all three boosters.
-- [x] Implement campaign, saves, economy, airport, daily and endless modes.
-- [x] Generate original local SVG/audio assets and EN/UK localization.
-- [x] Add mock ads, consent fallback, accessibility and debug tooling.
-- [x] Add automated tests, CI, build scripts and release documentation.
-- [x] Run final self-audit and all feasible validation.
-- [x] Attempt Android debug APK/AAB; document external blockers precisely.
-
-Android debug export was attempted on 2026-09-20 and correctly failed because this host lacks the Godot Android source/export templates, Gradle project template, JDK 17, and Android SDK platform/build/platform tools. Release export additionally refuses to start without signing variables. No APK or AAB success is claimed.
+- [x] Inspect the existing repository, baseline tests, generator, solver, saves, campaign, localization, assets, services, Android presets, and documentation.
+- [x] Replace triplet-as-layer generation with seed-shuffled individual luggage and geometric overlap blockers.
+- [x] Add solver decision metrics and reject unsolved, linear, forced, or low-choice boards.
+- [x] Replace the hardcoded 150-stage grid with a data-driven five-world, 75-stage journey.
+- [x] Persist campaign first-open seeds; keep Retry stable; allow post-clear regeneration.
+- [x] Implement deterministic Daily and seeded Airport Shift events.
+- [x] Implement Transfer Baggage and preserve/improve Mystery, Locks/Keys, and Priority Flights.
+- [x] Migrate schema-1 debug saves into campaign seeds, renovation, Shift, perks, and new progression.
+- [x] Split presentation into reusable screens/components and keep gameplay nodes persistent after taps.
+- [x] Replace prototype luggage and airport blocks with original reproducible vector art.
+- [x] Expand EN/UK localization and remove mixed player-facing strings.
+- [x] Expand unit/integration coverage for all required domain and randomness contracts.
+- [x] Bake and validate 75 representative campaign boards.
+- [x] Complete and record the 10,000-board stress run.
+- [x] Build, sign-check, and smoke-test the updated debug APK.
+- [ ] Physical-device FPS, safe-area, haptic, update-install, and airplane-mode QA.

@@ -12,13 +12,14 @@ const DESTINATIONS := [
 func _initialize() -> void:
 	generate_svg_assets()
 	generate_audio_assets()
-	print("ASSETS PASS: 12 destination tags, 5 backgrounds, UI/booster/store icons, 17 WAV files")
+	print("ASSETS PASS: 12 destination tags, 6 luggage silhouettes, 5 world backgrounds, 28 airport stages, UI/store icons, 17 WAV files")
 	quit(0)
 
 func generate_svg_assets() -> void:
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path("res://assets/art/destinations"))
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path("res://assets/art/backgrounds"))
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path("res://assets/art/airport"))
+	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path("res://assets/art/luggage"))
 	for destination in DESTINATIONS:
 		var svg := """<svg xmlns="http://www.w3.org/2000/svg" width="256" height="176" viewBox="0 0 256 176">
 <rect x="8" y="24" width="240" height="144" rx="30" fill="%s" stroke="#18223b" stroke-width="8"/>
@@ -28,14 +29,16 @@ func generate_svg_assets() -> void:
 <text x="174" y="109" text-anchor="middle" font-family="Arial,sans-serif" font-size="36" font-weight="800" fill="#18223b">%s</text>
 </svg>""" % [destination[2], destination[3], destination[1]]
 		_write_text("res://assets/art/destinations/%s.svg" % destination[0], svg)
-	var world_colors := [["local", "#dff3f4", "#72c7a5"], ["international", "#e8f2f7", "#4d8fe8"], ["cargo", "#e9e1d5", "#b8894e"], ["midnight", "#101a38", "#f6bd60"], ["skyport", "#e5eff9", "#9b70d9"]]
+	var world_colors := [["regional", "#dff3f4", "#72c7a5"], ["local", "#dff3f4", "#72c7a5"], ["international", "#e8f2f7", "#4d8fe8"], ["cargo", "#e9e1d5", "#b8894e"], ["midnight", "#101a38", "#f6bd60"], ["skyport", "#e5eff9", "#9b70d9"]]
 	for index in world_colors.size():
 		var world = world_colors[index]
 		var svg := """<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
-<rect width="1080" height="1920" fill="%s"/><circle cx="850" cy="260" r="130" fill="%s" opacity=".35"/>
-<path d="M0 1390L180 1250l160 80 170-210 220 180 160-140 190 190v570H0z" fill="%s" opacity=".2"/>
-<path d="M100 500h880M60 610h960" stroke="%s" stroke-width="8" stroke-dasharray="24 30" opacity=".15"/>
-</svg>""" % [world[1], world[2], world[2], world[2]]
+<defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="%s"/><stop offset="1" stop-color="#fff9ef"/></linearGradient></defs>
+<rect width="1080" height="1920" fill="url(#sky)"/><circle cx="850" cy="240" r="130" fill="%s" opacity=".34"/>
+<path d="M0 1180h1080v740H0z" fill="%s" opacity=".13"/><path d="M0 1370h1080" stroke="%s" stroke-width="18" opacity=".28"/>
+<path d="M80 1040h920v300H80z" rx="54" fill="#fff9ef" opacity=".35"/><path d="M140 1100h180v140H140zm230 0h180v140H370zm230 0h180v140H600zm230 0h110v140H830z" fill="%s" opacity=".24"/>
+<path d="M-80 1630L1160 1450" stroke="#fff9ef" stroke-width="90" opacity=".45"/><path d="M150 1585l150-22m120-20l150-22m120-20l150-22" stroke="%s" stroke-width="15" opacity=".55"/>
+</svg>""" % [world[1], world[2], world[2], world[2], world[2], world[2]]
 		_write_text("res://assets/art/backgrounds/%s.svg" % world[0], svg)
 	var logo := """<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300">
 <path d="M83 42h185a35 35 0 0135 35v154a35 35 0 01-35 35H83a35 35 0 01-35-35V77a35 35 0 0135-35z" fill="#ef6f6c" stroke="#18223b" stroke-width="14"/>
@@ -52,18 +55,38 @@ func generate_svg_assets() -> void:
 	_write_text("res://assets/icons/adaptive_foreground.svg", icon)
 	_write_text("res://assets/icons/monochrome.svg", icon.replace("#ef6f6c", "#ffffff").replace("#fffaf0", "#ffffff").replace("#f6bd60", "#ffffff"))
 	_write_text("res://assets/icons/adaptive_background.svg", "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"512\" height=\"512\"><rect width=\"512\" height=\"512\" fill=\"#18223b\"/></svg>")
-	for icon_name in ["undo", "shuffle", "extra_slot", "coin", "star", "pause", "key", "lock"]:
+	for icon_name in ["undo", "shuffle", "extra_slot", "reveal", "coin", "star", "pause", "key", "lock"]:
 		var initial: String = icon_name.substr(0, 1).to_upper()
 		var simple := "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"128\" height=\"128\"><circle cx=\"64\" cy=\"64\" r=\"56\" fill=\"#f6bd60\" stroke=\"#18223b\" stroke-width=\"8\"/><text x=\"64\" y=\"82\" text-anchor=\"middle\" font-family=\"Arial\" font-weight=\"700\" font-size=\"52\" fill=\"#18223b\">%s</text></svg>" % initial
 		_write_text("res://assets/icons/%s.svg" % icon_name, simple)
-	var airport_objects := ["entrance", "seating", "checkin", "cafe", "departures", "runway"]
+	var luggage_shapes := [
+		["hard_shell", "M34 42h188a28 28 0 0128 28v118a28 28 0 01-28 28H34A28 28 0 016 188V70a28 28 0 0128-28z"],
+		["cabin", "M52 30h152a24 24 0 0124 24v160H28V54a24 24 0 0124-24z"],
+		["duffel", "M34 82h188l28 36-22 90H28L6 118z"],
+		["backpack", "M56 38h144a34 34 0 0134 34v146H22V72a34 34 0 0134-34z"],
+		["oversized", "M22 46h212a20 20 0 0120 20v150H2V66a20 20 0 0120-20z"],
+		["travel_case", "M42 58h172l30 28v124H12V86z"]
+	]
+	for shape in luggage_shapes:
+		var luggage_svg := """<svg xmlns="http://www.w3.org/2000/svg" width="256" height="240" viewBox="0 0 256 240"><path d="%s" fill="#ef6f6c" stroke="#18223b" stroke-width="8"/><path d="M91 44V24c0-9 7-16 16-16h42c9 0 16 7 16 16v20" fill="none" stroke="#18223b" stroke-width="8"/><path d="M70 66v126m116-126v126" stroke="#fff9ef" stroke-opacity=".35" stroke-width="7"/><rect x="142" y="88" width="74" height="52" rx="8" fill="#fff9ef" stroke="#18223b" stroke-width="6"/><circle cx="48" cy="220" r="8" fill="#18223b"/><circle cx="208" cy="220" r="8" fill="#18223b"/></svg>""" % shape[1]
+		_write_text("res://assets/art/luggage/%s.svg" % shape[0], luggage_svg)
+	var airport_objects := ["entrance", "checkin", "baggage", "security", "cafe", "tower", "runway"]
 	for object_index in airport_objects.size():
 		for stage in 4:
-			var window_count := stage + 1
-			var windows := ""
-			for window_index in window_count:
-				windows += "<rect x=\"%d\" y=\"%d\" width=\"18\" height=\"18\" rx=\"4\" fill=\"#fffaf0\"/>" % [38 + (window_index % 3) * 28, 82 + int(window_index / 3) * 28]
-			var airport_svg := "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"150\" height=\"150\"><rect x=\"12\" y=\"%d\" width=\"126\" height=\"%d\" rx=\"18\" fill=\"%s\" stroke=\"#18223b\" stroke-width=\"7\"/>%s<text x=\"75\" y=\"58\" text-anchor=\"middle\" font-family=\"Arial\" font-weight=\"700\" font-size=\"25\" fill=\"#18223b\">%s%d</text></svg>" % [60 - stage * 7, 78 + stage * 7, ["#b8c1c8", "#72c7a5", "#f6bd60", "#ef6f6c"][stage], windows, airport_objects[object_index].substr(0, 1).to_upper(), stage]
+			var palette: String = String(["#9aa7ad", "#72c7a5", "#f6bd60", "#ef6f6c"][stage])
+			var motif := ""
+			match airport_objects[object_index]:
+				"entrance": motif = "<path d=\"M52 132V82h46v50M64 105h22\" fill=\"none\" stroke=\"#fff9ef\" stroke-width=\"8\"/>"
+				"checkin": motif = "<path d=\"M28 112h94M42 80h66v32H42z\" fill=\"none\" stroke=\"#fff9ef\" stroke-width=\"8\"/>"
+				"baggage": motif = "<path d=\"M24 112h102M38 88h28v24H38zm48 0h28v24H86z\" fill=\"none\" stroke=\"#fff9ef\" stroke-width=\"7\"/>"
+				"security": motif = "<path d=\"M75 68l34 14v24c0 22-15 35-34 42-19-7-34-20-34-42V82z\" fill=\"#fff9ef\" opacity=\".85\"/>"
+				"cafe": motif = "<path d=\"M44 82h54v32a22 22 0 01-54 0zm54 8h16a14 14 0 010 28h-12\" fill=\"none\" stroke=\"#fff9ef\" stroke-width=\"8\"/>"
+				"tower": motif = "<path d=\"M60 134l9-58h12l9 58M48 70h54l-8-22H56z\" fill=\"#fff9ef\" stroke=\"#18223b\" stroke-width=\"6\"/>"
+				"runway": motif = "<path d=\"M28 128l38-74h18l38 74z\" fill=\"#45506b\"/><path d=\"M75 65v16m0 14v16\" stroke=\"#fff9ef\" stroke-width=\"5\"/>"
+			var lights := ""
+			for light_index in stage + 1:
+				lights += "<circle cx=\"%d\" cy=\"142\" r=\"5\" fill=\"#fff9ef\"/>" % [48 + light_index * 18]
+			var airport_svg := "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"150\" height=\"160\"><path d=\"M12 146V66l20-18h86l20 18v80z\" fill=\"%s\" stroke=\"#18223b\" stroke-width=\"7\"/>%s%s<path d=\"M24 150h102\" stroke=\"#18223b\" stroke-width=\"7\"/></svg>" % [palette, motif, lights]
 			_write_text("res://assets/art/airport/%s_%d.svg" % [airport_objects[object_index], stage], airport_svg)
 	var feature := """<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="500"><rect width="1024" height="500" fill="#dff3f4"/><path d="M0 420l210-150 170 90 190-210 220 190 234-170v330H0z" fill="#72c7a5"/><text x="70" y="145" font-family="Arial" font-size="82" font-weight="800" fill="#18223b">LOST &amp; SORTED</text><text x="76" y="220" font-family="Arial" font-size="34" fill="#18223b">Tap. Match. Clear the terminal.</text><path d="M720 80h220v280H720z" rx="40" fill="#ef6f6c" stroke="#18223b" stroke-width="12"/></svg>"""
 	_write_text("res://store/feature_graphic.svg", feature)

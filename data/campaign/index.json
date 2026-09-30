@@ -1,1356 +1,1508 @@
 {
-  "content_version": 1,
+  "campaign_count": 75,
+  "content_version": 2,
   "levels": [
     {
-      "difficulty": 0.0,
+      "generation_attempts": 1,
       "id": 1,
-      "layout": "pyramid",
+      "layout": "split_belt",
+      "quality": {
+        "average_branching_factor": 3.5,
+        "average_selectable_count": 3.5,
+        "dead_end_count": 0,
+        "difficulty_score": 0.505,
+        "forced_move_ratio": 0.083,
+        "initial_selectable_count": 5,
+        "meaningful_decision_count": 9,
+        "nodes_explored": 54,
+        "peak_expected_tray_pressure": 4,
+        "solution_depth": 12,
+        "solved": true
+      },
       "seed": 24930,
-      "solution_length": 6,
-      "solver_nodes": 6,
       "world": 1
     },
     {
-      "difficulty": 0.007,
+      "generation_attempts": 1,
       "id": 2,
-      "layout": "wings",
+      "layout": "gate_cluster",
+      "quality": {
+        "average_branching_factor": 4.17,
+        "average_selectable_count": 4.17,
+        "dead_end_count": 0,
+        "difficulty_score": 0.494,
+        "forced_move_ratio": 0.083,
+        "initial_selectable_count": 5,
+        "meaningful_decision_count": 9,
+        "nodes_explored": 62,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 12,
+        "solved": true
+      },
       "seed": 32849,
-      "solution_length": 9,
-      "solver_nodes": 9,
       "world": 1
     },
     {
-      "difficulty": 0.013,
+      "generation_attempts": 1,
       "id": 3,
-      "layout": "diamond",
+      "layout": "runway_cross",
+      "quality": {
+        "average_branching_factor": 4.0,
+        "average_selectable_count": 4.0,
+        "dead_end_count": 0,
+        "difficulty_score": 0.488,
+        "forced_move_ratio": 0.083,
+        "initial_selectable_count": 5,
+        "meaningful_decision_count": 8,
+        "nodes_explored": 60,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 12,
+        "solved": true
+      },
       "seed": 40768,
-      "solution_length": 9,
-      "solver_nodes": 9,
       "world": 1
     },
     {
-      "difficulty": 0.02,
+      "generation_attempts": 1,
       "id": 4,
-      "layout": "double_stack",
+      "layout": "cargo_bays",
+      "quality": {
+        "average_branching_factor": 4.0,
+        "average_selectable_count": 4.0,
+        "dead_end_count": 0,
+        "difficulty_score": 0.488,
+        "forced_move_ratio": 0.083,
+        "initial_selectable_count": 5,
+        "meaningful_decision_count": 8,
+        "nodes_explored": 60,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 12,
+        "solved": true
+      },
       "seed": 48687,
-      "solution_length": 9,
-      "solver_nodes": 9,
       "world": 1
     },
     {
-      "difficulty": 0.027,
+      "generation_attempts": 1,
       "id": 5,
-      "layout": "spiral",
+      "layout": "terminal_rows",
+      "quality": {
+        "average_branching_factor": 4.33,
+        "average_selectable_count": 4.33,
+        "dead_end_count": 0,
+        "difficulty_score": 0.527,
+        "forced_move_ratio": 0.067,
+        "initial_selectable_count": 5,
+        "meaningful_decision_count": 11,
+        "nodes_explored": 80,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 15,
+        "solved": true
+      },
       "seed": 56606,
-      "solution_length": 9,
-      "solver_nodes": 9,
       "world": 1
     },
     {
-      "difficulty": 0.034,
+      "generation_attempts": 1,
       "id": 6,
-      "layout": "terminals",
+      "layout": "carousel",
+      "quality": {
+        "average_branching_factor": 4.33,
+        "average_selectable_count": 4.33,
+        "dead_end_count": 0,
+        "difficulty_score": 0.527,
+        "forced_move_ratio": 0.067,
+        "initial_selectable_count": 5,
+        "meaningful_decision_count": 12,
+        "nodes_explored": 80,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 15,
+        "solved": true
+      },
       "seed": 64525,
-      "solution_length": 9,
-      "solver_nodes": 9,
       "world": 1
     },
     {
-      "difficulty": 0.04,
+      "generation_attempts": 1,
       "id": 7,
-      "layout": "bridge",
+      "layout": "split_belt",
+      "quality": {
+        "average_branching_factor": 3.87,
+        "average_selectable_count": 3.87,
+        "dead_end_count": 0,
+        "difficulty_score": 0.546,
+        "forced_move_ratio": 0.067,
+        "initial_selectable_count": 5,
+        "meaningful_decision_count": 12,
+        "nodes_explored": 73,
+        "peak_expected_tray_pressure": 4,
+        "solution_depth": 15,
+        "solved": true
+      },
       "seed": 72444,
-      "solution_length": 9,
-      "solver_nodes": 9,
       "world": 1
     },
     {
-      "difficulty": 0.047,
+      "generation_attempts": 1,
       "id": 8,
-      "layout": "cross",
+      "layout": "gate_cluster",
+      "quality": {
+        "average_branching_factor": 4.73,
+        "average_selectable_count": 4.73,
+        "dead_end_count": 0,
+        "difficulty_score": 0.541,
+        "forced_move_ratio": 0.067,
+        "initial_selectable_count": 6,
+        "meaningful_decision_count": 9,
+        "nodes_explored": 86,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 15,
+        "solved": true
+      },
       "seed": 80363,
-      "solution_length": 9,
-      "solver_nodes": 9,
       "world": 1
     },
     {
-      "difficulty": 0.054,
+      "generation_attempts": 1,
       "id": 9,
-      "layout": "split_islands",
+      "layout": "runway_cross",
+      "quality": {
+        "average_branching_factor": 4.93,
+        "average_selectable_count": 4.93,
+        "dead_end_count": 0,
+        "difficulty_score": 0.548,
+        "forced_move_ratio": 0.067,
+        "initial_selectable_count": 6,
+        "meaningful_decision_count": 11,
+        "nodes_explored": 89,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 15,
+        "solved": true
+      },
       "seed": 88282,
-      "solution_length": 9,
-      "solver_nodes": 9,
       "world": 1
     },
     {
-      "difficulty": 0.06,
+      "generation_attempts": 1,
       "id": 10,
-      "layout": "staircase",
+      "layout": "cargo_bays",
+      "quality": {
+        "average_branching_factor": 4.73,
+        "average_selectable_count": 4.73,
+        "dead_end_count": 0,
+        "difficulty_score": 0.541,
+        "forced_move_ratio": 0.067,
+        "initial_selectable_count": 6,
+        "meaningful_decision_count": 12,
+        "nodes_explored": 86,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 15,
+        "solved": true
+      },
       "seed": 96201,
-      "solution_length": 9,
-      "solver_nodes": 9,
       "world": 1
     },
     {
-      "difficulty": 0.067,
+      "generation_attempts": 1,
       "id": 11,
-      "layout": "ring",
+      "layout": "terminal_rows",
+      "quality": {
+        "average_branching_factor": 4.93,
+        "average_selectable_count": 4.93,
+        "dead_end_count": 0,
+        "difficulty_score": 0.548,
+        "forced_move_ratio": 0.067,
+        "initial_selectable_count": 6,
+        "meaningful_decision_count": 12,
+        "nodes_explored": 89,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 15,
+        "solved": true
+      },
       "seed": 104120,
-      "solution_length": 9,
-      "solver_nodes": 9,
       "world": 1
     },
     {
-      "difficulty": 0.074,
+      "generation_attempts": 1,
       "id": 12,
-      "layout": "compact_box",
+      "layout": "carousel",
+      "quality": {
+        "average_branching_factor": 5.17,
+        "average_selectable_count": 5.17,
+        "dead_end_count": 0,
+        "difficulty_score": 0.583,
+        "forced_move_ratio": 0.056,
+        "initial_selectable_count": 6,
+        "meaningful_decision_count": 14,
+        "nodes_explored": 111,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 18,
+        "solved": true
+      },
       "seed": 112039,
-      "solution_length": 9,
-      "solver_nodes": 9,
       "world": 1
     },
     {
-      "difficulty": 0.081,
+      "generation_attempts": 1,
       "id": 13,
-      "layout": "fan",
+      "layout": "split_belt",
+      "quality": {
+        "average_branching_factor": 5.0,
+        "average_selectable_count": 5.0,
+        "dead_end_count": 0,
+        "difficulty_score": 0.577,
+        "forced_move_ratio": 0.056,
+        "initial_selectable_count": 6,
+        "meaningful_decision_count": 14,
+        "nodes_explored": 108,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 18,
+        "solved": true
+      },
       "seed": 119958,
-      "solution_length": 9,
-      "solver_nodes": 9,
       "world": 1
     },
     {
-      "difficulty": 0.087,
+      "generation_attempts": 1,
       "id": 14,
-      "layout": "twin_towers",
+      "layout": "gate_cluster",
+      "quality": {
+        "average_branching_factor": 5.17,
+        "average_selectable_count": 5.17,
+        "dead_end_count": 0,
+        "difficulty_score": 0.583,
+        "forced_move_ratio": 0.056,
+        "initial_selectable_count": 6,
+        "meaningful_decision_count": 14,
+        "nodes_explored": 111,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 18,
+        "solved": true
+      },
       "seed": 127877,
-      "solution_length": 9,
-      "solver_nodes": 9,
       "world": 1
     },
     {
-      "difficulty": 0.094,
+      "generation_attempts": 1,
       "id": 15,
-      "layout": "runway",
+      "layout": "runway_cross",
+      "quality": {
+        "average_branching_factor": 5.44,
+        "average_selectable_count": 5.44,
+        "dead_end_count": 0,
+        "difficulty_score": 0.633,
+        "forced_move_ratio": 0.056,
+        "initial_selectable_count": 7,
+        "meaningful_decision_count": 15,
+        "nodes_explored": 116,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 18,
+        "solved": true
+      },
       "seed": 135796,
-      "solution_length": 9,
-      "solver_nodes": 9,
       "world": 1
     },
     {
-      "difficulty": 0.101,
+      "generation_attempts": 1,
       "id": 16,
-      "layout": "pyramid",
+      "layout": "terminal_rows",
+      "quality": {
+        "average_branching_factor": 4.33,
+        "average_selectable_count": 4.33,
+        "dead_end_count": 0,
+        "difficulty_score": 0.567,
+        "forced_move_ratio": 0.067,
+        "initial_selectable_count": 5,
+        "meaningful_decision_count": 12,
+        "nodes_explored": 80,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 15,
+        "solved": true
+      },
       "seed": 143715,
-      "solution_length": 12,
-      "solver_nodes": 12,
-      "world": 1
+      "world": 2
     },
     {
-      "difficulty": 0.107,
+      "generation_attempts": 1,
       "id": 17,
-      "layout": "wings",
+      "layout": "carousel",
+      "quality": {
+        "average_branching_factor": 4.33,
+        "average_selectable_count": 4.33,
+        "dead_end_count": 0,
+        "difficulty_score": 0.567,
+        "forced_move_ratio": 0.067,
+        "initial_selectable_count": 5,
+        "meaningful_decision_count": 12,
+        "nodes_explored": 80,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 15,
+        "solved": true
+      },
       "seed": 151634,
-      "solution_length": 12,
-      "solver_nodes": 12,
-      "world": 1
+      "world": 2
     },
     {
-      "difficulty": 0.114,
+      "generation_attempts": 1,
       "id": 18,
-      "layout": "diamond",
+      "layout": "split_belt",
+      "quality": {
+        "average_branching_factor": 3.93,
+        "average_selectable_count": 3.93,
+        "dead_end_count": 0,
+        "difficulty_score": 0.553,
+        "forced_move_ratio": 0.067,
+        "initial_selectable_count": 4,
+        "meaningful_decision_count": 12,
+        "nodes_explored": 74,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 15,
+        "solved": true
+      },
       "seed": 159553,
-      "solution_length": 12,
-      "solver_nodes": 12,
-      "world": 1
+      "world": 2
     },
     {
-      "difficulty": 0.121,
+      "generation_attempts": 1,
       "id": 19,
-      "layout": "double_stack",
+      "layout": "gate_cluster",
+      "quality": {
+        "average_branching_factor": 4.33,
+        "average_selectable_count": 4.33,
+        "dead_end_count": 0,
+        "difficulty_score": 0.567,
+        "forced_move_ratio": 0.067,
+        "initial_selectable_count": 5,
+        "meaningful_decision_count": 10,
+        "nodes_explored": 80,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 15,
+        "solved": true
+      },
       "seed": 167472,
-      "solution_length": 12,
-      "solver_nodes": 12,
-      "world": 1
+      "world": 2
     },
     {
-      "difficulty": 0.128,
+      "generation_attempts": 1,
       "id": 20,
-      "layout": "spiral",
+      "layout": "runway_cross",
+      "quality": {
+        "average_branching_factor": 4.44,
+        "average_selectable_count": 4.44,
+        "dead_end_count": 0,
+        "difficulty_score": 0.597,
+        "forced_move_ratio": 0.056,
+        "initial_selectable_count": 5,
+        "meaningful_decision_count": 15,
+        "nodes_explored": 98,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 18,
+        "solved": true
+      },
       "seed": 175391,
-      "solution_length": 12,
-      "solver_nodes": 12,
-      "world": 1
+      "world": 2
     },
     {
-      "difficulty": 0.134,
+      "generation_attempts": 1,
       "id": 21,
-      "layout": "terminals",
+      "layout": "cargo_bays",
+      "quality": {
+        "average_branching_factor": 4.44,
+        "average_selectable_count": 4.44,
+        "dead_end_count": 0,
+        "difficulty_score": 0.597,
+        "forced_move_ratio": 0.056,
+        "initial_selectable_count": 5,
+        "meaningful_decision_count": 11,
+        "nodes_explored": 98,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 18,
+        "solved": true
+      },
       "seed": 183310,
-      "solution_length": 12,
-      "solver_nodes": 12,
-      "world": 1
+      "world": 2
     },
     {
-      "difficulty": 0.141,
+      "generation_attempts": 1,
       "id": 22,
-      "layout": "bridge",
+      "layout": "terminal_rows",
+      "quality": {
+        "average_branching_factor": 4.44,
+        "average_selectable_count": 4.44,
+        "dead_end_count": 0,
+        "difficulty_score": 0.597,
+        "forced_move_ratio": 0.056,
+        "initial_selectable_count": 5,
+        "meaningful_decision_count": 15,
+        "nodes_explored": 98,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 18,
+        "solved": true
+      },
       "seed": 191229,
-      "solution_length": 12,
-      "solver_nodes": 12,
-      "world": 1
+      "world": 2
     },
     {
-      "difficulty": 0.148,
+      "generation_attempts": 1,
       "id": 23,
-      "layout": "cross",
+      "layout": "carousel",
+      "quality": {
+        "average_branching_factor": 5.17,
+        "average_selectable_count": 5.17,
+        "dead_end_count": 0,
+        "difficulty_score": 0.623,
+        "forced_move_ratio": 0.056,
+        "initial_selectable_count": 6,
+        "meaningful_decision_count": 15,
+        "nodes_explored": 111,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 18,
+        "solved": true
+      },
       "seed": 199148,
-      "solution_length": 12,
-      "solver_nodes": 12,
-      "world": 1
+      "world": 2
     },
     {
-      "difficulty": 0.154,
+      "generation_attempts": 1,
       "id": 24,
-      "layout": "split_islands",
+      "layout": "split_belt",
+      "quality": {
+        "average_branching_factor": 4.22,
+        "average_selectable_count": 4.22,
+        "dead_end_count": 0,
+        "difficulty_score": 0.59,
+        "forced_move_ratio": 0.056,
+        "initial_selectable_count": 5,
+        "meaningful_decision_count": 15,
+        "nodes_explored": 94,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 18,
+        "solved": true
+      },
       "seed": 207067,
-      "solution_length": 12,
-      "solver_nodes": 12,
-      "world": 1
+      "world": 2
     },
     {
-      "difficulty": 0.161,
+      "generation_attempts": 1,
       "id": 25,
-      "layout": "staircase",
+      "layout": "gate_cluster",
+      "quality": {
+        "average_branching_factor": 5.17,
+        "average_selectable_count": 5.17,
+        "dead_end_count": 0,
+        "difficulty_score": 0.623,
+        "forced_move_ratio": 0.056,
+        "initial_selectable_count": 6,
+        "meaningful_decision_count": 15,
+        "nodes_explored": 111,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 18,
+        "solved": true
+      },
       "seed": 214986,
-      "solution_length": 12,
-      "solver_nodes": 12,
-      "world": 1
+      "world": 2
     },
     {
-      "difficulty": 0.168,
+      "generation_attempts": 1,
       "id": 26,
-      "layout": "ring",
+      "layout": "runway_cross",
+      "quality": {
+        "average_branching_factor": 5.17,
+        "average_selectable_count": 5.17,
+        "dead_end_count": 0,
+        "difficulty_score": 0.623,
+        "forced_move_ratio": 0.056,
+        "initial_selectable_count": 6,
+        "meaningful_decision_count": 15,
+        "nodes_explored": 111,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 18,
+        "solved": true
+      },
       "seed": 222905,
-      "solution_length": 12,
-      "solver_nodes": 12,
-      "world": 1
+      "world": 2
     },
     {
-      "difficulty": 0.174,
+      "generation_attempts": 1,
       "id": 27,
-      "layout": "compact_box",
+      "layout": "cargo_bays",
+      "quality": {
+        "average_branching_factor": 5.24,
+        "average_selectable_count": 5.24,
+        "dead_end_count": 0,
+        "difficulty_score": 0.652,
+        "forced_move_ratio": 0.048,
+        "initial_selectable_count": 6,
+        "meaningful_decision_count": 18,
+        "nodes_explored": 131,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 21,
+        "solved": true
+      },
       "seed": 230824,
-      "solution_length": 12,
-      "solver_nodes": 12,
-      "world": 1
+      "world": 2
     },
     {
-      "difficulty": 0.181,
+      "generation_attempts": 1,
       "id": 28,
-      "layout": "fan",
+      "layout": "terminal_rows",
+      "quality": {
+        "average_branching_factor": 5.1,
+        "average_selectable_count": 5.1,
+        "dead_end_count": 0,
+        "difficulty_score": 0.647,
+        "forced_move_ratio": 0.048,
+        "initial_selectable_count": 6,
+        "meaningful_decision_count": 14,
+        "nodes_explored": 128,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 21,
+        "solved": true
+      },
       "seed": 238743,
-      "solution_length": 12,
-      "solver_nodes": 12,
-      "world": 1
+      "world": 2
     },
     {
-      "difficulty": 0.188,
+      "generation_attempts": 1,
       "id": 29,
-      "layout": "twin_towers",
+      "layout": "carousel",
+      "quality": {
+        "average_branching_factor": 5.1,
+        "average_selectable_count": 5.1,
+        "dead_end_count": 0,
+        "difficulty_score": 0.647,
+        "forced_move_ratio": 0.048,
+        "initial_selectable_count": 6,
+        "meaningful_decision_count": 17,
+        "nodes_explored": 128,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 21,
+        "solved": true
+      },
       "seed": 246662,
-      "solution_length": 12,
-      "solver_nodes": 12,
-      "world": 1
+      "world": 2
     },
     {
-      "difficulty": 0.195,
+      "generation_attempts": 1,
       "id": 30,
-      "layout": "runway",
+      "layout": "split_belt",
+      "quality": {
+        "average_branching_factor": 5.33,
+        "average_selectable_count": 5.33,
+        "dead_end_count": 0,
+        "difficulty_score": 0.731,
+        "forced_move_ratio": 0.048,
+        "initial_selectable_count": 6,
+        "meaningful_decision_count": 18,
+        "nodes_explored": 133,
+        "peak_expected_tray_pressure": 4,
+        "solution_depth": 21,
+        "solved": true
+      },
       "seed": 254581,
-      "solution_length": 12,
-      "solver_nodes": 12,
-      "world": 1
+      "world": 2
     },
     {
-      "difficulty": 0.201,
+      "generation_attempts": 1,
       "id": 31,
-      "layout": "pyramid",
+      "layout": "runway_cross",
+      "quality": {
+        "average_branching_factor": 4.42,
+        "average_selectable_count": 4.42,
+        "dead_end_count": 0,
+        "difficulty_score": 0.645,
+        "forced_move_ratio": 0.053,
+        "initial_selectable_count": 6,
+        "meaningful_decision_count": 16,
+        "nodes_explored": 103,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 19,
+        "solved": true
+      },
       "seed": 262500,
-      "solution_length": 15,
-      "solver_nodes": 15,
-      "world": 2
+      "world": 3
     },
     {
-      "difficulty": 0.208,
+      "generation_attempts": 1,
       "id": 32,
-      "layout": "wings",
+      "layout": "cargo_bays",
+      "quality": {
+        "average_branching_factor": 4.42,
+        "average_selectable_count": 4.42,
+        "dead_end_count": 0,
+        "difficulty_score": 0.645,
+        "forced_move_ratio": 0.053,
+        "initial_selectable_count": 6,
+        "meaningful_decision_count": 11,
+        "nodes_explored": 103,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 19,
+        "solved": true
+      },
       "seed": 270419,
-      "solution_length": 15,
-      "solver_nodes": 15,
-      "world": 2
+      "world": 3
     },
     {
-      "difficulty": 0.215,
+      "generation_attempts": 1,
       "id": 33,
-      "layout": "diamond",
+      "layout": "terminal_rows",
+      "quality": {
+        "average_branching_factor": 4.42,
+        "average_selectable_count": 4.42,
+        "dead_end_count": 0,
+        "difficulty_score": 0.645,
+        "forced_move_ratio": 0.053,
+        "initial_selectable_count": 6,
+        "meaningful_decision_count": 15,
+        "nodes_explored": 103,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 19,
+        "solved": true
+      },
       "seed": 278338,
-      "solution_length": 15,
-      "solver_nodes": 15,
-      "world": 2
+      "world": 3
     },
     {
-      "difficulty": 0.221,
+      "generation_attempts": 1,
       "id": 34,
-      "layout": "double_stack",
+      "layout": "carousel",
+      "quality": {
+        "average_branching_factor": 4.42,
+        "average_selectable_count": 4.42,
+        "dead_end_count": 0,
+        "difficulty_score": 0.645,
+        "forced_move_ratio": 0.053,
+        "initial_selectable_count": 6,
+        "meaningful_decision_count": 16,
+        "nodes_explored": 103,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 19,
+        "solved": true
+      },
       "seed": 286257,
-      "solution_length": 15,
-      "solver_nodes": 15,
-      "world": 2
+      "world": 3
     },
     {
-      "difficulty": 0.228,
+      "generation_attempts": 1,
       "id": 35,
-      "layout": "spiral",
+      "layout": "split_belt",
+      "quality": {
+        "average_branching_factor": 4.18,
+        "average_selectable_count": 4.18,
+        "dead_end_count": 0,
+        "difficulty_score": 0.735,
+        "forced_move_ratio": 0.045,
+        "initial_selectable_count": 5,
+        "meaningful_decision_count": 15,
+        "nodes_explored": 114,
+        "peak_expected_tray_pressure": 5,
+        "solution_depth": 22,
+        "solved": true
+      },
       "seed": 294176,
-      "solution_length": 15,
-      "solver_nodes": 15,
-      "world": 2
+      "world": 3
     },
     {
-      "difficulty": 0.235,
+      "generation_attempts": 1,
       "id": 36,
-      "layout": "terminals",
+      "layout": "gate_cluster",
+      "quality": {
+        "average_branching_factor": 4.59,
+        "average_selectable_count": 4.59,
+        "dead_end_count": 0,
+        "difficulty_score": 0.678,
+        "forced_move_ratio": 0.045,
+        "initial_selectable_count": 6,
+        "meaningful_decision_count": 19,
+        "nodes_explored": 123,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 22,
+        "solved": true
+      },
       "seed": 302095,
-      "solution_length": 15,
-      "solver_nodes": 15,
-      "world": 2
+      "world": 3
     },
     {
-      "difficulty": 0.242,
+      "generation_attempts": 1,
       "id": 37,
-      "layout": "bridge",
+      "layout": "runway_cross",
+      "quality": {
+        "average_branching_factor": 4.59,
+        "average_selectable_count": 4.59,
+        "dead_end_count": 0,
+        "difficulty_score": 0.678,
+        "forced_move_ratio": 0.045,
+        "initial_selectable_count": 6,
+        "meaningful_decision_count": 19,
+        "nodes_explored": 123,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 22,
+        "solved": true
+      },
       "seed": 310014,
-      "solution_length": 15,
-      "solver_nodes": 15,
-      "world": 2
+      "world": 3
     },
     {
-      "difficulty": 0.248,
+      "generation_attempts": 1,
       "id": 38,
-      "layout": "cross",
+      "layout": "cargo_bays",
+      "quality": {
+        "average_branching_factor": 5.18,
+        "average_selectable_count": 5.18,
+        "dead_end_count": 0,
+        "difficulty_score": 0.699,
+        "forced_move_ratio": 0.045,
+        "initial_selectable_count": 7,
+        "meaningful_decision_count": 16,
+        "nodes_explored": 136,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 22,
+        "solved": true
+      },
       "seed": 317933,
-      "solution_length": 15,
-      "solver_nodes": 15,
-      "world": 2
+      "world": 3
     },
     {
-      "difficulty": 0.255,
+      "generation_attempts": 1,
       "id": 39,
-      "layout": "split_islands",
+      "layout": "terminal_rows",
+      "quality": {
+        "average_branching_factor": 5.32,
+        "average_selectable_count": 5.32,
+        "dead_end_count": 0,
+        "difficulty_score": 0.704,
+        "forced_move_ratio": 0.045,
+        "initial_selectable_count": 7,
+        "meaningful_decision_count": 19,
+        "nodes_explored": 139,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 22,
+        "solved": true
+      },
       "seed": 325852,
-      "solution_length": 15,
-      "solver_nodes": 15,
-      "world": 2
+      "world": 3
     },
     {
-      "difficulty": 0.262,
+      "generation_attempts": 1,
       "id": 40,
-      "layout": "staircase",
+      "layout": "carousel",
+      "quality": {
+        "average_branching_factor": 5.36,
+        "average_selectable_count": 5.36,
+        "dead_end_count": 0,
+        "difficulty_score": 0.705,
+        "forced_move_ratio": 0.045,
+        "initial_selectable_count": 7,
+        "meaningful_decision_count": 19,
+        "nodes_explored": 140,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 22,
+        "solved": true
+      },
       "seed": 333771,
-      "solution_length": 15,
-      "solver_nodes": 15,
-      "world": 2
+      "world": 3
     },
     {
-      "difficulty": 0.268,
+      "generation_attempts": 1,
       "id": 41,
-      "layout": "ring",
+      "layout": "split_belt",
+      "quality": {
+        "average_branching_factor": 5.23,
+        "average_selectable_count": 5.23,
+        "dead_end_count": 0,
+        "difficulty_score": 0.7,
+        "forced_move_ratio": 0.045,
+        "initial_selectable_count": 6,
+        "meaningful_decision_count": 19,
+        "nodes_explored": 137,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 22,
+        "solved": true
+      },
       "seed": 341690,
-      "solution_length": 15,
-      "solver_nodes": 15,
-      "world": 2
+      "world": 3
     },
     {
-      "difficulty": 0.275,
+      "generation_attempts": 1,
       "id": 42,
-      "layout": "compact_box",
+      "layout": "gate_cluster",
+      "quality": {
+        "average_branching_factor": 5.44,
+        "average_selectable_count": 5.44,
+        "dead_end_count": 0,
+        "difficulty_score": 0.734,
+        "forced_move_ratio": 0.04,
+        "initial_selectable_count": 7,
+        "meaningful_decision_count": 22,
+        "nodes_explored": 161,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 25,
+        "solved": true
+      },
       "seed": 349609,
-      "solution_length": 15,
-      "solver_nodes": 15,
-      "world": 2
+      "world": 3
     },
     {
-      "difficulty": 0.282,
+      "generation_attempts": 1,
       "id": 43,
-      "layout": "fan",
+      "layout": "runway_cross",
+      "quality": {
+        "average_branching_factor": 5.44,
+        "average_selectable_count": 5.44,
+        "dead_end_count": 0,
+        "difficulty_score": 0.734,
+        "forced_move_ratio": 0.04,
+        "initial_selectable_count": 7,
+        "meaningful_decision_count": 22,
+        "nodes_explored": 161,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 25,
+        "solved": true
+      },
       "seed": 357528,
-      "solution_length": 15,
-      "solver_nodes": 15,
-      "world": 2
+      "world": 3
     },
     {
-      "difficulty": 0.289,
+      "generation_attempts": 1,
       "id": 44,
-      "layout": "twin_towers",
+      "layout": "cargo_bays",
+      "quality": {
+        "average_branching_factor": 5.44,
+        "average_selectable_count": 5.44,
+        "dead_end_count": 0,
+        "difficulty_score": 0.734,
+        "forced_move_ratio": 0.04,
+        "initial_selectable_count": 7,
+        "meaningful_decision_count": 19,
+        "nodes_explored": 161,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 25,
+        "solved": true
+      },
       "seed": 365447,
-      "solution_length": 15,
-      "solver_nodes": 15,
-      "world": 2
+      "world": 3
     },
     {
-      "difficulty": 0.295,
+      "generation_attempts": 1,
       "id": 45,
-      "layout": "runway",
+      "layout": "terminal_rows",
+      "quality": {
+        "average_branching_factor": 6.08,
+        "average_selectable_count": 6.08,
+        "dead_end_count": 0,
+        "difficulty_score": 0.868,
+        "forced_move_ratio": 0.04,
+        "initial_selectable_count": 8,
+        "meaningful_decision_count": 22,
+        "nodes_explored": 177,
+        "peak_expected_tray_pressure": 5,
+        "solution_depth": 25,
+        "solved": true
+      },
       "seed": 373366,
-      "solution_length": 15,
-      "solver_nodes": 15,
-      "world": 2
+      "world": 3
     },
     {
-      "difficulty": 0.302,
+      "generation_attempts": 1,
       "id": 46,
-      "layout": "pyramid",
+      "layout": "split_belt",
+      "quality": {
+        "average_branching_factor": 4.3,
+        "average_selectable_count": 4.41,
+        "dead_end_count": 15,
+        "difficulty_score": 0.779,
+        "forced_move_ratio": 0.045,
+        "initial_selectable_count": 7,
+        "meaningful_decision_count": 19,
+        "nodes_explored": 143,
+        "peak_expected_tray_pressure": 5,
+        "solution_depth": 22,
+        "solved": true
+      },
       "seed": 381285,
-      "solution_length": 18,
-      "solver_nodes": 18,
-      "world": 2
+      "world": 4
     },
     {
-      "difficulty": 0.309,
+      "generation_attempts": 1,
       "id": 47,
-      "layout": "wings",
+      "layout": "gate_cluster",
+      "quality": {
+        "average_branching_factor": 5.18,
+        "average_selectable_count": 5.18,
+        "dead_end_count": 0,
+        "difficulty_score": 0.81,
+        "forced_move_ratio": 0.045,
+        "initial_selectable_count": 7,
+        "meaningful_decision_count": 16,
+        "nodes_explored": 136,
+        "peak_expected_tray_pressure": 5,
+        "solution_depth": 22,
+        "solved": true
+      },
       "seed": 389204,
-      "solution_length": 18,
-      "solver_nodes": 18,
-      "world": 2
+      "world": 4
     },
     {
-      "difficulty": 0.315,
+      "generation_attempts": 1,
       "id": 48,
-      "layout": "diamond",
+      "layout": "runway_cross",
+      "quality": {
+        "average_branching_factor": 5.32,
+        "average_selectable_count": 5.32,
+        "dead_end_count": 0,
+        "difficulty_score": 0.815,
+        "forced_move_ratio": 0.045,
+        "initial_selectable_count": 7,
+        "meaningful_decision_count": 16,
+        "nodes_explored": 139,
+        "peak_expected_tray_pressure": 5,
+        "solution_depth": 22,
+        "solved": true
+      },
       "seed": 397123,
-      "solution_length": 18,
-      "solver_nodes": 18,
-      "world": 2
+      "world": 4
     },
     {
-      "difficulty": 0.322,
+      "generation_attempts": 1,
       "id": 49,
-      "layout": "double_stack",
+      "layout": "cargo_bays",
+      "quality": {
+        "average_branching_factor": 4.68,
+        "average_selectable_count": 4.68,
+        "dead_end_count": 0,
+        "difficulty_score": 0.792,
+        "forced_move_ratio": 0.045,
+        "initial_selectable_count": 7,
+        "meaningful_decision_count": 18,
+        "nodes_explored": 125,
+        "peak_expected_tray_pressure": 5,
+        "solution_depth": 22,
+        "solved": true
+      },
       "seed": 405042,
-      "solution_length": 18,
-      "solver_nodes": 18,
-      "world": 2
+      "world": 4
     },
     {
-      "difficulty": 0.329,
+      "generation_attempts": 1,
       "id": 50,
-      "layout": "spiral",
+      "layout": "terminal_rows",
+      "quality": {
+        "average_branching_factor": 5.44,
+        "average_selectable_count": 5.44,
+        "dead_end_count": 0,
+        "difficulty_score": 0.845,
+        "forced_move_ratio": 0.04,
+        "initial_selectable_count": 7,
+        "meaningful_decision_count": 22,
+        "nodes_explored": 161,
+        "peak_expected_tray_pressure": 5,
+        "solution_depth": 25,
+        "solved": true
+      },
       "seed": 412961,
-      "solution_length": 18,
-      "solver_nodes": 18,
-      "world": 2
+      "world": 4
     },
     {
-      "difficulty": 0.336,
+      "generation_attempts": 1,
       "id": 51,
-      "layout": "terminals",
+      "layout": "carousel",
+      "quality": {
+        "average_branching_factor": 5.44,
+        "average_selectable_count": 5.44,
+        "dead_end_count": 0,
+        "difficulty_score": 0.845,
+        "forced_move_ratio": 0.04,
+        "initial_selectable_count": 7,
+        "meaningful_decision_count": 21,
+        "nodes_explored": 161,
+        "peak_expected_tray_pressure": 5,
+        "solution_depth": 25,
+        "solved": true
+      },
       "seed": 420880,
-      "solution_length": 18,
-      "solver_nodes": 18,
-      "world": 2
+      "world": 4
     },
     {
-      "difficulty": 0.342,
+      "generation_attempts": 1,
       "id": 52,
-      "layout": "bridge",
+      "layout": "split_belt",
+      "quality": {
+        "average_branching_factor": 4.92,
+        "average_selectable_count": 4.92,
+        "dead_end_count": 0,
+        "difficulty_score": 0.755,
+        "forced_move_ratio": 0.04,
+        "initial_selectable_count": 7,
+        "meaningful_decision_count": 22,
+        "nodes_explored": 148,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 25,
+        "solved": true
+      },
       "seed": 428799,
-      "solution_length": 18,
-      "solver_nodes": 18,
-      "world": 2
+      "world": 4
     },
     {
-      "difficulty": 0.349,
+      "generation_attempts": 1,
       "id": 53,
-      "layout": "cross",
+      "layout": "gate_cluster",
+      "quality": {
+        "average_branching_factor": 6.24,
+        "average_selectable_count": 6.24,
+        "dead_end_count": 0,
+        "difficulty_score": 0.802,
+        "forced_move_ratio": 0.04,
+        "initial_selectable_count": 8,
+        "meaningful_decision_count": 22,
+        "nodes_explored": 181,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 25,
+        "solved": true
+      },
       "seed": 436718,
-      "solution_length": 18,
-      "solver_nodes": 18,
-      "world": 2
+      "world": 4
     },
     {
-      "difficulty": 0.356,
+      "generation_attempts": 1,
       "id": 54,
-      "layout": "split_islands",
+      "layout": "runway_cross",
+      "quality": {
+        "average_branching_factor": 6.12,
+        "average_selectable_count": 6.12,
+        "dead_end_count": 0,
+        "difficulty_score": 0.869,
+        "forced_move_ratio": 0.04,
+        "initial_selectable_count": 8,
+        "meaningful_decision_count": 22,
+        "nodes_explored": 178,
+        "peak_expected_tray_pressure": 5,
+        "solution_depth": 25,
+        "solved": true
+      },
       "seed": 444637,
-      "solution_length": 18,
-      "solver_nodes": 18,
-      "world": 2
+      "world": 4
     },
     {
-      "difficulty": 0.362,
+      "generation_attempts": 1,
       "id": 55,
-      "layout": "staircase",
+      "layout": "cargo_bays",
+      "quality": {
+        "average_branching_factor": 6.0,
+        "average_selectable_count": 6.0,
+        "dead_end_count": 0,
+        "difficulty_score": 0.794,
+        "forced_move_ratio": 0.04,
+        "initial_selectable_count": 7,
+        "meaningful_decision_count": 21,
+        "nodes_explored": 175,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 25,
+        "solved": true
+      },
       "seed": 452556,
-      "solution_length": 18,
-      "solver_nodes": 18,
-      "world": 2
+      "world": 4
     },
     {
-      "difficulty": 0.369,
+      "generation_attempts": 1,
       "id": 56,
-      "layout": "ring",
+      "layout": "terminal_rows",
+      "quality": {
+        "average_branching_factor": 6.12,
+        "average_selectable_count": 6.12,
+        "dead_end_count": 0,
+        "difficulty_score": 0.869,
+        "forced_move_ratio": 0.04,
+        "initial_selectable_count": 8,
+        "meaningful_decision_count": 22,
+        "nodes_explored": 178,
+        "peak_expected_tray_pressure": 5,
+        "solution_depth": 25,
+        "solved": true
+      },
       "seed": 460475,
-      "solution_length": 18,
-      "solver_nodes": 18,
-      "world": 2
+      "world": 4
     },
     {
-      "difficulty": 0.376,
+      "generation_attempts": 1,
       "id": 57,
-      "layout": "compact_box",
+      "layout": "carousel",
+      "quality": {
+        "average_branching_factor": 6.18,
+        "average_selectable_count": 6.18,
+        "dead_end_count": 0,
+        "difficulty_score": 0.861,
+        "forced_move_ratio": 0.036,
+        "initial_selectable_count": 8,
+        "meaningful_decision_count": 25,
+        "nodes_explored": 201,
+        "peak_expected_tray_pressure": 4,
+        "solution_depth": 28,
+        "solved": true
+      },
       "seed": 468394,
-      "solution_length": 18,
-      "solver_nodes": 18,
-      "world": 2
+      "world": 4
     },
     {
-      "difficulty": 0.383,
+      "generation_attempts": 1,
       "id": 58,
-      "layout": "fan",
+      "layout": "split_belt",
+      "quality": {
+        "average_branching_factor": 5.82,
+        "average_selectable_count": 5.82,
+        "dead_end_count": 0,
+        "difficulty_score": 0.849,
+        "forced_move_ratio": 0.036,
+        "initial_selectable_count": 8,
+        "meaningful_decision_count": 25,
+        "nodes_explored": 191,
+        "peak_expected_tray_pressure": 4,
+        "solution_depth": 28,
+        "solved": true
+      },
       "seed": 476313,
-      "solution_length": 18,
-      "solver_nodes": 18,
-      "world": 2
+      "world": 4
     },
     {
-      "difficulty": 0.389,
+      "generation_attempts": 1,
       "id": 59,
-      "layout": "twin_towers",
+      "layout": "gate_cluster",
+      "quality": {
+        "average_branching_factor": 6.25,
+        "average_selectable_count": 6.25,
+        "dead_end_count": 0,
+        "difficulty_score": 0.9,
+        "forced_move_ratio": 0.036,
+        "initial_selectable_count": 8,
+        "meaningful_decision_count": 25,
+        "nodes_explored": 203,
+        "peak_expected_tray_pressure": 5,
+        "solution_depth": 28,
+        "solved": true
+      },
       "seed": 484232,
-      "solution_length": 18,
-      "solver_nodes": 18,
-      "world": 2
+      "world": 4
     },
     {
-      "difficulty": 0.396,
+      "generation_attempts": 1,
       "id": 60,
-      "layout": "runway",
+      "layout": "runway_cross",
+      "quality": {
+        "average_branching_factor": 5.93,
+        "average_selectable_count": 5.93,
+        "dead_end_count": 0,
+        "difficulty_score": 0.888,
+        "forced_move_ratio": 0.036,
+        "initial_selectable_count": 8,
+        "meaningful_decision_count": 25,
+        "nodes_explored": 194,
+        "peak_expected_tray_pressure": 5,
+        "solution_depth": 28,
+        "solved": true
+      },
       "seed": 492151,
-      "solution_length": 18,
-      "solver_nodes": 18,
-      "world": 2
+      "world": 4
     },
     {
-      "difficulty": 0.403,
+      "generation_attempts": 1,
       "id": 61,
-      "layout": "pyramid",
+      "layout": "terminal_rows",
+      "quality": {
+        "average_branching_factor": 5.08,
+        "average_selectable_count": 5.08,
+        "dead_end_count": 0,
+        "difficulty_score": 0.797,
+        "forced_move_ratio": 0.04,
+        "initial_selectable_count": 7,
+        "meaningful_decision_count": 22,
+        "nodes_explored": 152,
+        "peak_expected_tray_pressure": 4,
+        "solution_depth": 25,
+        "solved": true
+      },
       "seed": 500070,
-      "solution_length": 22,
-      "solver_nodes": 22,
-      "world": 3
+      "world": 5
     },
     {
-      "difficulty": 0.409,
+      "generation_attempts": 1,
       "id": 62,
-      "layout": "wings",
+      "layout": "carousel",
+      "quality": {
+        "average_branching_factor": 5.44,
+        "average_selectable_count": 5.44,
+        "dead_end_count": 0,
+        "difficulty_score": 0.809,
+        "forced_move_ratio": 0.04,
+        "initial_selectable_count": 7,
+        "meaningful_decision_count": 22,
+        "nodes_explored": 161,
+        "peak_expected_tray_pressure": 4,
+        "solution_depth": 25,
+        "solved": true
+      },
       "seed": 507989,
-      "solution_length": 22,
-      "solver_nodes": 22,
-      "world": 3
+      "world": 5
     },
     {
-      "difficulty": 0.416,
+      "generation_attempts": 1,
       "id": 63,
-      "layout": "diamond",
+      "layout": "split_belt",
+      "quality": {
+        "average_branching_factor": 5.6,
+        "average_selectable_count": 5.36,
+        "dead_end_count": 0,
+        "difficulty_score": 0.819,
+        "forced_move_ratio": 0.04,
+        "initial_selectable_count": 7,
+        "meaningful_decision_count": 22,
+        "nodes_explored": 165,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 25,
+        "solved": true
+      },
       "seed": 515908,
-      "solution_length": 22,
-      "solver_nodes": 22,
-      "world": 3
+      "world": 5
     },
     {
-      "difficulty": 0.423,
+      "generation_attempts": 1,
       "id": 64,
-      "layout": "double_stack",
+      "layout": "gate_cluster",
+      "quality": {
+        "average_branching_factor": 5.48,
+        "average_selectable_count": 5.44,
+        "dead_end_count": 0,
+        "difficulty_score": 0.851,
+        "forced_move_ratio": 0.04,
+        "initial_selectable_count": 7,
+        "meaningful_decision_count": 22,
+        "nodes_explored": 162,
+        "peak_expected_tray_pressure": 4,
+        "solution_depth": 25,
+        "solved": true
+      },
       "seed": 523827,
-      "solution_length": 22,
-      "solver_nodes": 22,
-      "world": 3
+      "world": 5
     },
     {
-      "difficulty": 0.43,
+      "generation_attempts": 1,
       "id": 65,
-      "layout": "spiral",
+      "layout": "runway_cross",
+      "quality": {
+        "average_branching_factor": 5.25,
+        "average_selectable_count": 5.14,
+        "dead_end_count": 0,
+        "difficulty_score": 0.833,
+        "forced_move_ratio": 0.036,
+        "initial_selectable_count": 7,
+        "meaningful_decision_count": 25,
+        "nodes_explored": 175,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 28,
+        "solved": true
+      },
       "seed": 531746,
-      "solution_length": 22,
-      "solver_nodes": 22,
-      "world": 3
+      "world": 5
     },
     {
-      "difficulty": 0.436,
+      "generation_attempts": 1,
       "id": 66,
-      "layout": "terminals",
+      "layout": "cargo_bays",
+      "quality": {
+        "average_branching_factor": 5.54,
+        "average_selectable_count": 5.46,
+        "dead_end_count": 0,
+        "difficulty_score": 0.843,
+        "forced_move_ratio": 0.036,
+        "initial_selectable_count": 7,
+        "meaningful_decision_count": 25,
+        "nodes_explored": 183,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 28,
+        "solved": true
+      },
       "seed": 539665,
-      "solution_length": 22,
-      "solver_nodes": 22,
-      "world": 3
+      "world": 5
     },
     {
-      "difficulty": 0.443,
+      "generation_attempts": 1,
       "id": 67,
-      "layout": "bridge",
+      "layout": "terminal_rows",
+      "quality": {
+        "average_branching_factor": 5.43,
+        "average_selectable_count": 5.36,
+        "dead_end_count": 0,
+        "difficulty_score": 0.91,
+        "forced_move_ratio": 0.036,
+        "initial_selectable_count": 7,
+        "meaningful_decision_count": 26,
+        "nodes_explored": 180,
+        "peak_expected_tray_pressure": 5,
+        "solution_depth": 28,
+        "solved": true
+      },
       "seed": 547584,
-      "solution_length": 22,
-      "solver_nodes": 22,
-      "world": 3
+      "world": 5
     },
     {
-      "difficulty": 0.45,
+      "generation_attempts": 1,
       "id": 68,
-      "layout": "cross",
+      "layout": "carousel",
+      "quality": {
+        "average_branching_factor": 5.89,
+        "average_selectable_count": 5.79,
+        "dead_end_count": 0,
+        "difficulty_score": 0.856,
+        "forced_move_ratio": 0.036,
+        "initial_selectable_count": 8,
+        "meaningful_decision_count": 25,
+        "nodes_explored": 193,
+        "peak_expected_tray_pressure": 3,
+        "solution_depth": 28,
+        "solved": true
+      },
       "seed": 555503,
-      "solution_length": 22,
-      "solver_nodes": 22,
-      "world": 3
+      "world": 5
     },
     {
-      "difficulty": 0.456,
+      "generation_attempts": 1,
       "id": 69,
-      "layout": "split_islands",
+      "layout": "split_belt",
+      "quality": {
+        "average_branching_factor": 6.14,
+        "average_selectable_count": 6.04,
+        "dead_end_count": 0,
+        "difficulty_score": 0.9,
+        "forced_move_ratio": 0.036,
+        "initial_selectable_count": 8,
+        "meaningful_decision_count": 25,
+        "nodes_explored": 200,
+        "peak_expected_tray_pressure": 4,
+        "solution_depth": 28,
+        "solved": true
+      },
       "seed": 563422,
-      "solution_length": 22,
-      "solver_nodes": 22,
-      "world": 3
+      "world": 5
     },
     {
-      "difficulty": 0.463,
+      "generation_attempts": 1,
       "id": 70,
-      "layout": "staircase",
+      "layout": "gate_cluster",
+      "quality": {
+        "average_branching_factor": 6.43,
+        "average_selectable_count": 6.25,
+        "dead_end_count": 0,
+        "difficulty_score": 0.946,
+        "forced_move_ratio": 0.036,
+        "initial_selectable_count": 8,
+        "meaningful_decision_count": 25,
+        "nodes_explored": 208,
+        "peak_expected_tray_pressure": 5,
+        "solution_depth": 28,
+        "solved": true
+      },
       "seed": 571341,
-      "solution_length": 22,
-      "solver_nodes": 22,
-      "world": 3
+      "world": 5
     },
     {
-      "difficulty": 0.47,
+      "generation_attempts": 1,
       "id": 71,
-      "layout": "ring",
+      "layout": "runway_cross",
+      "quality": {
+        "average_branching_factor": 6.39,
+        "average_selectable_count": 6.29,
+        "dead_end_count": 0,
+        "difficulty_score": 0.945,
+        "forced_move_ratio": 0.036,
+        "initial_selectable_count": 8,
+        "meaningful_decision_count": 25,
+        "nodes_explored": 207,
+        "peak_expected_tray_pressure": 5,
+        "solution_depth": 28,
+        "solved": true
+      },
       "seed": 579260,
-      "solution_length": 22,
-      "solver_nodes": 22,
-      "world": 3
+      "world": 5
     },
     {
-      "difficulty": 0.477,
+      "generation_attempts": 1,
       "id": 72,
-      "layout": "compact_box",
+      "layout": "cargo_bays",
+      "quality": {
+        "average_branching_factor": 6.32,
+        "average_selectable_count": 6.26,
+        "dead_end_count": 0,
+        "difficulty_score": 0.924,
+        "forced_move_ratio": 0.032,
+        "initial_selectable_count": 7,
+        "meaningful_decision_count": 28,
+        "nodes_explored": 227,
+        "peak_expected_tray_pressure": 4,
+        "solution_depth": 31,
+        "solved": true
+      },
       "seed": 587179,
-      "solution_length": 22,
-      "solver_nodes": 22,
-      "world": 3
+      "world": 5
     },
     {
-      "difficulty": 0.483,
+      "generation_attempts": 1,
       "id": 73,
-      "layout": "fan",
+      "layout": "terminal_rows",
+      "quality": {
+        "average_branching_factor": 6.55,
+        "average_selectable_count": 6.35,
+        "dead_end_count": 0,
+        "difficulty_score": 0.968,
+        "forced_move_ratio": 0.032,
+        "initial_selectable_count": 8,
+        "meaningful_decision_count": 29,
+        "nodes_explored": 234,
+        "peak_expected_tray_pressure": 5,
+        "solution_depth": 31,
+        "solved": true
+      },
       "seed": 595098,
-      "solution_length": 22,
-      "solver_nodes": 22,
-      "world": 3
+      "world": 5
     },
     {
-      "difficulty": 0.49,
+      "generation_attempts": 1,
       "id": 74,
-      "layout": "twin_towers",
+      "layout": "carousel",
+      "quality": {
+        "average_branching_factor": 6.23,
+        "average_selectable_count": 6.19,
+        "dead_end_count": 0,
+        "difficulty_score": 0.956,
+        "forced_move_ratio": 0.032,
+        "initial_selectable_count": 8,
+        "meaningful_decision_count": 28,
+        "nodes_explored": 224,
+        "peak_expected_tray_pressure": 5,
+        "solution_depth": 31,
+        "solved": true
+      },
       "seed": 603017,
-      "solution_length": 22,
-      "solver_nodes": 22,
-      "world": 3
+      "world": 5
     },
     {
-      "difficulty": 0.497,
+      "generation_attempts": 1,
       "id": 75,
-      "layout": "runway",
+      "layout": "split_belt",
+      "quality": {
+        "average_branching_factor": 6.87,
+        "average_selectable_count": 6.81,
+        "dead_end_count": 0,
+        "difficulty_score": 0.943,
+        "forced_move_ratio": 0.032,
+        "initial_selectable_count": 9,
+        "meaningful_decision_count": 29,
+        "nodes_explored": 244,
+        "peak_expected_tray_pressure": 4,
+        "solution_depth": 31,
+        "solved": true
+      },
       "seed": 610936,
-      "solution_length": 22,
-      "solver_nodes": 22,
-      "world": 3
-    },
-    {
-      "difficulty": 0.503,
-      "id": 76,
-      "layout": "pyramid",
-      "seed": 618855,
-      "solution_length": 25,
-      "solver_nodes": 25,
-      "world": 3
-    },
-    {
-      "difficulty": 0.51,
-      "id": 77,
-      "layout": "wings",
-      "seed": 626774,
-      "solution_length": 25,
-      "solver_nodes": 25,
-      "world": 3
-    },
-    {
-      "difficulty": 0.517,
-      "id": 78,
-      "layout": "diamond",
-      "seed": 634693,
-      "solution_length": 25,
-      "solver_nodes": 25,
-      "world": 3
-    },
-    {
-      "difficulty": 0.523,
-      "id": 79,
-      "layout": "double_stack",
-      "seed": 642612,
-      "solution_length": 25,
-      "solver_nodes": 25,
-      "world": 3
-    },
-    {
-      "difficulty": 0.53,
-      "id": 80,
-      "layout": "spiral",
-      "seed": 650531,
-      "solution_length": 25,
-      "solver_nodes": 25,
-      "world": 3
-    },
-    {
-      "difficulty": 0.537,
-      "id": 81,
-      "layout": "terminals",
-      "seed": 658450,
-      "solution_length": 25,
-      "solver_nodes": 25,
-      "world": 3
-    },
-    {
-      "difficulty": 0.544,
-      "id": 82,
-      "layout": "bridge",
-      "seed": 666369,
-      "solution_length": 25,
-      "solver_nodes": 25,
-      "world": 3
-    },
-    {
-      "difficulty": 0.55,
-      "id": 83,
-      "layout": "cross",
-      "seed": 674288,
-      "solution_length": 25,
-      "solver_nodes": 25,
-      "world": 3
-    },
-    {
-      "difficulty": 0.557,
-      "id": 84,
-      "layout": "split_islands",
-      "seed": 682207,
-      "solution_length": 25,
-      "solver_nodes": 25,
-      "world": 3
-    },
-    {
-      "difficulty": 0.564,
-      "id": 85,
-      "layout": "staircase",
-      "seed": 690126,
-      "solution_length": 25,
-      "solver_nodes": 25,
-      "world": 3
-    },
-    {
-      "difficulty": 0.57,
-      "id": 86,
-      "layout": "ring",
-      "seed": 698045,
-      "solution_length": 25,
-      "solver_nodes": 25,
-      "world": 3
-    },
-    {
-      "difficulty": 0.577,
-      "id": 87,
-      "layout": "compact_box",
-      "seed": 705964,
-      "solution_length": 25,
-      "solver_nodes": 25,
-      "world": 3
-    },
-    {
-      "difficulty": 0.584,
-      "id": 88,
-      "layout": "fan",
-      "seed": 713883,
-      "solution_length": 25,
-      "solver_nodes": 25,
-      "world": 3
-    },
-    {
-      "difficulty": 0.591,
-      "id": 89,
-      "layout": "twin_towers",
-      "seed": 721802,
-      "solution_length": 25,
-      "solver_nodes": 25,
-      "world": 3
-    },
-    {
-      "difficulty": 0.597,
-      "id": 90,
-      "layout": "runway",
-      "seed": 729721,
-      "solution_length": 25,
-      "solver_nodes": 25,
-      "world": 3
-    },
-    {
-      "difficulty": 0.604,
-      "id": 91,
-      "layout": "pyramid",
-      "seed": 737640,
-      "solution_length": 28,
-      "solver_nodes": 28,
-      "world": 4
-    },
-    {
-      "difficulty": 0.611,
-      "id": 92,
-      "layout": "wings",
-      "seed": 745559,
-      "solution_length": 28,
-      "solver_nodes": 28,
-      "world": 4
-    },
-    {
-      "difficulty": 0.617,
-      "id": 93,
-      "layout": "diamond",
-      "seed": 753478,
-      "solution_length": 28,
-      "solver_nodes": 28,
-      "world": 4
-    },
-    {
-      "difficulty": 0.624,
-      "id": 94,
-      "layout": "double_stack",
-      "seed": 761397,
-      "solution_length": 28,
-      "solver_nodes": 28,
-      "world": 4
-    },
-    {
-      "difficulty": 0.631,
-      "id": 95,
-      "layout": "spiral",
-      "seed": 769316,
-      "solution_length": 28,
-      "solver_nodes": 28,
-      "world": 4
-    },
-    {
-      "difficulty": 0.638,
-      "id": 96,
-      "layout": "terminals",
-      "seed": 777235,
-      "solution_length": 28,
-      "solver_nodes": 28,
-      "world": 4
-    },
-    {
-      "difficulty": 0.644,
-      "id": 97,
-      "layout": "bridge",
-      "seed": 785154,
-      "solution_length": 28,
-      "solver_nodes": 28,
-      "world": 4
-    },
-    {
-      "difficulty": 0.651,
-      "id": 98,
-      "layout": "cross",
-      "seed": 793073,
-      "solution_length": 28,
-      "solver_nodes": 28,
-      "world": 4
-    },
-    {
-      "difficulty": 0.658,
-      "id": 99,
-      "layout": "split_islands",
-      "seed": 800992,
-      "solution_length": 28,
-      "solver_nodes": 28,
-      "world": 4
-    },
-    {
-      "difficulty": 0.664,
-      "id": 100,
-      "layout": "staircase",
-      "seed": 808911,
-      "solution_length": 28,
-      "solver_nodes": 28,
-      "world": 4
-    },
-    {
-      "difficulty": 0.671,
-      "id": 101,
-      "layout": "ring",
-      "seed": 816830,
-      "solution_length": 28,
-      "solver_nodes": 28,
-      "world": 4
-    },
-    {
-      "difficulty": 0.678,
-      "id": 102,
-      "layout": "compact_box",
-      "seed": 824749,
-      "solution_length": 28,
-      "solver_nodes": 28,
-      "world": 4
-    },
-    {
-      "difficulty": 0.685,
-      "id": 103,
-      "layout": "fan",
-      "seed": 832668,
-      "solution_length": 28,
-      "solver_nodes": 28,
-      "world": 4
-    },
-    {
-      "difficulty": 0.691,
-      "id": 104,
-      "layout": "twin_towers",
-      "seed": 840587,
-      "solution_length": 28,
-      "solver_nodes": 28,
-      "world": 4
-    },
-    {
-      "difficulty": 0.698,
-      "id": 105,
-      "layout": "runway",
-      "seed": 848506,
-      "solution_length": 28,
-      "solver_nodes": 28,
-      "world": 4
-    },
-    {
-      "difficulty": 0.705,
-      "id": 106,
-      "layout": "pyramid",
-      "seed": 856425,
-      "solution_length": 31,
-      "solver_nodes": 31,
-      "world": 4
-    },
-    {
-      "difficulty": 0.711,
-      "id": 107,
-      "layout": "wings",
-      "seed": 864344,
-      "solution_length": 31,
-      "solver_nodes": 31,
-      "world": 4
-    },
-    {
-      "difficulty": 0.718,
-      "id": 108,
-      "layout": "diamond",
-      "seed": 872263,
-      "solution_length": 31,
-      "solver_nodes": 31,
-      "world": 4
-    },
-    {
-      "difficulty": 0.725,
-      "id": 109,
-      "layout": "double_stack",
-      "seed": 880182,
-      "solution_length": 31,
-      "solver_nodes": 31,
-      "world": 4
-    },
-    {
-      "difficulty": 0.732,
-      "id": 110,
-      "layout": "spiral",
-      "seed": 888101,
-      "solution_length": 31,
-      "solver_nodes": 31,
-      "world": 4
-    },
-    {
-      "difficulty": 0.738,
-      "id": 111,
-      "layout": "terminals",
-      "seed": 896020,
-      "solution_length": 31,
-      "solver_nodes": 31,
-      "world": 4
-    },
-    {
-      "difficulty": 0.745,
-      "id": 112,
-      "layout": "bridge",
-      "seed": 903939,
-      "solution_length": 31,
-      "solver_nodes": 31,
-      "world": 4
-    },
-    {
-      "difficulty": 0.752,
-      "id": 113,
-      "layout": "cross",
-      "seed": 911858,
-      "solution_length": 31,
-      "solver_nodes": 31,
-      "world": 4
-    },
-    {
-      "difficulty": 0.758,
-      "id": 114,
-      "layout": "split_islands",
-      "seed": 919777,
-      "solution_length": 31,
-      "solver_nodes": 31,
-      "world": 4
-    },
-    {
-      "difficulty": 0.765,
-      "id": 115,
-      "layout": "staircase",
-      "seed": 927696,
-      "solution_length": 31,
-      "solver_nodes": 31,
-      "world": 4
-    },
-    {
-      "difficulty": 0.772,
-      "id": 116,
-      "layout": "ring",
-      "seed": 935615,
-      "solution_length": 31,
-      "solver_nodes": 31,
-      "world": 4
-    },
-    {
-      "difficulty": 0.779,
-      "id": 117,
-      "layout": "compact_box",
-      "seed": 943534,
-      "solution_length": 31,
-      "solver_nodes": 31,
-      "world": 4
-    },
-    {
-      "difficulty": 0.785,
-      "id": 118,
-      "layout": "fan",
-      "seed": 951453,
-      "solution_length": 31,
-      "solver_nodes": 31,
-      "world": 4
-    },
-    {
-      "difficulty": 0.792,
-      "id": 119,
-      "layout": "twin_towers",
-      "seed": 959372,
-      "solution_length": 31,
-      "solver_nodes": 31,
-      "world": 4
-    },
-    {
-      "difficulty": 0.799,
-      "id": 120,
-      "layout": "runway",
-      "seed": 967291,
-      "solution_length": 31,
-      "solver_nodes": 31,
-      "world": 4
-    },
-    {
-      "difficulty": 0.805,
-      "id": 121,
-      "layout": "pyramid",
-      "seed": 975210,
-      "solution_length": 34,
-      "solver_nodes": 34,
-      "world": 5
-    },
-    {
-      "difficulty": 0.812,
-      "id": 122,
-      "layout": "wings",
-      "seed": 983129,
-      "solution_length": 34,
-      "solver_nodes": 34,
-      "world": 5
-    },
-    {
-      "difficulty": 0.819,
-      "id": 123,
-      "layout": "diamond",
-      "seed": 991048,
-      "solution_length": 34,
-      "solver_nodes": 34,
-      "world": 5
-    },
-    {
-      "difficulty": 0.826,
-      "id": 124,
-      "layout": "double_stack",
-      "seed": 998967,
-      "solution_length": 34,
-      "solver_nodes": 34,
-      "world": 5
-    },
-    {
-      "difficulty": 0.832,
-      "id": 125,
-      "layout": "spiral",
-      "seed": 1006886,
-      "solution_length": 34,
-      "solver_nodes": 34,
-      "world": 5
-    },
-    {
-      "difficulty": 0.839,
-      "id": 126,
-      "layout": "terminals",
-      "seed": 1014805,
-      "solution_length": 34,
-      "solver_nodes": 34,
-      "world": 5
-    },
-    {
-      "difficulty": 0.846,
-      "id": 127,
-      "layout": "bridge",
-      "seed": 1022724,
-      "solution_length": 34,
-      "solver_nodes": 34,
-      "world": 5
-    },
-    {
-      "difficulty": 0.852,
-      "id": 128,
-      "layout": "cross",
-      "seed": 1030643,
-      "solution_length": 34,
-      "solver_nodes": 34,
-      "world": 5
-    },
-    {
-      "difficulty": 0.859,
-      "id": 129,
-      "layout": "split_islands",
-      "seed": 1038562,
-      "solution_length": 34,
-      "solver_nodes": 34,
-      "world": 5
-    },
-    {
-      "difficulty": 0.866,
-      "id": 130,
-      "layout": "staircase",
-      "seed": 1046481,
-      "solution_length": 34,
-      "solver_nodes": 34,
-      "world": 5
-    },
-    {
-      "difficulty": 0.872,
-      "id": 131,
-      "layout": "ring",
-      "seed": 1054400,
-      "solution_length": 34,
-      "solver_nodes": 34,
-      "world": 5
-    },
-    {
-      "difficulty": 0.879,
-      "id": 132,
-      "layout": "compact_box",
-      "seed": 1062319,
-      "solution_length": 34,
-      "solver_nodes": 34,
-      "world": 5
-    },
-    {
-      "difficulty": 0.886,
-      "id": 133,
-      "layout": "fan",
-      "seed": 1070238,
-      "solution_length": 34,
-      "solver_nodes": 34,
-      "world": 5
-    },
-    {
-      "difficulty": 0.893,
-      "id": 134,
-      "layout": "twin_towers",
-      "seed": 1078157,
-      "solution_length": 34,
-      "solver_nodes": 34,
-      "world": 5
-    },
-    {
-      "difficulty": 0.899,
-      "id": 135,
-      "layout": "runway",
-      "seed": 1086076,
-      "solution_length": 34,
-      "solver_nodes": 34,
-      "world": 5
-    },
-    {
-      "difficulty": 0.906,
-      "id": 136,
-      "layout": "pyramid",
-      "seed": 1093995,
-      "solution_length": 37,
-      "solver_nodes": 37,
-      "world": 5
-    },
-    {
-      "difficulty": 0.913,
-      "id": 137,
-      "layout": "wings",
-      "seed": 1101914,
-      "solution_length": 37,
-      "solver_nodes": 37,
-      "world": 5
-    },
-    {
-      "difficulty": 0.919,
-      "id": 138,
-      "layout": "diamond",
-      "seed": 1109833,
-      "solution_length": 37,
-      "solver_nodes": 37,
-      "world": 5
-    },
-    {
-      "difficulty": 0.926,
-      "id": 139,
-      "layout": "double_stack",
-      "seed": 1117752,
-      "solution_length": 37,
-      "solver_nodes": 37,
-      "world": 5
-    },
-    {
-      "difficulty": 0.933,
-      "id": 140,
-      "layout": "spiral",
-      "seed": 1125671,
-      "solution_length": 37,
-      "solver_nodes": 37,
-      "world": 5
-    },
-    {
-      "difficulty": 0.94,
-      "id": 141,
-      "layout": "terminals",
-      "seed": 1133590,
-      "solution_length": 37,
-      "solver_nodes": 37,
-      "world": 5
-    },
-    {
-      "difficulty": 0.946,
-      "id": 142,
-      "layout": "bridge",
-      "seed": 1141509,
-      "solution_length": 37,
-      "solver_nodes": 37,
-      "world": 5
-    },
-    {
-      "difficulty": 0.953,
-      "id": 143,
-      "layout": "cross",
-      "seed": 1149428,
-      "solution_length": 37,
-      "solver_nodes": 37,
-      "world": 5
-    },
-    {
-      "difficulty": 0.96,
-      "id": 144,
-      "layout": "split_islands",
-      "seed": 1157347,
-      "solution_length": 37,
-      "solver_nodes": 37,
-      "world": 5
-    },
-    {
-      "difficulty": 0.966,
-      "id": 145,
-      "layout": "staircase",
-      "seed": 1165266,
-      "solution_length": 37,
-      "solver_nodes": 37,
-      "world": 5
-    },
-    {
-      "difficulty": 0.973,
-      "id": 146,
-      "layout": "ring",
-      "seed": 1173185,
-      "solution_length": 37,
-      "solver_nodes": 37,
-      "world": 5
-    },
-    {
-      "difficulty": 0.98,
-      "id": 147,
-      "layout": "compact_box",
-      "seed": 1181104,
-      "solution_length": 37,
-      "solver_nodes": 37,
-      "world": 5
-    },
-    {
-      "difficulty": 0.987,
-      "id": 148,
-      "layout": "fan",
-      "seed": 1189023,
-      "solution_length": 37,
-      "solver_nodes": 37,
-      "world": 5
-    },
-    {
-      "difficulty": 0.993,
-      "id": 149,
-      "layout": "twin_towers",
-      "seed": 1196942,
-      "solution_length": 37,
-      "solver_nodes": 37,
-      "world": 5
-    },
-    {
-      "difficulty": 1.0,
-      "id": 150,
-      "layout": "runway",
-      "seed": 1204861,
-      "solution_length": 37,
-      "solver_nodes": 37,
       "world": 5
     }
   ],
-  "schema_version": 1
+  "schema_version": 2,
+  "world_count": 5
 }

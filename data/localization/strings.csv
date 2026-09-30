@@ -3,6 +3,7 @@ app.title,Lost & Sorted,Загублено й відсортовано
 menu.play,Play,Грати
 menu.daily,Daily Challenge,Щоденне випробування
 menu.endless,Endless,Нескінченний режим
+menu.shift,Shift,Зміна
 menu.airport,Airport,Аеропорт
 menu.settings,Settings,Налаштування
 menu.credits,Credits & Privacy,Автори та приватність
@@ -15,6 +16,14 @@ menu.resume,Resume,Продовжити
 menu.quit,Quit,Вийти
 campaign.title,Campaign,Кампанія
 campaign.locked,Complete the previous terminal first,Спочатку завершіть попередній термінал
+campaign.hard,Hard,Складний
+campaign.rush,Rush,Аврал
+world.regional,Regional Terminal,Регіональний термінал
+world.international,International Terminal,Міжнародний термінал
+world.cargo,Cargo Hub,Вантажний вузол
+world.midnight,Midnight Airport,Нічний аеропорт
+world.skyport,Skyport,Небесний порт
+home.airport_owned,Your airport grows with every cleared flight,Ваш аеропорт зростає з кожним рейсом
 game.level,Level,Рівень
 game.score,Score,Рахунок
 game.coins,Coins,Монети
@@ -25,11 +34,13 @@ game.tray_full,Sorting tray full,Сортувальний лоток запов�
 game.priority_failed,Priority flight departed,Пріоритетний рейс відправився
 game.priority,Priority flight,Пріоритетний рейс
 game.moves,moves remaining,ходів залишилось
+game.moves_used,moves,ходів
 game.stars,Stars,Зірки
 game.reward,Reward,Нагорода
 booster.undo,Undo,Скасувати
 booster.shuffle,Shuffle,Перемішати
 booster.extra_slot,Extra Slot,+1 місце
+booster.reveal,Reveal,Відкрити
 tutorial.tap,Tap an available suitcase,Натисніть на доступну валізу
 tutorial.match,Collect three matching destination tags,Зберіть три однакові позначки напрямку
 tutorial.covered,Covered luggage unlocks after the items above it,Накрита валіза відкриється після верхніх
@@ -53,12 +64,35 @@ airport.complete,Complete,Завершено
 airport.entrance,Entrance,Вхід
 airport.seating,Seating,Місця
 airport.checkin,Check-in,Реєстрація
+airport.baggage,Baggage Hall,Багажна зала
+airport.security,Security,Безпека
 airport.cafe,Café,Кафе
 airport.departures,Departures,Табло
+airport.tower,Control Tower,Диспетчерська вежа
 airport.runway,Runway,Злітна смуга
+airport.perks_summary,Milestones grant small permanent airport perks,Етапи дають невеликі постійні переваги аеропорту
 daily.complete,Completed today,Сьогодні виконано
 daily.streak,Streak,Серія
 endless.locked,Unlocks after level 20,Відкриється після 20 рівня
+shift.title,Airport Shift,Зміна в аеропорту
+shift.description,Clear a rising sequence of validated flights and airport events.,Проходьте дедалі складніші перевірені рейси та події аеропорту.
+shift.high_score,High score,Рекорд
+shift.round,Round,Раунд
+shift.events_help,Priority Flight • Lost Tag • Belt Jam • VIP Baggage • Heavy Load,Пріоритетний рейс • Загублена бирка • Затор стрічки • VIP-багаж • Важкий вантаж
+shift.start,Start shift,Почати зміну
+shift.resume,Resume shift,Продовжити зміну
+shift.event.priority_flight,Priority Flight,Пріоритетний рейс
+shift.event.lost_tag,Lost Tag,Загублена бирка
+shift.event.belt_jam,Belt Jam,Затор стрічки
+shift.event.vip_baggage,VIP Baggage,VIP-багаж
+shift.event.heavy_load,Heavy Load,Важкий вантаж
+transfer.choose,Choose a flight,Оберіть рейс
+result.challenge_complete,Challenge complete,Випробування виконано
+result.renovation,Airport renovation,Оновлення аеропорту
+pause.title,Shift paused,Зміну призупинено
+pause.message,Your move counter is safe.,Лічильник ходів зупинено.
+settings.text_normal,Normal text,Звичайний текст
+settings.text_large,Large text,Збільшений текст
 privacy.summary,Offline game. Progress stays on this device. Optional ads are disabled unless configured.,Офлайн-гра. Прогрес зберігається на цьому пристрої. Необов'язкова реклама вимкнена без налаштування.
 destination.paris,Paris,Париж
 destination.tokyo,Tokyo,Токіо

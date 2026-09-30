@@ -2,42 +2,43 @@
 
 ## Suggested title
 
-Lost & Sorted: Luggage Puzzle
+Lost & Sorted: Airport Puzzle
 
 ## Short description
 
-Sort layered luggage, match destination triplets, and renovate five airports.
+Sort layered luggage, plan your tray, and rebuild five colorful airports.
 
 ## Full description
 
-Welcome to Lost & Sorted, a calm layered sorting puzzle built for quick, thoughtful sessions.
+Welcome to Lost & Sorted, a thoughtful luggage-sorting puzzle made for quick mobile sessions.
 
-Tap luggage that is not covered, place it in your sorting tray, and match three pieces headed to the same destination. Plan carefully: the tray only has seven slots. Clear every suitcase to complete the flight and earn coins for your airport.
+Tap exposed suitcases and send them to your seven-slot conveyor tray. Match three baggage tags for the same destination to dispatch a flight. Choose carefully: several routes are open at once, and one careless tag can fill the tray.
 
-Travel through 150 handcrafted and solver-verified challenges across Local Terminal, International Terminal, Cargo Terminal, Midnight Hub, and Skyport. Reveal Mystery luggage, collect keys to open locked cases, and dispatch Priority Flights before their move counters expire.
+Travel through 75 procedural stages across Regional Terminal, International Terminal, Cargo Hub, Midnight Airport, and Skyport. Every board is checked by a solver before play, while retries preserve the same fair layout.
 
-Use Undo, Shuffle, or one Extra Slot when you want help. Improve your airport with cosmetic upgrades, return for an offline Daily Challenge, or chase a local high score in Endless Sorting. The full campaign works without internet and never requires an advertisement.
+Reveal Mystery tags, find keys for locked baggage, complete Priority Flights within a move budget, and choose the destination for flexible Transfer Baggage. Earn stars and coins, then transform your worn regional airport with upgraded check-in desks, baggage halls, security, cafes, control towers, and runways.
+
+Take an Airport Shift for a rising sequence of flights and reproducible airport events, or return to the same Daily Challenge as every player on that date. Everything works offline, and advertisements are never required.
 
 Features:
 
-- 150 deterministic, verified campaign levels
-- Five airport worlds and 15 board layouts
-- Mystery, Lock/Key, and Priority Flight rules
-- Offline Daily Challenge and Endless mode
-- Airport renovation with one fair coin currency
+- 75 replayable solver-validated campaign stages
+- Multiple selectable destinations and real tray-pressure decisions
+- Mystery, Locks/Keys, Priority Flights, and Transfer Baggage
+- Deterministic Daily Challenge and Airport Shift events
+- Five visual airport worlds with renovation progress
+- Undo, Shuffle, Extra Slot, and small renovation perks
 - English and Ukrainian language support
 - Reduced motion, text size, sound, and haptic controls
 - Fully playable offline with no account
 
-## Release notes 1.0.0
+## Release notes 2.0.0
 
-Initial release with the complete 150-level campaign, Daily Challenge, Endless Sorting, five renovation airports, English/Ukrainian localization, accessibility settings, local saves, and optional non-blocking ad rewards.
+Redesigned every board around meaningful choices, introduced the 75-stage airport journey, Transfer Baggage and Airport Shift, rebuilt the interface and luggage art, added visible airport renovation, migrated existing saves, and expanded solver metrics and automated validation.
 
 ## Feature bullets
 
-- Think ahead in a seven-slot sorting tray.
-- Match destinations by symbol, code, pattern, and color.
-- Solve every campaign level without paid help.
-- Restore five airports through 90 cosmetic upgrades.
-- Play daily and endless modes offline.
-
+- Choose among several flights on every pile.
+- Protect seven tray slots while exposing deeper luggage.
+- Renovate seven visible airport zones.
+- Play campaign, Daily, and Airport Shift offline.

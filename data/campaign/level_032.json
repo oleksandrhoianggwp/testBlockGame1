@@ -1,290 +1,511 @@
 {
-  "content_version": 1,
-  "difficulty": 0.208,
+  "content_version": 2,
+  "difficulty_template": 0.419,
+  "generation_attempt": 1,
   "id": 32,
   "items": [
     {
       "blocker_ids": [],
-      "destination_id": "tyo",
-      "id": "l032_g00_0",
+      "destination_id": "rio",
+      "destination_options": [],
+      "group_index": 0,
+      "id": "l00032_g00_0",
       "lock_group": "",
       "position": [
-        0.24,
-        0.24
+        0.505551517009735,
+        0.239999994635582
       ],
-      "rotation": -5.96621322631836,
-      "scale": 1.0,
+      "region": 1,
+      "rotation": 2.60722541809082,
+      "scale": 1.03532874584198,
+      "size": [
+        0.255,
+        0.125
+      ],
       "special_data": {},
       "special_type": "",
-      "z_index": 5
+      "stack_index": 1,
+      "z_index": 999
     },
     {
       "blocker_ids": [],
-      "destination_id": "tyo",
-      "id": "l032_g00_1",
+      "destination_id": "rio",
+      "destination_options": [],
+      "group_index": 0,
+      "id": "l00032_g00_1",
       "lock_group": "",
       "position": [
-        0.5,
-        0.24
+        0.198710888624191,
+        0.270000010728836
       ],
-      "rotation": 2.3989086151123,
-      "scale": 1.0,
+      "region": 0,
+      "rotation": -2.57644486427307,
+      "scale": 0.988756835460663,
+      "size": [
+        0.255,
+        0.125
+      ],
       "special_data": {},
       "special_type": "",
-      "z_index": 5
+      "stack_index": 0,
+      "z_index": 1000
     },
     {
       "blocker_ids": [],
-      "destination_id": "tyo",
-      "id": "l032_g00_2",
+      "destination_id": "rio",
+      "destination_options": [],
+      "group_index": 0,
+      "id": "l00032_g00_2",
       "lock_group": "",
       "position": [
-        0.76,
-        0.24
+        0.789237201213837,
+        0.270000010728836
       ],
-      "rotation": -4.73310947418213,
-      "scale": 1.0,
+      "region": 2,
+      "rotation": -3.0041389465332,
+      "scale": 1.02353239059448,
+      "size": [
+        0.255,
+        0.125
+      ],
       "special_data": {},
       "special_type": "",
-      "z_index": 5
+      "stack_index": 2,
+      "z_index": 998
     },
     {
-      "blocker_ids": [
-        "l032_g00_0",
-        "l032_g00_1",
-        "l032_g00_2"
-      ],
-      "destination_id": "iev",
-      "id": "l032_g01_0",
+      "blocker_ids": [],
+      "destination_id": "sel",
+      "destination_options": [],
+      "group_index": 1,
+      "id": "l00032_g01_0",
       "lock_group": "",
       "position": [
-        0.204644660940673,
-        0.345
+        0.490076094865799,
+        0.509999990463257
       ],
-      "rotation": 5.1512622833252,
-      "scale": 1.0,
+      "region": 1,
+      "rotation": -0.5858154296875,
+      "scale": 1.01839137077332,
+      "size": [
+        0.255,
+        0.125
+      ],
+      "special_data": {},
+      "special_type": "",
+      "stack_index": 4,
+      "z_index": 996
+    },
+    {
+      "blocker_ids": [],
+      "destination_id": "sel",
+      "destination_options": [],
+      "group_index": 1,
+      "id": "l00032_g01_1",
+      "lock_group": "",
+      "position": [
+        0.18905870616436,
+        0.540000021457672
+      ],
+      "region": 0,
+      "rotation": -0.593533039093018,
+      "scale": 0.987151861190796,
+      "size": [
+        0.255,
+        0.125
+      ],
       "special_data": {},
       "special_type": "mystery",
-      "z_index": 4
+      "stack_index": 3,
+      "z_index": 997
     },
     {
       "blocker_ids": [
-        "l032_g00_0",
-        "l032_g00_1",
-        "l032_g00_2"
+        "l00032_g00_2"
       ],
-      "destination_id": "iev",
-      "id": "l032_g01_1",
+      "destination_id": "sel",
+      "destination_options": [],
+      "group_index": 1,
+      "id": "l00032_g01_2",
+      "lock_group": "",
+      "position": [
+        0.805078208446503,
+        0.279000014066696
+      ],
+      "region": 2,
+      "rotation": 2.19768619537354,
+      "scale": 1.02064943313599,
+      "size": [
+        0.255,
+        0.125
+      ],
+      "special_data": {},
+      "special_type": "",
+      "stack_index": 2,
+      "z_index": 988
+    },
+    {
+      "blocker_ids": [
+        "l00032_g01_0"
+      ],
+      "destination_id": "syd",
+      "destination_options": [],
+      "group_index": 2,
+      "id": "l00032_g02_0",
+      "lock_group": "",
+      "position": [
+        0.498661905527115,
+        0.518999993801117
+      ],
+      "region": 1,
+      "rotation": 0.981494903564453,
+      "scale": 0.9695965051651,
+      "size": [
+        0.255,
+        0.125
+      ],
+      "special_data": {},
+      "special_type": "",
+      "stack_index": 4,
+      "z_index": 986
+    },
+    {
+      "blocker_ids": [
+        "l00032_g01_1"
+      ],
+      "destination_id": "syd",
+      "destination_options": [],
+      "group_index": 2,
+      "id": "l00032_g02_1",
+      "lock_group": "",
+      "position": [
+        0.198303401470184,
+        0.549000024795532
+      ],
+      "region": 0,
+      "rotation": 2.85861015319824,
+      "scale": 0.965013682842255,
+      "size": [
+        0.255,
+        0.125
+      ],
+      "special_data": {},
+      "special_type": "",
+      "stack_index": 3,
+      "z_index": 987
+    },
+    {
+      "blocker_ids": [
+        "l00032_g00_1"
+      ],
+      "destination_id": "syd",
+      "destination_options": [],
+      "group_index": 2,
+      "id": "l00032_g02_2",
+      "lock_group": "",
+      "position": [
+        0.197903841733933,
+        0.279000014066696
+      ],
+      "region": 0,
+      "rotation": 1.08348083496094,
+      "scale": 1.01269018650055,
+      "size": [
+        0.255,
+        0.125
+      ],
+      "special_data": {},
+      "special_type": "",
+      "stack_index": 0,
+      "z_index": 990
+    },
+    {
+      "blocker_ids": [
+        "l00032_g00_0"
+      ],
+      "destination_id": "syd",
+      "destination_options": [],
+      "group_index": 3,
+      "id": "l00032_g03_0",
+      "lock_group": "cargo_3",
+      "position": [
+        0.508341908454895,
+        0.248999997973442
+      ],
+      "region": 1,
+      "rotation": 2.91331577301025,
+      "scale": 1.0122367143631,
+      "size": [
+        0.255,
+        0.125
+      ],
+      "special_data": {},
+      "special_type": "",
+      "stack_index": 1,
+      "z_index": 989
+    },
+    {
+      "blocker_ids": [
+        "l00032_g01_0",
+        "l00032_g02_0"
+      ],
+      "destination_id": "syd",
+      "destination_options": [],
+      "group_index": 3,
+      "id": "l00032_g03_1",
+      "lock_group": "cargo_3",
+      "position": [
+        0.507495164871216,
+        0.527999997138977
+      ],
+      "region": 1,
+      "rotation": 0.596043586730957,
+      "scale": 1.03999924659729,
+      "size": [
+        0.255,
+        0.125
+      ],
+      "special_data": {},
+      "special_type": "",
+      "stack_index": 4,
+      "z_index": 976
+    },
+    {
+      "blocker_ids": [
+        "l00032_g00_2",
+        "l00032_g01_2"
+      ],
+      "destination_id": "syd",
+      "destination_options": [],
+      "group_index": 3,
+      "id": "l00032_g03_2",
+      "lock_group": "cargo_3",
+      "position": [
+        0.79702365398407,
+        0.288000017404556
+      ],
+      "region": 2,
+      "rotation": -5.93433237075806,
+      "scale": 0.959282279014587,
+      "size": [
+        0.255,
+        0.125
+      ],
+      "special_data": {},
+      "special_type": "",
+      "stack_index": 2,
+      "z_index": 978
+    },
+    {
+      "blocker_ids": [
+        "l00032_g00_1",
+        "l00032_g02_2"
+      ],
+      "destination_id": "nbo",
+      "destination_options": [],
+      "group_index": 4,
+      "id": "l00032_g04_0",
+      "lock_group": "",
+      "position": [
+        0.200612813234329,
+        0.288000017404556
+      ],
+      "region": 0,
+      "rotation": 5.5708532333374,
+      "scale": 0.972712695598602,
+      "size": [
+        0.255,
+        0.125
+      ],
+      "special_data": {},
+      "special_type": "",
+      "stack_index": 0,
+      "z_index": 980
+    },
+    {
+      "blocker_ids": [
+        "l00032_g01_1",
+        "l00032_g02_1"
+      ],
+      "destination_id": "nbo",
+      "destination_options": [],
+      "group_index": 4,
+      "id": "l00032_g04_1",
+      "lock_group": "",
+      "position": [
+        0.200800269842148,
+        0.558000028133392
+      ],
+      "region": 0,
+      "rotation": 3.05245304107666,
+      "scale": 1.00935435295105,
+      "size": [
+        0.255,
+        0.125
+      ],
+      "special_data": {},
+      "special_type": "",
+      "stack_index": 3,
+      "z_index": 977
+    },
+    {
+      "blocker_ids": [
+        "l00032_g00_0",
+        "l00032_g03_0"
+      ],
+      "destination_id": "nbo",
+      "destination_options": [],
+      "group_index": 4,
+      "id": "l00032_g04_2",
+      "lock_group": "",
+      "position": [
+        0.500785291194916,
+        0.257999986410141
+      ],
+      "region": 1,
+      "rotation": 3.00603008270264,
+      "scale": 0.966347873210907,
+      "size": [
+        0.255,
+        0.125
+      ],
+      "special_data": {},
+      "special_type": "",
+      "stack_index": 1,
+      "z_index": 979
+    },
+    {
+      "blocker_ids": [
+        "l00032_g00_1",
+        "l00032_g02_2",
+        "l00032_g04_0"
+      ],
+      "destination_id": "nbo",
+      "destination_options": [],
+      "group_index": 5,
+      "id": "l00032_g05_0",
+      "lock_group": "",
+      "position": [
+        0.199221923947334,
+        0.297000020742416
+      ],
+      "region": 0,
+      "rotation": 0.59867000579834,
+      "scale": 0.999465465545654,
+      "size": [
+        0.255,
+        0.125
+      ],
+      "special_data": {},
+      "special_type": "",
+      "stack_index": 0,
+      "z_index": 970
+    },
+    {
+      "blocker_ids": [
+        "l00032_g01_0",
+        "l00032_g02_0",
+        "l00032_g03_1"
+      ],
+      "destination_id": "nbo",
+      "destination_options": [],
+      "group_index": 5,
+      "id": "l00032_g05_1",
+      "lock_group": "",
+      "position": [
+        0.511954188346863,
+        0.537000000476837
+      ],
+      "region": 1,
+      "rotation": 0.00940608978271484,
+      "scale": 1.02445244789124,
+      "size": [
+        0.255,
+        0.125
+      ],
+      "special_data": {},
+      "special_type": "",
+      "stack_index": 4,
+      "z_index": 966
+    },
+    {
+      "blocker_ids": [
+        "l00032_g00_0",
+        "l00032_g03_0",
+        "l00032_g04_2"
+      ],
+      "destination_id": "nbo",
+      "destination_options": [],
+      "group_index": 5,
+      "id": "l00032_g05_2",
+      "lock_group": "",
+      "position": [
+        0.503795564174652,
+        0.266999989748001
+      ],
+      "region": 1,
+      "rotation": -5.44576978683472,
+      "scale": 0.951645493507385,
+      "size": [
+        0.255,
+        0.125
+      ],
+      "special_data": {},
+      "special_type": "",
+      "stack_index": 1,
+      "z_index": 969
+    },
+    {
+      "blocker_ids": [],
+      "destination_id": "",
+      "destination_options": [],
+      "group_index": -1,
+      "id": "key_00032",
+      "key_group": "cargo_3",
       "lock_group": "",
       "position": [
         0.5,
-        0.345
+        0.13
       ],
-      "rotation": -0.640554904937744,
+      "region": 1,
+      "rotation": 0.0,
       "scale": 1.0,
+      "size": [
+        0.17,
+        0.1
+      ],
       "special_data": {},
-      "special_type": "mystery",
-      "z_index": 4
-    },
-    {
-      "blocker_ids": [
-        "l032_g00_0",
-        "l032_g00_1",
-        "l032_g00_2"
-      ],
-      "destination_id": "iev",
-      "id": "l032_g01_2",
-      "lock_group": "",
-      "position": [
-        0.795355339059327,
-        0.345
-      ],
-      "rotation": -6.49129772186279,
-      "scale": 1.0,
-      "special_data": {},
-      "special_type": "mystery",
-      "z_index": 4
-    },
-    {
-      "blocker_ids": [
-        "l032_g01_0",
-        "l032_g01_1",
-        "l032_g01_2"
-      ],
-      "destination_id": "rom",
-      "id": "l032_g02_0",
-      "lock_group": "",
-      "position": [
-        0.19,
-        0.45
-      ],
-      "rotation": 3.83865070343018,
-      "scale": 1.0,
-      "special_data": {},
-      "special_type": "",
-      "z_index": 3
-    },
-    {
-      "blocker_ids": [
-        "l032_g01_0",
-        "l032_g01_1",
-        "l032_g01_2"
-      ],
-      "destination_id": "rom",
-      "id": "l032_g02_1",
-      "lock_group": "",
-      "position": [
-        0.5,
-        0.45
-      ],
-      "rotation": 6.16348552703857,
-      "scale": 1.0,
-      "special_data": {},
-      "special_type": "",
-      "z_index": 3
-    },
-    {
-      "blocker_ids": [
-        "l032_g01_0",
-        "l032_g01_1",
-        "l032_g01_2"
-      ],
-      "destination_id": "rom",
-      "id": "l032_g02_2",
-      "lock_group": "",
-      "position": [
-        0.81,
-        0.45
-      ],
-      "rotation": -4.6103367805481,
-      "scale": 1.0,
-      "special_data": {},
-      "special_type": "",
-      "z_index": 3
-    },
-    {
-      "blocker_ids": [
-        "l032_g02_0",
-        "l032_g02_1",
-        "l032_g02_2"
-      ],
-      "destination_id": "tyo",
-      "id": "l032_g03_0",
-      "lock_group": "",
-      "position": [
-        0.204644660940673,
-        0.555
-      ],
-      "rotation": 5.7661771774292,
-      "scale": 1.0,
-      "special_data": {},
-      "special_type": "",
-      "z_index": 2
-    },
-    {
-      "blocker_ids": [
-        "l032_g02_0",
-        "l032_g02_1",
-        "l032_g02_2"
-      ],
-      "destination_id": "tyo",
-      "id": "l032_g03_1",
-      "lock_group": "",
-      "position": [
-        0.5,
-        0.555
-      ],
-      "rotation": 3.04176235198975,
-      "scale": 1.0,
-      "special_data": {},
-      "special_type": "",
-      "z_index": 2
-    },
-    {
-      "blocker_ids": [
-        "l032_g02_0",
-        "l032_g02_1",
-        "l032_g02_2"
-      ],
-      "destination_id": "tyo",
-      "id": "l032_g03_2",
-      "lock_group": "",
-      "position": [
-        0.795355339059327,
-        0.555
-      ],
-      "rotation": 6.34603404998779,
-      "scale": 1.0,
-      "special_data": {},
-      "special_type": "",
-      "z_index": 2
-    },
-    {
-      "blocker_ids": [
-        "l032_g03_0",
-        "l032_g03_1",
-        "l032_g03_2"
-      ],
-      "destination_id": "iev",
-      "id": "l032_g04_0",
-      "lock_group": "",
-      "position": [
-        0.24,
-        0.66
-      ],
-      "rotation": -3.00585222244263,
-      "scale": 1.0,
-      "special_data": {},
-      "special_type": "",
-      "z_index": 1
-    },
-    {
-      "blocker_ids": [
-        "l032_g03_0",
-        "l032_g03_1",
-        "l032_g03_2"
-      ],
-      "destination_id": "iev",
-      "id": "l032_g04_1",
-      "lock_group": "",
-      "position": [
-        0.5,
-        0.66
-      ],
-      "rotation": -0.174037933349609,
-      "scale": 1.0,
-      "special_data": {},
-      "special_type": "",
-      "z_index": 1
-    },
-    {
-      "blocker_ids": [
-        "l032_g03_0",
-        "l032_g03_1",
-        "l032_g03_2"
-      ],
-      "destination_id": "iev",
-      "id": "l032_g04_2",
-      "lock_group": "",
-      "position": [
-        0.76,
-        0.66
-      ],
-      "rotation": -3.50482869148254,
-      "scale": 1.0,
-      "special_data": {},
-      "special_type": "",
-      "z_index": 1
+      "special_type": "key",
+      "stack_index": 1,
+      "z_index": 2000
     }
   ],
-  "layout_template": "wings",
+  "layout_seed": 270419,
+  "layout_template": "cargo_bays",
+  "local_level": 2,
   "mechanics": {
-    "locks": 0,
-    "mystery": 3,
-    "priority": {}
+    "belt_jam": {},
+    "locks": 1,
+    "mystery": 1,
+    "priority": {},
+    "transfer": 0,
+    "vip": {}
   },
-  "schema_version": 1,
+  "quality": {
+    "average_branching_factor": 4.42,
+    "average_selectable_count": 4.42,
+    "dead_end_count": 0,
+    "difficulty_score": 0.645,
+    "forced_move_ratio": 0.053,
+    "initial_selectable_count": 6,
+    "meaningful_decision_count": 11,
+    "nodes_explored": 103,
+    "peak_expected_tray_pressure": 3,
+    "solution_depth": 19,
+    "solved": true
+  },
+  "schema_version": 2,
   "seed": 270419,
   "tray_capacity": 7,
-  "world": 2
+  "world": 3
 }

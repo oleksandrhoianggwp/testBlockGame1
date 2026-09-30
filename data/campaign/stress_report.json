@@ -1,0 +1,17 @@
+{
+  "average_branching_factor": 5.17,
+  "average_forced_move_ratio": 0.05,
+  "average_generation_attempts": 1.02,
+  "average_generation_ms": 63.01,
+  "average_initial_selectable": 6.5,
+  "elapsed_ms": 1038608,
+  "generation_failure_rate": 0.0,
+  "generation_failures": 0,
+  "impossible_boards": 0,
+  "samples": 10000,
+  "schema_version": 2,
+  "solver_ms_p50": 34,
+  "solver_ms_p95": 81,
+  "solver_ms_p99": 144,
+  "worst_nodes_explored": 2889
+}

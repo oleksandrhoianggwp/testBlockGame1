@@ -1,0 +1,12 @@
+{
+  "schema_version": 2,
+  "content_version": 2,
+  "levels_per_world": 15,
+  "worlds": [
+    {"id": 1, "name_key": "world.regional", "background": "regional", "stage_count": 15, "groups": [4, 6], "destinations": [3, 4], "mechanic": "basic", "color": "#DDF2EE"},
+    {"id": 2, "name_key": "world.international", "background": "international", "stage_count": 15, "groups": [5, 7], "destinations": [4, 5], "mechanic": "mystery", "color": "#DFEEFA"},
+    {"id": 3, "name_key": "world.cargo", "background": "cargo", "stage_count": 15, "groups": [6, 8], "destinations": [4, 6], "mechanic": "locks", "color": "#E9E1D5"},
+    {"id": 4, "name_key": "world.midnight", "background": "midnight", "stage_count": 15, "groups": [7, 9], "destinations": [5, 7], "mechanic": "priority", "color": "#151E3E"},
+    {"id": 5, "name_key": "world.skyport", "background": "skyport", "stage_count": 15, "groups": [8, 10], "destinations": [6, 8], "mechanic": "transfer", "color": "#E6E5FA"}
+  ]
+}

@@ -1,61 +1,54 @@
 # Lost & Sorted
 
-Production-oriented, offline-first layered sorting puzzle for Android, built with Godot 4.7.2 and typed GDScript. Tap accessible luggage, group three matching destinations in a seven-slot tray, and renovate five increasingly unusual airport terminals.
+Offline-first hybrid-casual luggage sorting puzzle for Android, built with Godot 4.7.2. Select exposed luggage from a geometric pile, manage a seven-slot conveyor tray, dispatch destination triplets, complete airport events, and renovate five airport worlds.
 
 ![Gameplay](store/screenshots/gameplay.png)
 
-## Included in version 1.0
+## Current game
 
-- 150 fixed-seed campaign levels across five worlds and 15 layout families.
-- Independent solver validation for every shipped level; no booster is required.
-- Mystery luggage, locks and keys, move-based priority flights.
-- Undo snapshots, solvability-preserving Shuffle and one-per-level Extra Slot.
-- Campaign progression, three-star results, scores, coins and 90 airport upgrade stages.
-- Deterministic offline Daily Challenge, seven-day streak and Endless mode.
-- English and Ukrainian localization, adjustable text, reduced motion, sound and haptics.
-- Atomic versioned local saves with backup recovery.
-- Original SVG art and reproducible procedural WAV effects; no network-loaded assets.
-- Mock rewarded/interstitial states on desktop and an optional Android AdMob adapter.
-
-## Screenshots
-
-Actual captures generated from the Godot desktop build are in [`store/screenshots`](store/screenshots): Home, Campaign, Gameplay, Airport and Daily.
+- 75 procedural campaign templates across five worlds: Regional Terminal, International Terminal, Cargo Hub, Midnight Airport, and Skyport.
+- A campaign seed is created and saved on first open. Retry keeps the board; replay after a clear creates a new validated board.
+- Geometric overlap creates the blocker graph. Destination triplets are shuffled as individual luggage before being distributed through 5–8 overlapping piles.
+- Normal states expose 4–10 pieces from multiple destinations, producing tray-pressure decisions instead of `AAA → BBB → CCC` layers.
+- Solver validation reports solution depth, inspected nodes, average branching, selectable counts, meaningful decisions, forced-move ratio, expected tray pressure, dead ends, and difficulty.
+- Mystery luggage, multi-path locks/keys, move-based Priority Flights, and two-destination Transfer Baggage.
+- Deterministic Daily Challenge and reproducible Airport Shift rounds with Priority Flight, Lost Tag, Belt Jam, VIP Baggage, and Heavy Load events.
+- Visual airport renovation with Entrance, Check-in, Baggage Hall, Security, Cafe, Control Tower, and Runway stages plus small milestone perks.
+- English and Ukrainian localization, reduced motion, text scaling, sound and haptics.
+- Full campaign, saves, assets, audio, Daily, and Shift work offline. Ads remain optional and disabled without configuration.
 
 ## Architecture
 
-The authoritative state is in `core/gameplay/game_state.gd`. Presentation sends item IDs to it and never decides accessibility. `core/generation` constructs each board from a known valid triplet sequence. `core/solver` independently searches that state using the same domain rules. `data/campaign` is immutable baked content; runtime does not regenerate campaign levels.
-
-See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md), [`docs/GAME_DESIGN.md`](docs/GAME_DESIGN.md), and [`docs/DECISIONS.md`](docs/DECISIONS.md).
-
-## Repository map
-
 ```text
-app/                    boot scene and responsive application UI
-core/gameplay/          serializable rules and snapshots
-core/generation/        deterministic level construction
-core/solver/            rendering-independent DFS solver
-services/               save, audio, haptics, ads, QA analytics
-data/campaign/          150 baked JSON levels and report
-data/configs/           economy, version and destination definitions
-data/localization/      English/Ukrainian translation source
-assets/                 original SVG and WAV assets
-tools/                  level baker, stress and asset generation
-tests/                  headless unit/integration runner
-docs/                   architecture, design, QA and release notes
-store/                  listing copy, policy, art and screenshots
-scripts/                Windows and Unix build entry points
+app/main.gd                    navigation and gameplay transaction orchestration
+app/screens/                   Home, Campaign, Gameplay, Airport, Shift, Settings, Result
+app/components/                persistent luggage, tray, booster, currency, level, objective views
+core/gameplay/game_state.gd    authoritative serializable sorting rules
+core/generation/               seeded board construction and quality rejection
+core/solver/                   UI-independent search and decision metrics
+services/save_service.gd       schema-v2 migration, seeds, progression, renovation, Shift
+data/configs/campaign.json     world/stage counts and difficulty templates
+data/campaign/                 75 representative validated boards and reports
+data/localization/             complete EN/UK player-facing copy
+assets/                        original reproducible SVG and WAV assets
+tools/level_baker/             campaign baker, profiler, 10,000-board stress tool
+tests/run_all.gd               headless unit and integration suite
 ```
+
+`SortingGameState` owns every gameplay rule. `LevelGenerator` and `LevelSolver` never touch the scene tree. `GameplayScreen` creates one `LuggageView` per board item and updates those nodes in place; a tap no longer rebuilds the complete screen.
+
+See [architecture](docs/ARCHITECTURE.md), [game design](docs/GAME_DESIGN.md), and [QA checklist](docs/QA_CHECKLIST.md).
 
 ## Run
 
-Install Godot 4.7.2 stable, then:
+Install Godot 4.7.2 stable, then from this directory:
 
 ```powershell
 godot --path . --editor
 godot --path .
 ```
 
-The renderer is Compatibility and the reference viewport is 432×768 portrait. Desktop play, headless tests and all core modes work without Android tooling or an ad plugin.
+The reference viewport is 432×768 portrait with Compatibility rendering.
 
 ## Test and validate
 
@@ -63,37 +56,69 @@ The renderer is Compatibility and the reference viewport is 432×768 portrait. D
 godot --headless --path . --editor --quit
 godot --headless --path . --script res://tests/run_all.gd
 godot --headless --path . --script res://tools/level_baker/bake_campaign.gd
-godot --headless --path . --script res://tools/level_baker/stress_generation.gd
+godot --headless --path . --script res://tools/level_baker/stress_generation.gd -- 10000
 godot --headless --path . --quit-after 120
 ```
 
-The baker rewrites `data/campaign/level_001.json` through `level_150.json`, `index.json`, and `validation_report.txt`. Campaign changes must commit all these files together.
+Expected outputs:
 
-Regenerate original assets with:
+- tests print `TESTS: ... passed, 0 failed`;
+- baker prints `CAMPAIGN: 75/75 passed` and rewrites `data/campaign/index.json`, `level_001.json`–`level_075.json`, and `validation_report.txt`;
+- stress prints `STRESS: 10000 candidates, 0 failures, 0 impossible` and writes `data/campaign/stress_report.json`.
+
+Latest recorded validation: 75/75 representative campaign boards passed; 10,000 stress boards produced 0 generation failures and 0 impossible boards, average 1.02 generation attempts, average 6.50 initial selectable items, average branching 5.17, forced-move ratio 0.05, and solver p50/p95/p99 of 34/81/144 ms on the validation host.
+
+Regenerate original art and audio:
 
 ```powershell
 godot --headless --path . --script res://tools/asset_generation/generate_assets.gd
 ```
 
-## Android debug APK
-
-Requirements: Godot 4.7.2 export templates, OpenJDK 17, Android SDK platform/API 36, matching Build Tools, and the Godot Gradle build template. Configure Java SDK and Android SDK paths in Godot editor settings, then:
+Capture the five repository screenshots:
 
 ```powershell
+godot --path . -- --capture-screens
+```
+
+## Procedural generation
+
+1. Resolve a campaign template and persisted seed.
+2. Choose destination groups, then create every individual luggage item.
+3. Seed-shuffle destinations and item-to-stack allocation.
+4. Place items into 5–8 2D pile regions with rotation, scale, and depth.
+5. Derive blockers only from rectangle overlap and z order.
+6. Add world mechanics and deterministic Shift events.
+7. Solve the board and calculate decision-quality metrics.
+8. Reject unsolved, low-choice, overly forced, or low-pressure boards and retry with a deterministic derived seed.
+
+Runtime search is capped so a pathological seed is regenerated instead of stalling mobile hardware. The original saved seed still reproduces the same accepted candidate and generation attempt.
+
+## Saves and randomness
+
+Save schema 2 migrates old 150-level debug profiles into the 75-stage structure, remaps old airport fields, carries Endless high score into Airport Shift, and clears obsolete generated seeds safely.
+
+- Campaign: persisted per-level seed until clear.
+- Retry: current definition and seed are reused.
+- Replay after clear: cleared seed is removed and a new one may be generated.
+- Daily: deterministic date plus content salt.
+- Shift: deterministic run seed plus round number; events and boards reproduce for debugging.
+
+The profile is stored at `user://lost_sorted_save.json`, with atomic temp-write and backup rotation.
+
+## Android debug APK
+
+Requirements: Godot 4.7.2 export templates, OpenJDK 17, Android SDK platform/API 36, Build Tools 36.0.0, and the Godot Gradle build template.
+
+```powershell
+$env:GODOT_PATH = 'C:\path\to\Godot_v4.7.2-stable_win64_console.exe'
 .\scripts\build_debug.ps1
 ```
 
-or:
+Output: `build/lost-and-sorted-debug.apk`. The preset uses minimum SDK 24 and target SDK 36.
 
-```bash
-./scripts/build_debug.sh
-```
+## Release AAB
 
-Output is `build/lost-and-sorted-debug.apk`. The configured minimum SDK is 24; target SDK is 36. This balances broad Android coverage with modern Gradle/plugin support.
-
-## Release AAB and signing
-
-The release scripts require all three environment values and refuse to continue without them:
+Set these outside Git:
 
 ```text
 GODOT_ANDROID_KEYSTORE_RELEASE_PATH
@@ -101,28 +126,12 @@ GODOT_ANDROID_KEYSTORE_RELEASE_USER
 GODOT_ANDROID_KEYSTORE_RELEASE_PASSWORD
 ```
 
-Then run `scripts/build_release.ps1` or `scripts/build_release.sh`. Output is `build/lost-and-sorted-release.aab`. Keystores, local SDK paths and credentials are ignored by Git.
+Then run `scripts/build_release.ps1` or `scripts/build_release.sh`. Output is `build/lost-and-sorted-release.aab`. The script refuses to claim release success without a signed artifact.
 
-Before Play submission, replace the development-safe package ID `com.lostandsorted.game` with the publisher-owned final ID and complete [`docs/RELEASE_CHECKLIST.md`](docs/RELEASE_CHECKLIST.md).
+## Optional ads
 
-## Optional AdMob
-
-Core gameplay ships with ads disabled and needs no plugin. The documented compatible integration is `godot-sdk-integrations/godot-admob` v7.0, pinned because that release explicitly supports Godot 4.7. Install its Android artifact into the Gradle build, configure UMP consent and production IDs outside version control, then route the autoload to `AndroidAdMobService`. Google test unit IDs are present only in the adapter for debug use. Do not enable production ads before consent, test-device, Data Safety and privacy reviews.
-
-## Saves and localization
-
-Godot stores the profile under `user://lost_sorted_save.json` with a backup beside it. On Windows this maps under `%APPDATA%\Godot\app_userdata\Lost & Sorted`; Android uses app-private storage. Translation source is `data/localization/strings.csv`. Switch language at runtime in Settings.
-
-## Troubleshooting
-
-- `godot` not found: set `GODOT_PATH` to the Godot 4.7.2 executable.
-- Missing Android template: install the Godot 4.7.2 export templates and the project Gradle build template.
-- Android export fails before Gradle: confirm OpenJDK 17 and SDK platform 36 paths in editor settings.
-- Release script refuses to run: configure all signing environment values; it intentionally cannot emit an unsigned “release success”.
-- Ads unavailable: expected on desktop, offline, or without the optional pinned plugin. Gameplay is unaffected.
-- Corrupt save: the loader tries `.backup.json`; removing both files creates a clean 200-coin profile.
+Core gameplay never requires ads. The desktop build uses a controllable mock; the Android adapter remains inactive until a publisher installs the pinned plugin, configures consent, and supplies production IDs outside version control.
 
 ## License and notices
 
-Project-specific source and original assets are provided for this repository. Godot is MIT licensed. No third-party runtime package is vendored. See [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
-
+Project-specific source and original generated assets are provided with this repository. Godot is MIT licensed. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

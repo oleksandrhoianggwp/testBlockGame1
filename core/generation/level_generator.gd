@@ -1,118 +1,314 @@
 class_name LevelGenerator
 extends RefCounted
 
+const SolverScript = preload("res://core/solver/level_solver.gd")
+const CAMPAIGN_PATH := "res://data/configs/campaign.json"
 const DESTINATIONS := ["par", "tyo", "iev", "rom", "cai", "sel", "syd", "rio", "osl", "yto", "lim", "nbo"]
-const LAYOUTS := ["pyramid", "wings", "diamond", "double_stack", "spiral", "terminals", "bridge", "cross", "split_islands", "staircase", "ring", "compact_box", "fan", "twin_towers", "runway"]
+const LAYOUTS := ["terminal_rows", "carousel", "split_belt", "gate_cluster", "runway_cross", "cargo_bays"]
+const SHIFT_EVENTS := ["priority_flight", "lost_tag", "belt_jam", "vip_baggage", "heavy_load"]
+const STACK_ANCHORS := [
+	Vector2(0.20, 0.27), Vector2(0.50, 0.24), Vector2(0.80, 0.27),
+	Vector2(0.20, 0.54), Vector2(0.50, 0.51), Vector2(0.80, 0.54),
+	Vector2(0.35, 0.39), Vector2(0.65, 0.39), Vector2(0.50, 0.66)
+]
 
-func campaign_parameters(level_id: int) -> Dictionary:
-	var world := int((level_id - 1) / 30) + 1
-	var local_level := (level_id - 1) % 30 + 1
-	var group_count := 2 if level_id == 1 else (3 if level_id == 2 else clampi(3 + int((level_id - 1) / 15), 3, 12))
-	var destination_count := clampi(2 + int((level_id - 1) / 18), 2, mini(10, group_count))
-	var mystery_count := 0
-	var lock_count := 0
-	var priority_enabled := false
-	if level_id >= 31:
-		mystery_count = clampi(1 + int((level_id - 31) / 24), 1, 4) * 3
-	if level_id >= 61:
-		lock_count = 3
-	if level_id >= 91:
-		priority_enabled = true
-	return {
-		"id": level_id, "world": world, "local_level": local_level,
-		"seed": 17011 + level_id * 7919, "content_version": 1,
-		"tray_capacity": 7, "group_count": group_count,
-		"destination_count": destination_count,
-		"layout_template": LAYOUTS[(level_id - 1) % LAYOUTS.size()],
-		"difficulty": snappedf(float(level_id - 1) / 149.0, 0.001),
-		"mystery_count": mystery_count, "lock_count": lock_count,
-		"priority_enabled": priority_enabled
+var _campaign_cache: Dictionary = {}
+
+func campaign_config() -> Dictionary:
+	if _campaign_cache.is_empty():
+		var parsed = JSON.parse_string(FileAccess.get_file_as_string(CAMPAIGN_PATH))
+		_campaign_cache = parsed if typeof(parsed) == TYPE_DICTIONARY else {"worlds": []}
+	return _campaign_cache.duplicate(true)
+
+func campaign_count() -> int:
+	var count := 0
+	for world: Dictionary in campaign_config().get("worlds", []):
+		count += int(world.get("stage_count", 0))
+	return count
+
+func world_for_level(level_id: int) -> Dictionary:
+	var cursor := 0
+	for world: Dictionary in campaign_config().get("worlds", []):
+		var stage_count := int(world.get("stage_count", 0))
+		if level_id <= cursor + stage_count:
+			var result := world.duplicate(true)
+			result["first_level"] = cursor + 1
+			result["last_level"] = cursor + stage_count
+			result["local_level"] = level_id - cursor
+			return result
+		cursor += stage_count
+	return {}
+
+func campaign_parameters(level_id: int, seed_override: int = -1) -> Dictionary:
+	var count := campaign_count()
+	var safe_level := clampi(level_id, 1, maxi(1, count))
+	var world := world_for_level(safe_level)
+	var local_level := int(world.get("local_level", 1))
+	var stage_count := int(world.get("stage_count", 15))
+	var progress := float(local_level - 1) / float(maxi(1, stage_count - 1))
+	var group_range: Array = world.get("groups", [4, 6])
+	var destination_range: Array = world.get("destinations", [3, 4])
+	var group_count := int(round(lerpf(float(group_range[0]), float(group_range[1]), progress)))
+	var destination_count := int(round(lerpf(float(destination_range[0]), float(destination_range[1]), progress)))
+	var world_id := int(world.get("id", 1))
+	var mechanic := String(world.get("mechanic", "basic"))
+	var seed_value := seed_override if seed_override >= 0 else 17011 + safe_level * 7919
+	var parameters := {
+		"id": safe_level,
+		"world": world_id,
+		"local_level": local_level,
+		"seed": seed_value,
+		"content_version": int(campaign_config().get("content_version", 2)),
+		"tray_capacity": 7,
+		"group_count": group_count,
+		"destination_count": clampi(destination_count, 3, group_count),
+		"stack_count": clampi(5 + int(progress * 2.0) + int(world_id >= 4), 5, 8),
+		"layout_template": LAYOUTS[(safe_level + world_id) % LAYOUTS.size()],
+		"difficulty": snappedf(float(safe_level - 1) / float(maxi(1, count - 1)), 0.001),
+		"mystery_count": 0,
+		"lock_enabled": false,
+		"priority_enabled": false,
+		"transfer_enabled": false,
+		"challenge": local_level in [8, 15]
 	}
+	if world_id >= 2:
+		parameters["mystery_count"] = clampi(1 + int(local_level / 4), 1, 4)
+	if world_id >= 3:
+		parameters["lock_enabled"] = true
+	if world_id >= 4 or local_level == 15:
+		parameters["priority_enabled"] = true
+	if world_id >= 5:
+		parameters["transfer_enabled"] = local_level >= 3
+	if mechanic == "mystery":
+		parameters["mystery_count"] = maxi(2, int(parameters["mystery_count"]))
+	return parameters
 
 func generate_level(parameters: Dictionary) -> Dictionary:
-	var level_id := int(parameters["id"])
-	var rng := RandomNumberGenerator.new()
-	rng.seed = int(parameters["seed"])
-	var group_count := int(parameters["group_count"])
-	var destination_count := mini(int(parameters["destination_count"]), group_count)
-	var destination_pool: Array[String] = []
-	var offset := int(rng.randi_range(0, DESTINATIONS.size() - 1))
-	for index in destination_count:
-		destination_pool.append(DESTINATIONS[(offset + index) % DESTINATIONS.size()])
-	var group_destinations: Array[String] = []
-	for group_index in group_count:
-		group_destinations.append(destination_pool[group_index % destination_pool.size()])
-	var items: Array[Dictionary] = []
-	var previous_group_ids: Array[String] = []
-	var mystery_remaining := int(parameters.get("mystery_count", 0))
-	var lock_enabled := int(parameters.get("lock_count", 0)) > 0
-	for group_index in group_count:
-		var current_group_ids: Array[String] = []
-		for item_index in 3:
-			current_group_ids.append("l%03d_g%02d_%d" % [level_id, group_index, item_index])
-		for item_index in 3:
-			var item_id := current_group_ids[item_index]
-			var point := _layout_point(String(parameters["layout_template"]), group_index, item_index, group_count)
-			var special := ""
-			if mystery_remaining > 0 and group_index > 0:
-				special = "mystery"
-				mystery_remaining -= 1
-			var item := {
-				"id": item_id, "destination_id": group_destinations[group_index],
-				"position": point, "rotation": rng.randf_range(-7.0, 7.0),
-				"scale": 1.0, "z_index": group_count - group_index,
-				"blocker_ids": previous_group_ids.duplicate(),
-				"special_type": special, "special_data": {},
-				"lock_group": "cargo_a" if lock_enabled and group_index == 1 else ""
-			}
-			items.append(item)
-		previous_group_ids = current_group_ids
-	if lock_enabled:
-		items.append({
-			"id": "key_%03d" % level_id, "destination_id": "", "position": [0.5, 0.12],
-			"rotation": 0.0, "scale": 1.0, "z_index": group_count + 1,
-			"blocker_ids": [], "special_type": "key", "special_data": {},
-			"key_group": "cargo_a", "lock_group": ""
-		})
-	var priority: Dictionary = {}
-	if bool(parameters.get("priority_enabled", false)):
-		priority = {"destination_id": group_destinations[0], "moves": 6}
-	return {
-		"schema_version": 1, "id": level_id, "world": parameters["world"],
-		"seed": parameters["seed"], "content_version": 1,
-		"tray_capacity": parameters["tray_capacity"], "layout_template": parameters["layout_template"],
-		"difficulty": parameters["difficulty"], "items": items,
-		"mechanics": {"mystery": int(parameters.get("mystery_count", 0)), "locks": int(parameters.get("lock_count", 0)), "priority": priority}
-	}
+	var base_seed := int(parameters.get("seed", 1))
+	var best_level: Dictionary = {}
+	var best_result: Dictionary = {}
+	for attempt in 12:
+		var candidate_seed := base_seed + attempt * 104729
+		var candidate := _build_candidate(parameters, candidate_seed, attempt)
+		var solver = SolverScript.new()
+		solver.node_limit = 1500
+		var result: Dictionary = solver.solve_level(candidate)
+		candidate["quality"] = _quality_payload(result)
+		if best_level.is_empty() or _quality_rank(result) > _quality_rank(best_result):
+			best_level = candidate
+			best_result = result
+		if _quality_passes(result, parameters):
+			return candidate
+	best_level["quality"]["accepted_with_fallback"] = true
+	return best_level
 
 func generate_daily(date_key: String, salt: String) -> Dictionary:
 	var seed_value := int(hash(date_key + salt)) & 0x7fffffff
-	var params := campaign_parameters(118)
+	var params := campaign_parameters(maxi(1, campaign_count() - 8), seed_value)
 	params["id"] = 10000
-	params["seed"] = seed_value
-	params["world"] = 4
-	return generate_level(params)
+	params["mode"] = "daily"
+	var level := generate_level(params)
+	level["date_key"] = date_key
+	return level
 
-func _layout_point(layout: String, group_index: int, item_index: int, group_count: int) -> Array[float]:
-	var layer := float(group_index) / float(maxi(1, group_count - 1))
-	var x_positions := [0.24, 0.5, 0.76]
-	var x := float(x_positions[item_index])
-	var y := 0.24 + fmod(float(group_index), 5.0) * 0.105
-	match layout:
-		"wings": x += (-0.05 if item_index == 0 else (0.05 if item_index == 2 else 0.0)) * sin(layer * PI)
-		"diamond": x += (layer - 0.5) * (0.10 if item_index == 0 else -0.10 if item_index == 2 else 0.0)
-		"double_stack": y = 0.25 + float(group_index % 4) * 0.12
-		"spiral": x += sin(layer * TAU) * 0.08
-		"terminals": x = [0.2, 0.5, 0.8][item_index]
-		"bridge": y += 0.04 * absf(float(item_index - 1))
-		"cross": x = 0.5 if group_index % 2 == 0 else x
-		"split_islands": x += -0.07 if group_index % 2 == 0 else 0.07
-		"staircase": x += (float(group_index % 3) - 1.0) * 0.04
-		"ring": x += cos((float(group_index * 3 + item_index) / float(group_count * 3)) * TAU) * 0.08
-		"compact_box": x = [0.3, 0.5, 0.7][item_index]
-		"fan": x += (layer - 0.5) * (float(item_index) - 1.0) * 0.10
-		"twin_towers": x = [0.3, 0.5, 0.7][item_index] if group_index % 2 == 0 else [0.23, 0.5, 0.77][item_index]
-		"runway": y = 0.22 + layer * 0.45
-		_: pass
-	return [clampf(x, 0.12, 0.88), clampf(y, 0.18, 0.72)]
+func generate_shift(run_seed: int, round_number: int) -> Dictionary:
+	var round_seed := int(hash("%d:%d:airport-shift" % [run_seed, round_number])) & 0x7fffffff
+	var rng := RandomNumberGenerator.new()
+	rng.seed = round_seed
+	var event_id: String = String(SHIFT_EVENTS[int(rng.randi() % SHIFT_EVENTS.size())])
+	var stage := clampi(8 + round_number * 4, 8, campaign_count())
+	var params := campaign_parameters(stage, round_seed)
+	params["id"] = 20000 + round_number
+	params["mode"] = "shift"
+	params["shift_round"] = round_number
+	params["shift_event"] = event_id
+	if event_id == "heavy_load":
+		params["group_count"] = mini(11, int(params["group_count"]) + 1)
+	if event_id == "lost_tag":
+		params["mystery_count"] = maxi(3, int(params.get("mystery_count", 0)) + 2)
+	if event_id == "priority_flight":
+		params["priority_enabled"] = true
+	var level := generate_level(params)
+	level["shift_event"] = event_id
+	level["shift_round"] = round_number
+	return level
 
+func _build_candidate(parameters: Dictionary, layout_seed: int, attempt: int) -> Dictionary:
+	var rng := RandomNumberGenerator.new()
+	rng.seed = layout_seed
+	var group_count := int(parameters.get("group_count", 4))
+	var stack_count := clampi(int(parameters.get("stack_count", 6)), 5, STACK_ANCHORS.size())
+	var destination_count := clampi(int(parameters.get("destination_count", 3)), 3, mini(group_count, DESTINATIONS.size()))
+	var destination_pool: Array[String] = []
+	for destination: String in DESTINATIONS:
+		destination_pool.append(destination)
+	_shuffle(destination_pool, rng)
+	destination_pool = destination_pool.slice(0, destination_count)
+	var group_destinations: Array[String] = []
+	for index in group_count:
+		group_destinations.append(destination_pool[index % destination_pool.size()])
+	_shuffle(group_destinations, rng)
+	var stacks: Array[Array] = []
+	for _index in stack_count:
+		stacks.append([])
+	var items: Array[Dictionary] = []
+	var transfer_group := clampi(2 + int(rng.randi() % maxi(1, group_count - 2)), 0, group_count - 1)
+	var mystery_budget := int(parameters.get("mystery_count", 0))
+	for group_index in group_count:
+		var candidate_stacks: Array[int] = []
+		for stack_index in stack_count:
+			candidate_stacks.append(stack_index)
+		_shuffle(candidate_stacks, rng)
+		candidate_stacks.sort_custom(func(a: int, b: int) -> bool: return stacks[a].size() < stacks[b].size())
+		var selected_stacks := candidate_stacks.slice(0, 3)
+		for item_index in 3:
+			var destination := group_destinations[group_index]
+			var item_type := ""
+			var options: Array[String] = []
+			if bool(parameters.get("transfer_enabled", false)) and group_index == transfer_group and item_index == 2:
+				item_type = "transfer"
+				options = [destination, destination_pool[(destination_pool.find(destination) + 1) % destination_pool.size()]]
+			elif mystery_budget > 0 and group_index > 0 and item_index == int(group_index % 3):
+				item_type = "mystery"
+				mystery_budget -= 1
+			var stack_index := int(selected_stacks[item_index])
+			var item := {
+				"id": "l%05d_g%02d_%d" % [int(parameters.get("id", 0)), group_index, item_index],
+				"destination_id": destination,
+				"destination_options": options,
+				"group_index": group_index,
+				"stack_index": stack_index,
+				"region": stack_index % 3,
+				"position": [],
+				"size": [0.255, 0.125],
+				"rotation": rng.randf_range(-6.0, 6.0),
+				"scale": rng.randf_range(0.94, 1.04),
+				"z_index": 0,
+				"blocker_ids": [],
+				"special_type": item_type,
+				"special_data": {},
+				"lock_group": ""
+			}
+			stacks[stack_index].append(item)
+			items.append(item)
+	if bool(parameters.get("lock_enabled", false)):
+		var lock_group_index := clampi(2 + int(rng.randi() % maxi(1, group_count - 2)), 2, group_count - 1)
+		for item: Dictionary in items:
+			if int(item["group_index"]) == lock_group_index:
+				item["lock_group"] = "cargo_%d" % lock_group_index
+		var key_stack := int(rng.randi() % stack_count)
+		items.append({
+			"id": "key_%05d" % int(parameters.get("id", 0)), "destination_id": "",
+			"destination_options": [], "group_index": -1, "stack_index": key_stack,
+			"region": key_stack % 3, "position": [0.5, 0.13], "size": [0.17, 0.10],
+			"rotation": 0.0, "scale": 1.0, "z_index": 2000, "blocker_ids": [],
+			"special_type": "key", "special_data": {},
+			"key_group": "cargo_%d" % lock_group_index, "lock_group": ""
+		})
+	_position_and_block(items, stacks, rng, String(parameters.get("layout_template", "terminal_rows")))
+	var priority: Dictionary = {}
+	if bool(parameters.get("priority_enabled", false)):
+		var priority_group := clampi(2 + int(rng.randi() % mini(3, maxi(1, group_count - 2))), 2, group_count - 1)
+		priority = {"destination_id": group_destinations[priority_group], "moves": clampi(priority_group * 3 + 5, 8, 30)}
+	var belt_jam: Dictionary = {}
+	var vip: Dictionary = {}
+	var event_id := String(parameters.get("shift_event", ""))
+	if event_id == "belt_jam":
+		belt_jam = {"region": int(rng.randi() % 3), "moves": 3}
+	if event_id == "vip_baggage":
+		vip = {"destination_id": group_destinations[clampi(1 + int(rng.randi() % maxi(1, group_count - 1)), 1, group_count - 1)], "bonus": 35}
+	return {
+		"schema_version": 2,
+		"id": int(parameters.get("id", 0)),
+		"world": int(parameters.get("world", 1)),
+		"local_level": int(parameters.get("local_level", 1)),
+		"seed": int(parameters.get("seed", 1)),
+		"layout_seed": layout_seed,
+		"generation_attempt": attempt + 1,
+		"content_version": int(parameters.get("content_version", 2)),
+		"tray_capacity": int(parameters.get("tray_capacity", 7)),
+		"layout_template": String(parameters.get("layout_template", "terminal_rows")),
+		"difficulty_template": float(parameters.get("difficulty", 0.0)),
+		"items": items,
+		"mechanics": {
+			"mystery": int(parameters.get("mystery_count", 0)),
+			"locks": 1 if bool(parameters.get("lock_enabled", false)) else 0,
+			"transfer": 1 if bool(parameters.get("transfer_enabled", false)) else 0,
+			"priority": priority,
+			"belt_jam": belt_jam,
+			"vip": vip
+		}
+	}
+
+func _position_and_block(items: Array[Dictionary], stacks: Array[Array], rng: RandomNumberGenerator, layout: String) -> void:
+	for stack_index in stacks.size():
+		var anchor: Vector2 = Vector2(STACK_ANCHORS[stack_index])
+		if layout == "carousel":
+			var angle := TAU * float(stack_index) / float(stacks.size())
+			anchor = Vector2(0.5 + cos(angle) * 0.29, 0.43 + sin(angle) * 0.22)
+		elif layout == "split_belt":
+			anchor.x += -0.035 if stack_index % 2 == 0 else 0.035
+		elif layout == "runway_cross":
+			anchor.y += (float(stack_index % 3) - 1.0) * 0.025
+		for depth in stacks[stack_index].size():
+			var item: Dictionary = stacks[stack_index][depth]
+			var point: Vector2 = anchor + Vector2(rng.randf_range(-0.012, 0.012), float(depth) * 0.009)
+			item["position"] = [clampf(point.x, 0.12, 0.88), clampf(point.y, 0.16, 0.72)]
+			item["z_index"] = 1000 - depth * 10 - stack_index
+	for item: Dictionary in items:
+		if String(item.get("special_type", "")) == "key":
+			continue
+		var blockers: Array[String] = []
+		for candidate: Dictionary in items:
+			if candidate == item or String(candidate.get("special_type", "")) == "key":
+				continue
+			if int(candidate.get("z_index", 0)) > int(item.get("z_index", 0)) and _overlaps(item, candidate):
+				blockers.append(String(candidate["id"]))
+		blockers.sort()
+		item["blocker_ids"] = blockers
+
+func _overlaps(a: Dictionary, b: Dictionary) -> bool:
+	var ap: Array = a.get("position", [0.5, 0.5])
+	var bp: Array = b.get("position", [0.5, 0.5])
+	var asize: Array = a.get("size", [0.25, 0.125])
+	var bsize: Array = b.get("size", [0.25, 0.125])
+	return absf(float(ap[0]) - float(bp[0])) < (float(asize[0]) + float(bsize[0])) * 0.43 and absf(float(ap[1]) - float(bp[1])) < (float(asize[1]) + float(bsize[1])) * 0.43
+
+func _quality_passes(result: Dictionary, parameters: Dictionary) -> bool:
+	if not bool(result.get("solved", false)):
+		return false
+	var onboarding := int(parameters.get("id", 1)) <= 3 and String(parameters.get("mode", "campaign")) == "campaign"
+	var min_initial := 3 if onboarding else 4
+	var min_branching := 2.2 if onboarding else 2.8
+	var depth := maxi(1, int(result.get("solution_depth", 0)))
+	return int(result.get("initial_selectable_count", 0)) >= min_initial \
+		and float(result.get("average_branching_factor", 0.0)) >= min_branching \
+		and int(result.get("meaningful_decision_count", 0)) >= int(ceil(depth * (0.25 if onboarding else 0.45))) \
+		and float(result.get("forced_move_ratio", 1.0)) <= (0.35 if onboarding else 0.20) \
+		and int(result.get("peak_expected_tray_pressure", 0)) >= 3
+
+func _quality_payload(result: Dictionary) -> Dictionary:
+	var keys := [
+		"solved", "solution_depth", "nodes_explored", "average_branching_factor",
+		"initial_selectable_count", "average_selectable_count", "meaningful_decision_count",
+		"forced_move_ratio", "peak_expected_tray_pressure", "dead_end_count",
+		"difficulty_score"
+	]
+	var payload: Dictionary = {}
+	for key: String in keys:
+		payload[key] = result.get(key)
+	return payload
+
+func _quality_rank(result: Dictionary) -> float:
+	if result.is_empty() or not bool(result.get("solved", false)):
+		return -1000.0
+	return float(result.get("average_branching_factor", 0.0)) * 10.0 \
+		+ float(result.get("meaningful_decision_count", 0)) \
+		- float(result.get("forced_move_ratio", 1.0)) * 20.0
+
+func _shuffle(values: Array, rng: RandomNumberGenerator) -> void:
+	for index in range(values.size() - 1, 0, -1):
+		var swap_index := int(rng.randi_range(0, index))
+		var value = values[index]
+		values[index] = values[swap_index]
+		values[swap_index] = value

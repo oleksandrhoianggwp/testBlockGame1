@@ -2,42 +2,55 @@
 
 ## Core loop
 
-The player reads a layered luggage pile, taps one accessible case, watches it enter the tray, and tries to make destination triplets before seven slots fill. A match removes exactly three pieces, scores 100 plus a combo bonus, and exposes the next layer. Levels are short and deterministic; the tension comes from sequencing, not hidden randomness.
+The player taps exposed luggage in a layered airport pile. The chosen item animates into a seven-slot conveyor tray. Three pieces assigned to the same destination dispatch and leave the tray. Clearing all luggage wins; reaching capacity after match resolution loses.
+
+The board is a spatial decision puzzle, not a sequence of destination layers. Five to eight overlapping pile regions normally expose four to ten pieces from several destinations. A safe triplet may exist, but other exposed tags tempt the player to trade tray capacity for access to deeper luggage.
 
 ## Campaign
 
-Five 30-level worlds form the 150-level campaign: Local Terminal teaches base matching; International Terminal introduces revealed Mystery luggage; Cargo Terminal adds reachable keys and locks; Midnight Hub adds move-limited Priority Flights; Skyport combines established rules. The first three levels are tightly controlled. Level 150 uses all established mechanics and is solver-verified.
+Campaign structure lives in `data/configs/campaign.json`. It currently defines five worlds with 15 stages each:
 
-Campaign access depends only on completed levels. Renovation and stars never gate play.
+1. Regional Terminal: core sorting, overlap depth, first hard stage and Rush milestone.
+2. International Terminal: Mystery Baggage appears in varied selectable states.
+3. Cargo Hub: keys open luggage across multiple pile paths.
+4. Midnight Airport: move-based Priority Flights require planning.
+5. Skyport: Transfer Baggage combines the established mechanics.
 
-## Mechanics and boosters
+Stage 8 is a hard level; stage 15 is a Rush/milestone board. A template controls groups, destination range, pile count, mechanics, and difficulty. The first-open seed is saved until clear, so Retry is fair and reproducible.
 
-- Mystery destination is hidden only while covered and reveals as soon as it becomes selectable.
-- A key consumes no tray slot and unlocks every item in its lock group.
-- Each normal selection decrements Priority moves; keys do not. Dispatching that destination's triplet succeeds at zero, but any other unresolved flight at zero loses.
-- Undo restores the complete pre-action domain snapshot.
-- Shuffle preserves counts and solvability by remapping whole remaining destination groups.
-- Extra Slot expands capacity from seven to eight once per attempt.
+## Mechanics
 
-Starting inventory is Undo 3, Shuffle 3, Extra Slot 2. Campaign is validated and beatable without them.
+- Mystery Baggage: its tag is hidden while covered and reveals when selectable. Because multiple destinations remain exposed, the reveal adds information to a real choice.
+- Locks and Keys: a key occupies one selectable path, unlocks a group spanning other pile regions, and never enters the tray.
+- Priority Flight: a non-opening destination must dispatch within a move budget. Keys do not consume the budget.
+- Transfer Baggage: shows two destination tags. The player chooses which flight receives it before the item enters the tray.
+- Belt Jam: an Airport Shift event temporarily blocks one pile region for a small number of normal moves.
+- VIP Baggage: dispatching the marked destination without a booster grants a bonus.
 
-## Results, score and economy
+Campaign pressure uses moves, never real-time timers.
 
-A triplet scores 100 with +20 per continuing combo. Priority flights add remaining-move bonus; clear adds 250. Three stars require at most one booster and peak tray pressure of five or less; two allow two boosters; any clear earns one. A normal clear gives 40 coins, 10 per star, 20 extra on first clear and 15 for priority levels.
+## Airport Shift
 
-The player begins with 200 coins. Each world has six renovation objects and three visual stages. Costs are 100, 150 and 220 times the world number. Fully upgrading an object grants a rotating booster. Upgrades are cosmetic.
+Airport Shift replaces the old endless mode. A persisted run seed and round number reproduce both the board and event. Difficulty increases across rounds. Events are applied before solver validation:
 
-## Additional modes
+- Priority Flight
+- Lost Tag
+- Belt Jam
+- VIP Baggage
+- Heavy Load
 
-Daily Challenge derives its seed from local date, content version salt, and stable hashing. It grants once per local date, tracks best score, and maintains a simple consecutive-day streak up to seven. Device date changes reset rather than corrupt state.
+No event may ship an impossible board. Score and high score remain local.
 
-Endless unlocks after campaign level 20. Each cleared round raises the generated difficulty; score carries between rounds and local high score persists. Tray overflow ends the run.
+## Airport renovation and economy
 
-## Onboarding and accessibility
+Coins come from first clears, stars, Daily, Shift, and challenge bonuses. They fund seven visible airport zones with four visual states: Entrance, Check-in, Baggage Hall, Security, Cafe, Control Tower, and Runway.
 
-Contextual prompts appear on campaign levels 1, 2, 3, 31, 61 and 91, then persist as completed. Settings can replay them. Destination code, symbol, color and pattern communicate identity together. Large touch targets, portrait safe margins, text scaling, sound/haptic toggles and reduced motion are available.
+Final zone stages can provide small perks: a free Undo charge, a Mystery reveal, extra Priority movement, or a first-clear coin bonus. These perks reduce friction without replacing puzzle decisions.
 
-## Monetization
+## Stars and results
 
-The core game is complete offline. Optional rewarded ads can continue once with one temporary slot; interstitials are reserved for natural transitions and are never required. The shipped desktop service is a controllable mock. Android production ads remain disabled until publisher IDs, UMP consent and the pinned plugin are configured.
+Three stars reward low booster use and controlled tray pressure. Every win shows stars, coins, challenge status, and airport renovation progress. Failure identifies tray overflow or a missed Priority Flight. Retry always reuses the same unresolved board.
 
+## Accessibility and offline play
+
+Destination identity combines code, color, tag shape, and luggage treatment. Settings include EN/UK language, text scaling, sound, music, haptics, and reduced motion. All gameplay and persistence work in airplane mode.
