@@ -1,13 +1,22 @@
-# Decisions
-
-1. Compatibility renderer is used for broad low/mid-range Android support.
-2. The reference canvas is 432×768 with Containers and normalized board positions; Godot stretch handles common portrait ratios.
-3. Minimum SDK 24 is the development baseline; target SDK is 36 as required by the product brief. Reconfirm the final minimum against the installed AdMob v7.0 artifact before publication.
-4. Campaign stages are procedural templates. Individual luggage is seed-shuffled across geometric pile regions; an independent solver and decision thresholds reject impossible or nearly linear candidates.
-5. Keys do not consume Priority moves because they do not enter the tray.
-6. Save schema/content version 2 persists a campaign seed until clear. Representative baked JSON is CI evidence, while runtime regeneration remains deterministic for the saved seed.
-7. AdMob binaries are not vendored without publisher setup. The project pins optional `godot-sdk-integrations/godot-admob` v7.0, which states Godot 4.7 support; desktop/release-without-ads behavior remains complete.
-8. No external font is bundled. Godot's platform font fallback supplies Latin and Cyrillic, avoiding an unnecessary third-party font license.
-9. Local analytics are debug-only JSONL with no identifiers and no network transport.
-10. Final publisher identity, production package ID, AdMob IDs, privacy contact and signing credentials are external release inputs.
+# Decisions — content revision 3
+1. Preserve GameState/Generator/Solver and the existing screen/service split.
+2. Compatibility rendering, 432×768 expanding portrait canvas and small SVGs
+   support broad hardware; exact mobile layout render is not device FPS proof.
+3. One global airport replaces per-world inventories. Migration takes highest
+   stage and refunds excess old investment; no wallet/completion/booster loss.
+4. Costs are explicit per-zone stages, never multiplied by campaign world.
+5. Shift unbanked earnings are transactional: 100% voluntary cash-out, 60%
+   failure, no permanent wallet loss. Board/history/charges survive restart.
+6. Exposure scrambling and outcome equivalence make choices strategic.
+   Solver proof, pressure floors and deterministic profile simulations reject
+   candidates on quality. Exhaustion fails explicitly and widens at runtime.
+7. The 63.19% rejection rate exceeds the approximate guide; preserve measured
+   results and mark calibration needs rather than weakening or hiding evidence.
+8. Native font rendering is used for final PNG branding because Godot SVG
+   import does not render the SVG wordmark text.
+9. Original imagegen atmosphere/key art complements interactive reproducible
+   vector assets. No third-party fonts/audio are downloaded.
+10. Ads stay optional and disabled without publisher setup/consent. Debug local
+    analytics stay local. Signing credentials and publisher contact stay out
+    of Git. Debug packaging is not Play production certification.
 

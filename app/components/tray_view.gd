@@ -1,49 +1,60 @@
 class_name TrayView
-extends PanelContainer
-
-var title_label: Label
-var slots_row: HBoxContainer
+extends Control
+var values: Array[String] = []
+var capacity: int = 7
+var codes: Dictionary = {}
+var colors: Dictionary = {}
+var dispatch_destination: String = ""
+var dispatch_offset: float = 0.0
+var glow: float = 0.0
+var combo: int = 0
 
 func _ready() -> void:
-	add_theme_stylebox_override("panel", UiKit.panel(Color("27324D"), 20, Color("4B5875"), 2))
-	var column := VBoxContainer.new()
-	column.add_theme_constant_override("separation", 5)
-	add_child(column)
-	title_label = UiKit.label("", 13, true)
-	title_label.add_theme_color_override("font_color", UiKit.PAPER)
-	column.add_child(title_label)
-	slots_row = HBoxContainer.new()
-	slots_row.alignment = BoxContainer.ALIGNMENT_CENTER
-	slots_row.add_theme_constant_override("separation", 4)
-	slots_row.custom_minimum_size.y = 47
-	column.add_child(slots_row)
+	custom_minimum_size.y = 105
 
-func refresh(tray: Array[String], capacity: int, codes: Dictionary, colors: Dictionary) -> void:
-	title_label.text = "%s  %d/%d" % [tr("game.tray"), tray.size(), capacity]
-	for child in slots_row.get_children():
-		child.queue_free()
-	for destination: String in tray:
-		var tag := Label.new()
-		tag.text = String(codes.get(destination, destination.to_upper()))
-		tag.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		tag.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-		tag.custom_minimum_size = Vector2(43, 42)
-		tag.add_theme_font_size_override("font_size", 11)
-		tag.add_theme_color_override("font_color", UiKit.INK)
-		tag.add_theme_stylebox_override("normal", UiKit.panel(Color(String(colors.get(destination, "70809b"))), 10))
-		slots_row.add_child(tag)
-	for _slot in range(tray.size(), capacity):
-		var empty := Label.new()
-		empty.text = "·"
-		empty.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		empty.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-		empty.custom_minimum_size = Vector2(38, 42)
-		empty.add_theme_color_override("font_color", Color("A9B2C7"))
-		empty.add_theme_stylebox_override("normal", UiKit.panel(Color("3A4662"), 10))
-		slots_row.add_child(empty)
+func refresh(tray: Array[String], count: int, destination_codes: Dictionary, destination_colors: Dictionary) -> void:
+	values = tray.duplicate()
+	capacity = count
+	codes = destination_codes
+	colors = destination_colors
+	dispatch_destination = ""
+	dispatch_offset = 0
+	glow = 0
+	queue_redraw()
 
-func target_global_position(slot_index: int) -> Vector2:
-	if slots_row.get_child_count() == 0:
-		return global_position + size * 0.5
-	var safe_index := clampi(slot_index, 0, slots_row.get_child_count() - 1)
-	return (slots_row.get_child(safe_index) as Control).get_global_rect().get_center()
+func _draw() -> void:
+	draw_style_box(UiKit.panel(UiKit.NAVY,22,Color("6C8299"),2),Rect2(0,7,size.x,92))
+	draw_line(Vector2(13,88),Vector2(size.x-13,88),UiKit.MINT,4,true)
+	for x in range(20,int(size.x-12),18):
+		draw_line(Vector2(x,91),Vector2(x+5,94),Color("61738E"),2)
+	draw_string(ThemeDB.fallback_font,Vector2(0,25),tr("game.tray"),HORIZONTAL_ALIGNMENT_CENTER,size.x,12,UiKit.PAPER)
+	var w := (size.x-24)/capacity
+	for i in capacity:
+		var rect := Rect2(12+i*w,36,w-4,42)
+		draw_style_box(UiKit.panel(Color("364B68"),8),rect)
+		if i < values.size():
+			var dest: String = values[i]
+			if dest == dispatch_destination:
+				rect.position.x += dispatch_offset
+				draw_style_box(UiKit.panel(Color(1,.85,.4,glow),8),rect.grow(3))
+			var color := Color(String(colors.get(dest,"75cdb2")))
+			draw_style_box(UiKit.panel(color,7),rect.grow(-2))
+			draw_style_box(UiKit.panel(UiKit.PAPER,4),Rect2(rect.position+Vector2(3,12),Vector2(rect.size.x-6,23)))
+			draw_string(ThemeDB.fallback_font,rect.position+Vector2(2,28),String(codes.get(dest,dest.to_upper())),HORIZONTAL_ALIGNMENT_CENTER,rect.size.x-4,10,UiKit.INK)
+	if not dispatch_destination.is_empty():
+		draw_string(ThemeDB.fallback_font,Vector2(0,8),tr("game.combo") % combo,HORIZONTAL_ALIGNMENT_CENTER,size.x,14,UiKit.INK)
+
+func target_global_position(index: int) -> Vector2:
+	var w := (size.x-24)/capacity
+	return global_position+Vector2(12+(clampi(index,0,capacity-1)+.5)*w,55)
+
+func animate_dispatch(destination: String, value: int) -> void:
+	dispatch_destination = destination
+	combo = value
+	glow = .8
+	queue_redraw()
+	if UiKit.reduced_motion: return
+	var tween := create_tween()
+	tween.tween_method(func(v: float) -> void: glow=v; queue_redraw(),.8,1.0,.12)
+	tween.tween_method(func(v: float) -> void: dispatch_offset=v; queue_redraw(),0.0,size.x,.25).set_trans(Tween.TRANS_QUAD)
+	await tween.finished

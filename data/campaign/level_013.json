@@ -1,5 +1,5 @@
 {
-  "content_version": 2,
+  "content_version": 3,
   "difficulty_template": 0.162,
   "generation_attempt": 1,
   "id": 13,
@@ -12,7 +12,7 @@
       "id": "l00013_g00_0",
       "lock_group": "",
       "position": [
-        0.23016545176506,
+        0.229062035679817,
         0.540000021457672
       ],
       "region": 0,
@@ -35,7 +35,7 @@
       "id": "l00013_g00_1",
       "lock_group": "",
       "position": [
-        0.162901967763901,
+        0.16861854493618,
         0.270000010728836
       ],
       "region": 0,
@@ -58,7 +58,7 @@
       "id": "l00013_g00_2",
       "lock_group": "",
       "position": [
-        0.768618524074554,
+        0.762017071247101,
         0.270000010728836
       ],
       "region": 2,
@@ -81,7 +81,7 @@
       "id": "l00013_g01_0",
       "lock_group": "",
       "position": [
-        0.829062044620514,
+        0.82662034034729,
         0.540000021457672
       ],
       "region": 2,
@@ -104,7 +104,7 @@
       "id": "l00013_g01_1",
       "lock_group": "",
       "position": [
-        0.462017118930817,
+        0.471060186624527,
         0.509999990463257
       ],
       "region": 1,
@@ -127,7 +127,7 @@
       "id": "l00013_g01_2",
       "lock_group": "",
       "position": [
-        0.531304538249969,
+        0.530165493488312,
         0.239999994635582
       ],
       "region": 1,
@@ -152,7 +152,7 @@
       "id": "l00013_g02_0",
       "lock_group": "",
       "position": [
-        0.766999363899231,
+        0.755127549171448,
         0.279000014066696
       ],
       "region": 2,
@@ -177,7 +177,7 @@
       "id": "l00013_g02_1",
       "lock_group": "",
       "position": [
-        0.535617053508759,
+        0.52457183599472,
         0.248999997973442
       ],
       "region": 1,
@@ -202,7 +202,7 @@
       "id": "l00013_g02_2",
       "lock_group": "",
       "position": [
-        0.840102016925812,
+        0.824799656867981,
         0.549000024795532
       ],
       "region": 2,
@@ -227,7 +227,7 @@
       "id": "l00013_g03_0",
       "lock_group": "",
       "position": [
-        0.224571794271469,
+        0.240101963281631,
         0.549000024795532
       ],
       "region": 0,
@@ -252,7 +252,7 @@
       "id": "l00013_g03_1",
       "lock_group": "",
       "position": [
-        0.455127567052841,
+        0.466244280338287,
         0.518999993801117
       ],
       "region": 1,
@@ -277,7 +277,7 @@
       "id": "l00013_g03_2",
       "lock_group": "",
       "position": [
-        0.162571340799332,
+        0.166999399662018,
         0.279000014066696
       ],
       "region": 0,
@@ -303,7 +303,7 @@
       "id": "l00013_g04_0",
       "lock_group": "",
       "position": [
-        0.470375061035156,
+        0.467672795057297,
         0.527999997138977
       ],
       "region": 1,
@@ -321,6 +321,7 @@
     {
       "blocker_ids": [
         "l00013_g01_2",
+        "l00013_g02_0",
         "l00013_g02_1"
       ],
       "destination_id": "rio",
@@ -329,7 +330,7 @@
       "id": "l00013_g04_1",
       "lock_group": "",
       "position": [
-        0.543767869472504,
+        0.53924298286438,
         0.257999986410141
       ],
       "region": 1,
@@ -347,8 +348,7 @@
     {
       "blocker_ids": [
         "l00013_g00_0",
-        "l00013_g03_0",
-        "l00013_g03_1"
+        "l00013_g03_0"
       ],
       "destination_id": "rio",
       "destination_options": [],
@@ -356,7 +356,7 @@
       "id": "l00013_g04_2",
       "lock_group": "",
       "position": [
-        0.23924295604229,
+        0.243078112602234,
         0.558000028133392
       ],
       "region": 0,
@@ -382,7 +382,7 @@
       "id": "l00013_g05_0",
       "lock_group": "",
       "position": [
-        0.843078136444092,
+        0.846773207187653,
         0.558000028133392
       ],
       "region": 2,
@@ -400,8 +400,7 @@
     {
       "blocker_ids": [
         "l00013_g00_2",
-        "l00013_g02_0",
-        "l00013_g04_1"
+        "l00013_g02_0"
       ],
       "destination_id": "yto",
       "destination_options": [],
@@ -409,7 +408,7 @@
       "id": "l00013_g05_1",
       "lock_group": "",
       "position": [
-        0.75994861125946,
+        0.770375072956085,
         0.288000017404556
       ],
       "region": 2,
@@ -435,7 +434,7 @@
       "id": "l00013_g05_2",
       "lock_group": "",
       "position": [
-        0.161113008856773,
+        0.159948632121086,
         0.288000017404556
       ],
       "region": 0,
@@ -463,15 +462,23 @@
     "vip": {}
   },
   "quality": {
-    "average_branching_factor": 5.0,
-    "average_selectable_count": 5.0,
+    "average_branching_factor": 5.17,
+    "average_failure_pressure": 7.0,
+    "average_moves_to_failure": 10.0,
+    "average_selectable_count": 5.17,
+    "average_simulated_pressure": 4.83,
+    "balanced_win_rate": 1.0,
     "dead_end_count": 0,
-    "difficulty_score": 0.577,
+    "difficulty_score": 0.583,
     "forced_move_ratio": 0.056,
+    "greedy_win_rate": 1.0,
     "initial_selectable_count": 6,
-    "meaningful_decision_count": 14,
-    "nodes_explored": 108,
+    "meaningful_choice_score": 0.644,
+    "meaningful_decision_count": 12,
+    "nodes_explored": 111,
     "peak_expected_tray_pressure": 3,
+    "random_win_rate": 0.667,
+    "simulation_runs_per_profile": 6,
     "solution_depth": 18,
     "solved": true
   },

@@ -1,20 +1,21 @@
-# Release checklist
+# Release checklist — 2.1.0
 
-- [ ] Version name/code updated in config and both export presets.
-- [ ] `75/75 levels validated`; 10,000-board stress has zero impossible boards and acceptable p95 solve time.
-- [ ] Import, parser, unit/integration and headless smoke tests pass in CI.
-- [ ] Debug menu and debug local analytics absent from release behavior.
-- [ ] Publisher-owned package ID replaces `com.lostandsorted.game`.
-- [ ] Production AdMob app/unit IDs supplied outside Git; v7.0 license/notices reviewed.
-- [ ] UMP consent and privacy-options reopening tested in applicable regions.
-- [ ] Release keystore backed up and signing variables configured outside Git.
-- [ ] Target API 36 verified from built AAB manifest and Play Console.
-- [ ] Launcher, adaptive foreground/background and monochrome icons verified.
-- [ ] Hosted privacy-policy URL uses real publisher contact.
-- [ ] Store listing, Data Safety answers and content rating reviewed by publisher.
-- [ ] Release AAB built and uploaded to Play internal testing.
-- [ ] Install/update from Play internal track on at least two aspect ratios.
-- [ ] Airplane-mode, schema-1 save migration, force-close and corrupted-save tests pass.
-- [ ] Ads tested only with test devices before switching to production units.
-- [ ] Crash/log check and final smoke test complete.
+## Validated locally
+- [x] Version 2.1.0/code 3 in both presets and configuration.
+- [x] 55 automated tests; 75 campaign boards; 10000-board stress without failure.
+- [x] EN/UK real-flow QA and original adaptive/monochrome suitcase icons.
+- [x] Real screenshots and 1024×500 feature PNG.
+- [x] Debug APK 2.1.0/code 3, v2 signature and clean ZIP contents verified.
+- [x] Save schema1/2 migration, numeric JSON round-trip and isolated QA profiles.
+- [x] Ads remain disabled without publisher setup; local analytics are debug-only.
+
+## Required before Play production
+- [ ] Publisher-owned package identity and public privacy contact/URL.
+- [ ] Backed-up release keystore outside Git.
+- [ ] Signed release AAB, manifest check and Play internal-track upload.
+- [ ] Data Safety, content rating and store copy reviewed by publisher.
+- [ ] Physical install/update, FPS, memory, touch, notch and haptics QA.
+- [ ] Airplane-mode play and real interrupted-Shift/force-close save recovery.
+- [ ] Human difficulty/economy playtesting; later generation latency calibration.
+- [ ] Production AdMob/UMP setup and test-device validation only if enabling ads.
 

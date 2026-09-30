@@ -1,12 +1,14 @@
 extends Node
 
-const SAVE_VERSION := 2
-const CAMPAIGN_CONTENT_VERSION := 2
+const SAVE_VERSION := 3
+const CAMPAIGN_CONTENT_VERSION := 3
+const Economy = preload("res://core/progression/airport_economy.gd")
 const SAVE_PATH := "user://lost_sorted_save.json"
 const BACKUP_PATH := "user://lost_sorted_save.backup.json"
 const TEMP_PATH := "user://lost_sorted_save.tmp"
 
 var data: Dictionary = {}
+var persistence_enabled: bool = true
 
 func _ready() -> void:
 	load_profile()
@@ -22,9 +24,10 @@ func defaults() -> Dictionary:
 		"levels": {},
 		"worlds": {},
 		"airport_progress": {},
-		"airport_perks": {"undo_charge": 0, "mystery_reveal": 0, "priority_move": 0, "first_clear_bonus": 0},
+		"airport": {},
+		"airport_perks": {"undo_charge": 0, "mystery_reveal": 0, "priority_move": 0, "first_clear_bonus": 0, "performance_bonus": 0},
 		"daily": {"last_rewarded_date": "", "last_played_date": "", "streak": 0, "best_scores": {}},
-		"shift": {"high_score": 0, "active_seed": 0, "round": 0, "score": 0, "last_event": ""},
+		"shift": {"high_score": 0, "active_seed": 0, "round": 0, "score": 0, "last_event": "", "earnings": 0, "awaiting_decision": false, "board_snapshot": {}, "board_history": [], "free_undo": false, "free_reveal": false},
 		"endless": {"high_score": 0},
 		"tutorials": {},
 		"settings": {"master_sound": true, "music": true, "sfx": true, "haptics": true, "reduced_motion": false, "text_scale": 1.0, "language": ""},
@@ -71,7 +74,26 @@ func migrate(source: Dictionary) -> Dictionary:
 		migrated["airport_progress"] = old_airport
 		var old_endless: Dictionary = migrated.get("endless", {})
 		migrated["shift"] = {"high_score": int(old_endless.get("high_score", 0)), "active_seed": 0, "round": 0, "score": 0, "last_event": ""}
-	version = 2
+	if version < 3:
+		var hub: Dictionary = migrated.get("airport", {}).duplicate(true)
+		var duplicated_value := 0
+		for zone: String in Economy.ZONES:
+			var highest := int(hub.get(zone, 0))
+			var paid := 0
+			for world_key: String in migrated.get("airport_progress", {}):
+				var stage := clampi(int(migrated["airport_progress"][world_key].get(zone, 0)), 0, 3)
+				highest = maxi(highest, stage)
+				for step in stage:
+					paid += int([100, 150, 220][step]) * maxi(1, int(world_key))
+			hub[zone] = highest
+			var new_value := 0
+			for step in highest:
+				new_value += Economy.cost(zone, step)
+			duplicated_value += maxi(0, paid - new_value)
+		migrated["airport"] = hub
+		migrated["airport_perks"] = Economy.perks(hub)
+		migrated["coins"] = int(migrated.get("coins", 200)) + duplicated_value
+		migrated["airport_progress"] = {}
 	if int(migrated.get("campaign_content_version", 0)) != CAMPAIGN_CONTENT_VERSION:
 		migrated["campaign_seeds"] = {}
 		migrated["campaign_content_version"] = CAMPAIGN_CONTENT_VERSION
@@ -79,6 +101,7 @@ func migrate(source: Dictionary) -> Dictionary:
 	return migrated
 
 func save_profile() -> bool:
+	if not persistence_enabled: return true
 	var file := FileAccess.open(TEMP_PATH, FileAccess.WRITE)
 	if file == null:
 		push_error("Unable to open temporary save file: %s" % FileAccess.get_open_error())
@@ -123,7 +146,7 @@ func complete_level(level_id: int, stars: int, score: int, coins_earned: int, ca
 	data["current_level"] = maxi(int(data["current_level"]), mini(campaign_count, level_id + 1))
 	data["campaign_seeds"].erase(key)
 	var first_clear_bonus := int(data.get("airport_perks", {}).get("first_clear_bonus", 0)) if first_clear else 0
-	data["coins"] = int(data["coins"]) + coins_earned + (20 if first_clear else 0) + first_clear_bonus
+	data["coins"] = int(data["coins"]) + coins_earned + (20 if first_clear else 0) + first_clear_bonus + int(data["airport_perks"].get("performance_bonus", 0))
 	if persist:
 		save_profile()
 
@@ -139,21 +162,18 @@ func add_booster(booster: String, amount: int = 1) -> void:
 	data["boosters"][booster] = int(data["boosters"].get(booster, 0)) + amount
 	save_profile()
 
-func purchase_airport_upgrade(world: int, object_id: String, costs: Array) -> bool:
-	var world_key := str(world)
-	if not data["airport_progress"].has(world_key):
-		data["airport_progress"][world_key] = {}
-	var stage := int(data["airport_progress"][world_key].get(object_id, 0))
-	if stage >= 3:
+func purchase_airport_upgrade(_world: int, object_id: String, _costs: Array = [], persist: bool = true) -> bool:
+	var stage := int(data["airport"].get(object_id, 0))
+	if object_id not in Economy.ZONES or stage >= 3:
 		return false
-	var cost := int(costs[stage]) * world
+	var cost := Economy.cost(object_id, stage)
 	if int(data["coins"]) < cost:
 		return false
 	data["coins"] = int(data["coins"]) - cost
-	data["airport_progress"][world_key][object_id] = stage + 1
-	if stage + 1 == 3:
-		_apply_milestone_perk(object_id)
-	save_profile()
+	data["airport"][object_id] = stage + 1
+	data["airport_perks"] = Economy.perks(data["airport"])
+	if persist:
+		save_profile()
 	return true
 
 func _apply_milestone_perk(object_id: String) -> void:
@@ -163,7 +183,7 @@ func _apply_milestone_perk(object_id: String) -> void:
 		"tower": data["airport_perks"]["priority_move"] = mini(2, int(data["airport_perks"].get("priority_move", 0)) + 1)
 		"cafe": data["airport_perks"]["first_clear_bonus"] = mini(15, int(data["airport_perks"].get("first_clear_bonus", 0)) + 5)
 
-func begin_shift(seed_override: int = -1) -> int:
+func begin_shift(seed_override: int = -1, persist: bool = true) -> int:
 	var seed_value := seed_override
 	if seed_value < 0:
 		seed_value = int(Time.get_ticks_usec() ^ int(Time.get_unix_time_from_system())) & 0x7fffffff
@@ -171,22 +191,73 @@ func begin_shift(seed_override: int = -1) -> int:
 	data["shift"]["round"] = 1
 	data["shift"]["score"] = 0
 	data["shift"]["last_event"] = ""
-	save_profile()
+	data["shift"]["earnings"] = 0
+	data["shift"]["awaiting_decision"] = false
+	data["shift"]["board_snapshot"] = {}
+	data["shift"]["board_history"] = []
+	if persist:
+		save_profile()
 	return int(data["shift"]["active_seed"])
 
-func advance_shift(round_score: int, event_id: String) -> void:
+func advance_shift(round_score: int, event_id: String, reward: int = 0, persist: bool = true) -> int:
+	if bool(data["shift"].get("awaiting_decision", false)):
+		return 0
+	var earned := int(round(reward * Economy.shift_multiplier(int(data["shift"].get("round", 1)))))
+	data["shift"]["earnings"] = int(data["shift"].get("earnings", 0)) + earned
+	data["shift"]["awaiting_decision"] = true
+	data["shift"]["board_snapshot"] = {}
+	data["shift"]["board_history"] = []
 	data["shift"]["score"] = int(data["shift"].get("score", 0)) + round_score
 	data["shift"]["round"] = int(data["shift"].get("round", 1)) + 1
 	data["shift"]["last_event"] = event_id
 	data["shift"]["high_score"] = maxi(int(data["shift"].get("high_score", 0)), int(data["shift"]["score"]))
+	if persist:
+		save_profile()
+	return earned
+
+func continue_shift(persist: bool = true) -> void:
+	data["shift"]["awaiting_decision"] = false
+	if persist:
+		save_profile()
+
+func cash_out_shift(failed: bool = false, persist: bool = true) -> int:
+	var earnings := maxi(0, int(data["shift"].get("earnings", 0)))
+	var banked := int(floor(earnings * float(Economy.config()["shift_failure_keep"]))) if failed else earnings
+	data["coins"] = int(data["coins"]) + banked
+	end_shift(persist)
+	return banked
+
+func remember_shift(snapshot: Dictionary, undo_history: Array, free_undo: bool, free_reveal: bool) -> void:
+	data["shift"]["board_snapshot"] = snapshot.duplicate(true)
+	data["shift"]["board_history"] = undo_history.duplicate(true)
+	data["shift"]["free_undo"] = free_undo
+	data["shift"]["free_reveal"] = free_reveal
 	save_profile()
 
-func end_shift() -> void:
+func tutorial_seen(id: String) -> bool:
+	return bool(data["tutorials"].get(id, false))
+
+func complete_tutorial(id: String, persist: bool = true) -> void:
+	data["tutorials"][id] = true
+	if persist:
+		save_profile()
+
+func replay_tutorials(persist: bool = true) -> void:
+	data["tutorials"] = {}
+	if persist:
+		save_profile()
+
+func end_shift(persist: bool = true) -> void:
 	data["shift"]["high_score"] = maxi(int(data["shift"].get("high_score", 0)), int(data["shift"].get("score", 0)))
 	data["shift"]["active_seed"] = 0
 	data["shift"]["round"] = 0
 	data["shift"]["score"] = 0
-	save_profile()
+	data["shift"]["earnings"] = 0
+	data["shift"]["awaiting_decision"] = false
+	data["shift"]["board_snapshot"] = {}
+	data["shift"]["board_history"] = []
+	if persist:
+		save_profile()
 
 func reset_profile() -> void:
 	data = defaults()
@@ -215,3 +286,5 @@ func _merge_known(target: Dictionary, source: Dictionary) -> void:
 				_merge_known(target[key], source[key])
 		elif typeof(source[key]) == typeof(target[key]) or target[key] == null:
 			target[key] = source[key]
+		elif typeof(target[key]) in [TYPE_INT, TYPE_FLOAT] and typeof(source[key]) in [TYPE_INT, TYPE_FLOAT]:
+			target[key] = int(source[key]) if typeof(target[key]) == TYPE_INT else float(source[key])

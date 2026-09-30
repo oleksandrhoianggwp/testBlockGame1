@@ -1,5 +1,5 @@
 {
-  "content_version": 2,
+  "content_version": 3,
   "difficulty_template": 0.149,
   "generation_attempt": 1,
   "id": 12,
@@ -12,7 +12,7 @@
       "id": "l00012_g00_0",
       "lock_group": "",
       "position": [
-        0.357388883829117,
+        0.355085760354996,
         0.620525598526001
       ],
       "region": 2,
@@ -35,7 +35,7 @@
       "id": "l00012_g00_1",
       "lock_group": "",
       "position": [
-        0.217306390404701,
+        0.221712812781334,
         0.430000007152557
       ],
       "region": 0,
@@ -58,7 +58,7 @@
       "id": "l00012_g00_2",
       "lock_group": "",
       "position": [
-        0.355085760354996,
+        0.352691680192947,
         0.239474415779114
       ],
       "region": 1,
@@ -81,7 +81,7 @@
       "id": "l00012_g01_0",
       "lock_group": "",
       "position": [
-        0.651969909667969,
+        0.652306377887726,
         0.620525598526001
       ],
       "region": 1,
@@ -104,7 +104,7 @@
       "id": "l00012_g01_1",
       "lock_group": "",
       "position": [
-        0.793515980243683,
+        0.792388916015625,
         0.430000007152557
       ],
       "region": 0,
@@ -127,7 +127,7 @@
       "id": "l00012_g01_2",
       "lock_group": "",
       "position": [
-        0.656712830066681,
+        0.637317359447479,
         0.239474415779114
       ],
       "region": 2,
@@ -152,7 +152,7 @@
       "id": "l00012_g02_0",
       "lock_group": "",
       "position": [
-        0.34443736076355,
+        0.346823066473007,
         0.248474419116974
       ],
       "region": 1,
@@ -177,7 +177,7 @@
       "id": "l00012_g02_1",
       "lock_group": "",
       "position": [
-        0.645621597766876,
+        0.653986811637878,
         0.248474419116974
       ],
       "region": 2,
@@ -202,7 +202,7 @@
       "id": "l00012_g02_2",
       "lock_group": "",
       "position": [
-        0.650001108646393,
+        0.652466893196106,
         0.629525601863861
       ],
       "region": 1,
@@ -227,7 +227,7 @@
       "id": "l00012_g03_0",
       "lock_group": "",
       "position": [
-        0.217466920614243,
+        0.210621625185013,
         0.439000010490417
       ],
       "region": 0,
@@ -252,7 +252,7 @@
       "id": "l00012_g03_1",
       "lock_group": "",
       "position": [
-        0.355190068483353,
+        0.34443736076355,
         0.629525601863861
       ],
       "region": 2,
@@ -277,7 +277,7 @@
       "id": "l00012_g03_2",
       "lock_group": "",
       "position": [
-        0.799177944660187,
+        0.790190100669861,
         0.439000010490417
       ],
       "region": 0,
@@ -303,7 +303,7 @@
       "id": "l00012_g04_0",
       "lock_group": "",
       "position": [
-        0.215607732534409,
+        0.206370338797569,
         0.448000013828278
       ],
       "region": 0,
@@ -329,7 +329,7 @@
       "id": "l00012_g04_1",
       "lock_group": "",
       "position": [
-        0.652872800827026,
+        0.650607705116272,
         0.638525605201721
       ],
       "region": 1,
@@ -355,7 +355,7 @@
       "id": "l00012_g04_2",
       "lock_group": "",
       "position": [
-        0.641370356082916,
+        0.649502336978912,
         0.257474422454834
       ],
       "region": 2,
@@ -381,7 +381,7 @@
       "id": "l00012_g05_0",
       "lock_group": "",
       "position": [
-        0.347185075283051,
+        0.350416958332062,
         0.638525605201721
       ],
       "region": 2,
@@ -407,7 +407,7 @@
       "id": "l00012_g05_1",
       "lock_group": "",
       "position": [
-        0.350416958332062,
+        0.366528689861298,
         0.257474422454834
       ],
       "region": 1,
@@ -433,7 +433,7 @@
       "id": "l00012_g05_2",
       "lock_group": "",
       "position": [
-        0.797864198684692,
+        0.782185077667236,
         0.448000013828278
       ],
       "region": 0,
@@ -462,14 +462,22 @@
   },
   "quality": {
     "average_branching_factor": 5.17,
+    "average_failure_pressure": 7.0,
+    "average_moves_to_failure": 7.0,
     "average_selectable_count": 5.17,
+    "average_simulated_pressure": 4.83,
+    "balanced_win_rate": 1.0,
     "dead_end_count": 0,
     "difficulty_score": 0.583,
     "forced_move_ratio": 0.056,
+    "greedy_win_rate": 1.0,
     "initial_selectable_count": 6,
-    "meaningful_decision_count": 14,
+    "meaningful_choice_score": 0.644,
+    "meaningful_decision_count": 12,
     "nodes_explored": 111,
     "peak_expected_tray_pressure": 3,
+    "random_win_rate": 0.833,
+    "simulation_runs_per_profile": 6,
     "solution_depth": 18,
     "solved": true
   },

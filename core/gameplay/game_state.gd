@@ -26,6 +26,7 @@ var vip_destination: String = ""
 var vip_completed: bool = false
 var loss_reason: String = ""
 var history: Array[Dictionary] = []
+var record_history: bool = true
 
 func load_level(definition: Dictionary) -> void:
 	level_id = int(definition.get("id", 0))
@@ -114,9 +115,10 @@ func select_item(item_id: String, chosen_destination: String = "") -> Dictionary
 		if chosen_destination not in options:
 			return {"ok": false, "reason": "invalid_transfer_choice", "options": options}
 		destination = chosen_destination
-	history.append(to_snapshot())
-	if history.size() > 20:
-		history.pop_front()
+	if record_history:
+		history.append(to_snapshot())
+		if history.size() > 20:
+			history.pop_front()
 	phase = Phase.RESOLVING
 	item["removed"] = true
 	item["chosen_destination"] = destination
@@ -243,6 +245,8 @@ func shuffle_remaining() -> bool:
 	if phase != Phase.PLAYING:
 		return false
 	var protected: Dictionary = {}
+	for destination: String in tray:
+		protected[destination] = true
 	for item: Dictionary in items.values():
 		if String(item.get("special_type", "")) == "transfer":
 			for option: String in item.get("destination_options", []):
@@ -287,11 +291,11 @@ func to_snapshot() -> Dictionary:
 		"loss_reason": loss_reason
 	}
 
-func from_snapshot(snapshot: Dictionary) -> void:
+func from_snapshot(snapshot: Dictionary, copy_data: bool = true) -> void:
 	level_id = int(snapshot.get("level_id", 0))
 	seed_value = int(snapshot.get("seed_value", 0))
 	phase = int(snapshot.get("phase", Phase.PLAYING)) as Phase
-	items = snapshot.get("items", {}).duplicate(true)
+	items = snapshot.get("items", {}).duplicate(true) if copy_data else snapshot.get("items", {})
 	tray.clear()
 	for destination: String in snapshot.get("tray", []):
 		tray.append(destination)

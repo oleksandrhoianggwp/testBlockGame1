@@ -23,6 +23,14 @@ world.international,International Terminal,Міжнародний терміна
 world.cargo,Cargo Hub,Вантажний вузол
 world.midnight,Midnight Airport,Нічний аеропорт
 world.skyport,Skyport,Небесний порт
+world.unlocked,NEW DESTINATION OPEN,НОВИЙ НАПРЯМОК ВІДКРИТО
+perk.brief.entrance,Modern entrance,Сучасний вхід
+perk.brief.checkin,Clear +5 coins,Проходження +5 монет
+perk.brief.baggage,Undo +1,Скасування +1
+perk.brief.security,Reveal +1,Відкриття +1
+perk.brief.cafe,First clear +10,Перше проходження +10
+perk.brief.tower,Priority +1 move,Терміновий рейс +1 хід
+perk.brief.runway,Prestige runway,Преміальна смуга
 home.airport_owned,Your airport grows with every cleared flight,Ваш аеропорт зростає з кожним рейсом
 game.level,Level,Рівень
 game.score,Score,Рахунок
@@ -42,9 +50,9 @@ booster.shuffle,Shuffle,Перемішати
 booster.extra_slot,Extra Slot,+1 місце
 booster.reveal,Reveal,Відкрити
 tutorial.tap,Tap an available suitcase,Натисніть на доступну валізу
-tutorial.match,Collect three matching destination tags,Зберіть три однакові позначки напрямку
+tutorial.match,Three suitcases for one flight dispatch automatically.,Три валізи одного рейсу відправляться автоматично.
 tutorial.covered,Covered luggage unlocks after the items above it,Накрита валіза відкриється після верхніх
-tutorial.tray,Plan ahead: the tray holds seven pieces,Плануйте: у лотку лише сім місць
+tutorial.tray,Keep space in the belt for matching flights.,Не заповнюй усі 7 місць різними рейсами.
 tutorial.mystery,Mystery tags reveal when accessible,Таємна позначка відкриється коли стане доступною
 tutorial.key,Pick up the key to unlock matching luggage,Підберіть ключ щоб відкрити валізи
 tutorial.priority,Dispatch the marked triplet before moves run out,Відправте позначену трійку до завершення ходів
@@ -72,7 +80,7 @@ airport.tower,Control Tower,Диспетчерська вежа
 airport.runway,Runway,Злітна смуга
 airport.perks_summary,Milestones grant small permanent airport perks,Етапи дають невеликі постійні переваги аеропорту
 daily.complete,Completed today,Сьогодні виконано
-daily.streak,Streak,Серія
+daily.streak,Daily streak: %d,Щоденна серія: %d
 endless.locked,Unlocks after level 20,Відкриється після 20 рівня
 shift.title,Airport Shift,Зміна в аеропорту
 shift.description,Clear a rising sequence of validated flights and airport events.,Проходьте дедалі складніші перевірені рейси та події аеропорту.
@@ -106,3 +114,79 @@ destination.oslo,Oslo,Осло
 destination.toronto,Toronto,Торонто
 destination.lima,Lima,Ліма
 destination.nairobi,Nairobi,Найробі
+nav.campaign,Journey,Подорож
+nav.airport,Airport,Аеропорт
+nav.shift,Shift,Зміна
+home.hub_progress,Your airport · %d%%,Твій аеропорт · %d%%
+airport.hub,My airport,Мій аеропорт
+airport.tap_zone,Tap a building to see its next transformation.,Натисни на будівлю щоб побачити її наступне покращення.
+upgrade.stage,Stage %d → %d,Етап %d → %d
+upgrade.buy,Upgrade · ● %d,Покращити · ● %d
+upgrade.need_coins,A few more flights will cover the cost.,Ще кілька рейсів — і монет вистачить.
+upgrade.visual.entrance,New doors and a brighter arrival lane.,Нові двері та затишна зона прибуття.
+upgrade.visual.checkin,More counters and modern check-in equipment.,Більше стійок і сучасне обладнання реєстрації.
+upgrade.visual.baggage,Powered belts become an automated baggage system.,Багажні стрічки перетворяться на автоматизовану систему.
+upgrade.visual.security,Brighter scanner gates and more screening capacity.,Нові сканери та зручніший прохід безпеки.
+upgrade.visual.cafe,A colorful awning and a welcoming terrace.,Яскравий навіс і затишна тераса.
+upgrade.visual.tower,A taller glass tower with navigation lighting.,Вища скляна вежа з навігаційними вогнями.
+upgrade.visual.runway,More runway lighting and a new taxiway.,Нові вогні смуги та руліжна доріжка.
+perk.entrance,Final stage: a grand entrance and airport prestige.,Фінальний етап: сучасний вхід і престиж аеропорту.
+perk.checkin,Final stage: +5 coins per campaign clear.,Фінальний етап: +5 монет за проходження рівня кампанії.
+perk.baggage,Final stage: 1 free Undo per level.,Фінальний етап: 1 безкоштовне скасування ходу на рівень.
+perk.security,Final stage: 1 Mystery Reveal per level.,Фінальний етап: 1 відкриття таємної бирки на рівень.
+perk.cafe,Final stage: +10 coins for first clears.,Фінальний етап: +10 монет за перше проходження.
+perk.tower,Final stage: +1 move on Priority Flights.,Фінальний етап: +1 хід для пріоритетного рейсу.
+perk.runway,Final stage: a modern airport runway complex.,Фінальний етап: сучасний комплекс смуг аеропорту.
+shift.earnings,SHIFT EARNINGS,ЗАРОБІТОК ЗМІНИ
+shift.next_multiplier,Next flight · ×%.2f,Наступний рейс · ×%.2f
+shift.cash_out,Cash Out,Забрати заробіток
+shift.continue,Continue Shift,Продовжити зміну
+shift.risk,If the next round fails you keep 60% of unbanked earnings.,У разі невдачі ти збережеш 60% незабраного заробітку.
+shift.departures,One more flight?,Ще один рейс?
+shift.best,Best shift score · %d,Рекорд зміни · %d
+shift.banked,%d coins banked safely.,%d монет додано до гаманця.
+shift.failure_paid,%d coins saved from this shift.,З цієї зміни збережено %d монет.
+daily.today,Today's Flight,Рейс дня
+daily.board,DAILY FLIGHT,РЕЙС ДНЯ
+daily.completed,COMPLETED TODAY,СЬОГОДНІ ВИКОНАНО
+daily.ready,Ready for departure,Готовий до відправлення
+daily.best,Best performance · %d,Найкращий результат · %d
+daily.reward,First clear · up to 85 coins,Перше проходження · до 85 монет
+daily.replay,Replay today's flight,Зіграти рейс дня ще раз
+daily.start,Start today's flight,Почати рейс дня
+campaign.reward,Reward stop,Нагорода
+campaign.milestone,Airport milestone,Етап аеропорту
+campaign.future,Next destination awaits,Наступний напрямок чекає
+game.flights_remaining,%d flights remaining,Рейсів залишилось: %d
+game.jam_moves,Belt clears in %d moves,Стрічка звільниться за %d ходи
+game.combo,DISPATCH ×%d,ВІДПРАВЛЕНО ×%d
+game.preparing,Preparing your flight…,Готуємо твій рейс…
+game.generation_retry,Checking another luggage arrangement…,Перевіряємо іншу розкладку багажу…
+game.generation_failed,Could not prepare this flight. Please try again.,Не вдалося підготувати рейс. Спробуй ще раз.
+tutorial.pickup,Choose an available suitcase.,Обери доступну валізу.
+tutorial.blocking,Top suitcases block the ones underneath.,Верхні валізи блокують ті що під ними.
+tutorial.locks,A key opens all luggage with the matching lock.,Ключ відкриває всі валізи з відповідним замком.
+tutorial.transfer,Choose one of the two flights on the tag.,Обери один із двох рейсів на бирці.
+booster.help.undo,Undo restores your last move. Tap again to use it.,Скасування поверне останній хід. Натисни ще раз щоб використати.
+booster.help.shuffle,Changes eligible baggage labels safely. Tap again to use.,Безпечно змінює доступні напрямки багажу. Натисни ще раз щоб використати.
+booster.help.extra_slot,Adds one extra belt slot for this level. Tap again to use.,Додає одне місце на стрічці цього рівня. Натисни ще раз щоб використати.
+booster.help.reveal,Reveals a covered mystery tag. Tap again to use.,Відкриває накриту таємну бирку. Натисни ще раз щоб використати.
+result.cleared,FLIGHT CLEARED,РЕЙС ВІДПРАВЛЕНО
+result.closed,FLIGHT CLOSED,РЕЙС ЗАКРИТО
+result.belt_full,BELT FULL,СТРІЧКА ЗАПОВНЕНА
+result.no_room,No room for another flight.,Для ще одного рейсу немає місця.
+result.reward,+%d coins,+%d монет
+result.airport_percent,AIRPORT · %d%%,АЕРОПОРТ · %d%%
+result.upgrade_ready,Upgrade available · View Airport,Є нове покращення · До аеропорту
+result.replay,Replay flight,Зіграти рейс ще раз
+settings.group.audio,AUDIO,ЗВУК
+settings.group.accessibility,ACCESSIBILITY,ДОСТУПНІСТЬ
+settings.group.language,LANGUAGE,МОВА
+settings.group.other,OTHER,ІНШЕ
+settings.current_language,English,Українська
+settings.on,On,Увімк.
+settings.off,Off,Вимк.
+settings.privacy,Privacy,Приватність
+settings.credits,Credits,Автори
+credits.body,Lost & Sorted · original illustrated assets · Godot Engine (MIT).,Lost & Sorted · оригінальні ілюстрації · Godot Engine (MIT).
+brand.name,LOST & SORTED,LOST & SORTED

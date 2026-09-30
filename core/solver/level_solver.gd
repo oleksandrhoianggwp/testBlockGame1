@@ -27,6 +27,7 @@ func solve_level(definition: Dictionary, run_probe: bool = false) -> Dictionary:
 	branch_states = 0
 	started_ms = Time.get_ticks_msec()
 	var state = GameStateScript.new()
+	state.record_history = false
 	state.load_level(definition)
 	var initial_selectable := state.accessible_item_ids().size()
 	var solved := _search(state, 0)
@@ -60,6 +61,7 @@ func solve_level(definition: Dictionary, run_probe: bool = false) -> Dictionary:
 		"initial_selectable_count": initial_selectable,
 		"average_selectable_count": path_metrics["average_selectable_count"],
 		"meaningful_decision_count": path_metrics["meaningful_decision_count"],
+		"meaningful_choice_score": path_metrics.get("meaningful_choice_score", 0.0),
 		"forced_move_ratio": path_metrics["forced_move_ratio"],
 		"peak_expected_tray_pressure": path_metrics["peak_expected_tray_pressure"],
 		"dead_end_count": dead_end_count,
@@ -88,7 +90,8 @@ func _search(state, depth: int) -> bool:
 	actions.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return _move_score(state, a) > _move_score(state, b))
 	for action: Dictionary in actions:
 		var next_state = GameStateScript.new()
-		next_state.from_snapshot(state.to_snapshot())
+		next_state.record_history = false
+		next_state.from_snapshot(state.to_snapshot(), false)
 		next_state.phase = next_state.Phase.PLAYING
 		var result: Dictionary = next_state.select_item(String(action["item_id"]), String(action.get("destination_id", "")))
 		if not result.get("ok", false):
@@ -135,6 +138,7 @@ func _move_score(state, action: Dictionary) -> int:
 
 func _probe_complexity(definition: Dictionary) -> void:
 	var state = GameStateScript.new()
+	state.record_history = false
 	state.load_level(definition)
 	var seen: Dictionary = {}
 	_probe_state(state, 0, 5, seen)
@@ -154,28 +158,34 @@ func _probe_state(state, depth: int, depth_limit: int, seen: Dictionary) -> void
 		if probe_nodes >= 350:
 			break
 		var next_state = GameStateScript.new()
-		next_state.from_snapshot(state.to_snapshot())
+		next_state.record_history = false
+		next_state.from_snapshot(state.to_snapshot(), false)
 		next_state.phase = next_state.Phase.PLAYING
 		next_state.select_item(String(action["item_id"]), String(action.get("destination_id", "")))
 		_probe_state(next_state, depth + 1, depth_limit, seen)
 
 func _analyze_solution(definition: Dictionary, actions: Array[String]) -> Dictionary:
 	var state = GameStateScript.new()
+	state.record_history = false
 	state.load_level(definition)
 	var selectable_total := 0
 	var meaningful := 0
 	var forced := 0
 	var peak_pressure := 0
+	var choice_total := 0.0
 	for encoded: String in actions:
 		var available := state.accessible_item_ids()
 		selectable_total += available.size()
 		if available.size() <= 1:
 			forced += 1
-		var visible_destinations: Dictionary = {}
-		for item_id: String in available:
-			for option: String in state.destination_options(item_id):
-				visible_destinations[option] = true
-		if available.size() >= 2 and visible_destinations.size() >= 2:
+		var outcomes: Dictionary = {}
+		var action_count := 0
+		for option_action: Dictionary in _available_actions(state):
+			action_count += 1
+			outcomes[_outcome_signature(state, option_action)] = true
+		var difference := float(maxi(0, outcomes.size() - 1)) / maxi(1, action_count - 1)
+		choice_total += difference
+		if outcomes.size() >= 2 and difference >= 0.4:
 			meaningful += 1
 		var action := decode_action(encoded)
 		state.select_item(String(action["item_id"]), String(action.get("destination_id", "")))
@@ -183,9 +193,30 @@ func _analyze_solution(definition: Dictionary, actions: Array[String]) -> Dictio
 	return {
 		"average_selectable_count": snappedf(float(selectable_total) / float(maxi(1, actions.size())), 0.01),
 		"meaningful_decision_count": meaningful,
+		"meaningful_choice_score": snappedf(choice_total / maxi(1, actions.size()), 0.001),
 		"forced_move_ratio": snappedf(float(forced) / float(maxi(1, actions.size())), 0.001),
 		"peak_expected_tray_pressure": peak_pressure
 	}
+
+func _outcome_signature(state, action: Dictionary) -> String:
+	# Equivalent destination taps count once unless they expose different paths,
+	# change locks/priority, or create a different near-term match opportunity.
+	var id := String(action["item_id"])
+	var dest := String(action.get("destination_id", ""))
+	var exposed: Array[String] = []
+	for item_id: String in state.items:
+		var item: Dictionary = state.items[item_id]
+		if bool(item.get("removed", false)) or id not in item.get("blocker_ids", []):
+			continue
+		var remaining := 0
+		for blocker: String in item.get("blocker_ids", []):
+			if blocker != id and not bool(state.items.get(blocker, {}).get("removed", false)):
+				remaining += 1
+		if remaining == 0:
+			exposed.append(item_id + ":" + String(item.get("destination_id", "")))
+	exposed.sort()
+	var key_group := String(state.items[id].get("key_group", ""))
+	return "%s:%d:%s:%s:%s" % [dest, state.tray.count(dest), ",".join(exposed), key_group, dest == state.priority_destination]
 
 func _difficulty_score(definition: Dictionary, metrics: Dictionary, average_branching: float) -> float:
 	var item_count := int(definition.get("items", []).size())

@@ -1,7 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
-<defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#e8f2f7"/><stop offset="1" stop-color="#fff9ef"/></linearGradient></defs>
-<rect width="1080" height="1920" fill="url(#sky)"/><circle cx="850" cy="240" r="130" fill="#4d8fe8" opacity=".34"/>
-<path d="M0 1180h1080v740H0z" fill="#4d8fe8" opacity=".13"/><path d="M0 1370h1080" stroke="#4d8fe8" stroke-width="18" opacity=".28"/>
-<path d="M80 1040h920v300H80z" rx="54" fill="#fff9ef" opacity=".35"/><path d="M140 1100h180v140H140zm230 0h180v140H370zm230 0h180v140H600zm230 0h110v140H830z" fill="#4d8fe8" opacity=".24"/>
-<path d="M-80 1630L1160 1450" stroke="#fff9ef" stroke-width="90" opacity=".45"/><path d="M150 1585l150-22m120-20l150-22m120-20l150-22" stroke="#4d8fe8" stroke-width="15" opacity=".55"/>
-</svg>
+<svg xmlns='http://www.w3.org/2000/svg' width='432' height='768' viewBox='0 0 432 768'><rect width='432' height='768' fill='#e2eff8'/><path d='M0 140h432M0 460h432' stroke='#ffffff' opacity='.35' stroke-width='3'/><path d='M20 150v300m98-300v300m98-300v300m98-300v300m98-300v300' stroke='#6a97b0' opacity='.09' stroke-width='2'/><path d='M0 530l432-55v70L0 600z' fill='#fff8eb' opacity='.25'/><path d='M0 662l432-65' stroke='#f7c75a' stroke-width='3' opacity='.5'/></svg>

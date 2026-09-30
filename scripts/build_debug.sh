@@ -9,7 +9,11 @@ cd "$PROJECT_ROOT"
 "$GODOT_BIN" --headless --path . --script res://tests/run_all.gd
 "$GODOT_BIN" --headless --path . --script res://tools/level_baker/bake_campaign.gd
 mkdir -p build
-"$GODOT_BIN" --headless --path . --export-debug 'Android Debug' build/lost-and-sorted-debug.apk
+if [[ -f "$PROJECT_ROOT/android/build/src/main/assets/project.binary" ]]; then
+  [[ ! -L "$PROJECT_ROOT/android/build/src/main/assets" ]] || { echo 'Unsafe generated-assets symlink.' >&2; exit 1; }
+  mv "$PROJECT_ROOT/android/build/src/main/assets" "$PROJECT_ROOT/build/android-assets-backup-$(date -u +%Y%m%d-%H%M%S)"
+fi
+GRADLE_OPTS="${GRADLE_OPTS:-} -Dorg.gradle.daemon=false" "$GODOT_BIN" --headless --path . --export-debug 'Android Debug' build/lost-and-sorted-debug.apk --quit
 test -s build/lost-and-sorted-debug.apk
 echo 'APK ready: build/lost-and-sorted-debug.apk'
 

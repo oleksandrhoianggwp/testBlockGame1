@@ -1,5 +1,5 @@
 {
-  "content_version": 2,
+  "content_version": 3,
   "difficulty_template": 0.135,
   "generation_attempt": 1,
   "id": 11,
@@ -12,7 +12,7 @@
       "id": "l00011_g00_0",
       "lock_group": "",
       "position": [
-        0.499457150697708,
+        0.511546969413757,
         0.509999990463257
       ],
       "region": 1,
@@ -35,7 +35,7 @@
       "id": "l00011_g00_1",
       "lock_group": "",
       "position": [
-        0.200556740164757,
+        0.192956909537315,
         0.540000021457672
       ],
       "region": 0,
@@ -58,7 +58,7 @@
       "id": "l00011_g00_2",
       "lock_group": "",
       "position": [
-        0.506280064582825,
+        0.510104894638062,
         0.239999994635582
       ],
       "region": 1,
@@ -81,7 +81,7 @@
       "id": "l00011_g01_0",
       "lock_group": "",
       "position": [
-        0.189281165599823,
+        0.19144581258297,
         0.270000010728836
       ],
       "region": 0,
@@ -104,7 +104,7 @@
       "id": "l00011_g01_1",
       "lock_group": "",
       "position": [
-        0.793251752853394,
+        0.804648280143738,
         0.270000010728836
       ],
       "region": 2,
@@ -127,7 +127,7 @@
       "id": "l00011_g01_2",
       "lock_group": "",
       "position": [
-        0.792025029659271,
+        0.804341197013855,
         0.540000021457672
       ],
       "region": 2,
@@ -152,7 +152,7 @@
       "id": "l00011_g02_0",
       "lock_group": "",
       "position": [
-        0.502203345298767,
+        0.511619746685028,
         0.248999997973442
       ],
       "region": 1,
@@ -177,7 +177,7 @@
       "id": "l00011_g02_1",
       "lock_group": "",
       "position": [
-        0.80422830581665,
+        0.808632433414459,
         0.279000014066696
       ],
       "region": 2,
@@ -202,7 +202,7 @@
       "id": "l00011_g02_2",
       "lock_group": "",
       "position": [
-        0.200575202703476,
+        0.206445440649986,
         0.549000024795532
       ],
       "region": 0,
@@ -227,7 +227,7 @@
       "id": "l00011_g03_0",
       "lock_group": "",
       "position": [
-        0.795707285404205,
+        0.794552087783813,
         0.549000024795532
       ],
       "region": 2,
@@ -252,7 +252,7 @@
       "id": "l00011_g03_1",
       "lock_group": "",
       "position": [
-        0.205377385020256,
+        0.188698589801788,
         0.279000014066696
       ],
       "region": 0,
@@ -277,7 +277,7 @@
       "id": "l00011_g03_2",
       "lock_group": "",
       "position": [
-        0.505439698696136,
+        0.490374654531479,
         0.518999993801117
       ],
       "region": 1,
@@ -303,7 +303,7 @@
       "id": "l00011_g04_0",
       "lock_group": "",
       "position": [
-        0.798394083976746,
+        0.810216665267944,
         0.558000028133392
       ],
       "region": 2,
@@ -329,7 +329,7 @@
       "id": "l00011_g04_1",
       "lock_group": "",
       "position": [
-        0.210031509399414,
+        0.191935300827026,
         0.558000028133392
       ],
       "region": 0,
@@ -355,7 +355,7 @@
       "id": "l00011_g04_2",
       "lock_group": "",
       "position": [
-        0.508678615093231,
+        0.497228413820267,
         0.257999986410141
       ],
       "region": 1,
@@ -384,14 +384,22 @@
   },
   "quality": {
     "average_branching_factor": 4.93,
+    "average_failure_pressure": 0.0,
+    "average_moves_to_failure": 0.0,
     "average_selectable_count": 4.93,
+    "average_simulated_pressure": 4.67,
+    "balanced_win_rate": 1.0,
     "dead_end_count": 0,
     "difficulty_score": 0.548,
     "forced_move_ratio": 0.067,
+    "greedy_win_rate": 1.0,
     "initial_selectable_count": 6,
-    "meaningful_decision_count": 12,
+    "meaningful_choice_score": 0.606,
+    "meaningful_decision_count": 10,
     "nodes_explored": 89,
     "peak_expected_tray_pressure": 3,
+    "random_win_rate": 1.0,
+    "simulation_runs_per_profile": 6,
     "solution_depth": 15,
     "solved": true
   },

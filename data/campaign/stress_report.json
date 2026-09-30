@@ -1,17 +1,72 @@
 {
-  "average_branching_factor": 5.17,
+  "average_branching_factor": 4.97,
   "average_forced_move_ratio": 0.05,
-  "average_generation_attempts": 1.02,
-  "average_generation_ms": 63.01,
-  "average_initial_selectable": 6.5,
-  "elapsed_ms": 1038608,
+  "average_generation_attempts": 2.72,
+  "average_generation_ms": 601.255,
+  "average_initial_selectable": 6.335,
+  "average_simulated_pressure": 5.831,
+  "balanced_win_rate": 0.967,
+  "candidate_rejection_rate": 0.6319,
+  "elapsed_ms": 1705668,
   "generation_failure_rate": 0.0,
   "generation_failures": 0,
+  "greedy_win_rate": 0.702,
   "impossible_boards": 0,
+  "meaningful_choice_score": 0.768,
+  "random_win_rate": 0.314,
   "samples": 10000,
-  "schema_version": 2,
-  "solver_ms_p50": 34,
-  "solver_ms_p95": 81,
-  "solver_ms_p99": 144,
-  "worst_nodes_explored": 2889
+  "schema_version": 3,
+  "solver_ms_p50": 39,
+  "solver_ms_p95": 106,
+  "solver_ms_p99": 152,
+  "total_candidates": 27166,
+  "validation_execution": "4 processes, 2500 unique seeds each, contiguous non-overlapping seed indices, raw solver times merged",
+  "worlds": {
+    "1": {
+      "attempts": 2516,
+      "balanced": 0.999,
+      "greedy": 0.984,
+      "pressure": 3.264,
+      "random": 0.827,
+      "rejection_rate": 0.201,
+      "samples": 2010
+    },
+    "2": {
+      "attempts": 4091,
+      "balanced": 0.99,
+      "greedy": 0.865,
+      "pressure": 4.958,
+      "random": 0.377,
+      "rejection_rate": 0.51,
+      "samples": 2005
+    },
+    "3": {
+      "attempts": 3749,
+      "balanced": 0.979,
+      "greedy": 0.796,
+      "pressure": 5.126,
+      "random": 0.279,
+      "rejection_rate": 0.468,
+      "samples": 1995
+    },
+    "4": {
+      "attempts": 4797,
+      "balanced": 0.952,
+      "greedy": 0.55,
+      "pressure": 5.301,
+      "random": 0.068,
+      "rejection_rate": 0.584,
+      "samples": 1995
+    },
+    "5": {
+      "attempts": 12013,
+      "balanced": 0.915,
+      "greedy": 0.312,
+      "pressure": 5.384,
+      "random": 0.013,
+      "rejection_rate": 0.834,
+      "samples": 1995
+    }
+  },
+  "worst_nodes_explored": 1430
 }

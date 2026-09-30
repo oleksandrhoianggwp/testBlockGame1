@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "upgrade_costs": {
+    "entrance": [180, 330, 620], "checkin": [200, 360, 680],
+    "baggage": [210, 390, 750], "security": [200, 380, 720],
+    "cafe": [160, 300, 600], "tower": [220, 420, 800],
+    "runway": [230, 450, 850]
+  },
+  "campaign_base": 40, "star_reward": 10, "first_clear": 20,
+  "priority_bonus": 15, "cafe_bonus": 10, "checkin_bonus": 5,
+  "shift_multiplier_step": 0.25, "shift_multiplier_cap": 3.0,
+  "shift_failure_keep": 0.6
+}

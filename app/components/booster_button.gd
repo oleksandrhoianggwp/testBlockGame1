@@ -6,7 +6,7 @@ var booster_id: String = ""
 func configure(id: String, icon_path: String, count: int, available: bool) -> void:
 	booster_id = id
 	text = "×%d" % count
-	tooltip_text = tr("booster.%s" % id)
+	tooltip_text = ""
 	custom_minimum_size = Vector2(54, 54)
 	disabled = not available
 	add_theme_constant_override("icon_max_width", 26)

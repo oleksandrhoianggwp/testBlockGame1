@@ -2,6 +2,7 @@
 .import/
 build/*
 !build/.gitkeep
+!build/.gdignore
 android/build/
 android/.gradle/
 android/.build_version

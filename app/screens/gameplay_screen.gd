@@ -26,6 +26,9 @@ var luggage_nodes: Dictionary = {}
 var transition_locked: bool = false
 var free_undo_available: bool = false
 var reveal_available: bool = false
+var tutorial: TutorialOverlay
+var booster_help_seen: Dictionary = {}
+var booster_nodes: Dictionary = {}
 
 func setup(level_definition: Dictionary, state, profile_data: Dictionary, title_text: String) -> void:
 	definition = level_definition
@@ -76,7 +79,7 @@ func _build_once() -> void:
 	for item: Dictionary in definition.get("items", []):
 		var view := LuggageView.new()
 		view.name = String(item["id"]).validate_node_name()
-		view.size = Vector2(104, 72)
+		view.size = Vector2(96, 88)
 		view.pressed.connect(func(id := String(item["id"]), node := view) -> void:
 			if not transition_locked:
 				luggage_requested.emit(id, node))
@@ -86,7 +89,10 @@ func _build_once() -> void:
 func refresh() -> void:
 	if not is_instance_valid(board_control) or game_state == null:
 		return
-	status_label.text = "%s  •  %s %d" % [mode_title, tr("game.moves_used"), game_state.move_count]
+	status_label.text = mode_title
+	var remaining := 0
+	for item: Dictionary in game_state.items.values():
+		if not bool(item.get("removed", false)) and String(item.get("special_type", "")) != "key": remaining += 1
 	var priority_text := ""
 	if not game_state.priority_destination.is_empty() and not game_state.priority_completed:
 		priority_text = "%s %s  •  %d %s" % [tr("game.priority"), DEST_CODES.get(game_state.priority_destination, game_state.priority_destination.to_upper()), game_state.priority_moves, tr("game.moves")]
@@ -94,13 +100,17 @@ func refresh() -> void:
 	if not event_id.is_empty():
 		var event_text := tr("shift.event.%s" % event_id)
 		priority_text = event_text if priority_text.is_empty() else event_text + "  •  " + priority_text
-	objective.set_objective(priority_text, not priority_text.is_empty())
+	if priority_text.is_empty(): priority_text = tr("game.flights_remaining") % int(ceil((remaining+game_state.tray.size())/3.0))
+	if game_state.jam_moves > 0: priority_text += "  •  " + tr("game.jam_moves") % game_state.jam_moves
+	objective.set_objective(priority_text, true)
 	for item_id: String in luggage_nodes:
 		var view: LuggageView = luggage_nodes[item_id]
 		var item: Dictionary = game_state.items[item_id]
 		view.visible = not bool(item.get("removed", false))
 		if view.visible:
-			view.configure(item, game_state.is_selectable(item_id) and not transition_locked, DEST_CODES, DEST_COLORS)
+			var visual_item := item.duplicate()
+			if String(item.get("lock_group", "")) in game_state.unlocked_groups: visual_item["lock_group"] = ""
+			view.configure(visual_item, game_state.is_selectable(item_id), DEST_CODES, DEST_COLORS)
 	_position_luggage()
 	tray_view.refresh(game_state.tray, game_state.tray_capacity, DEST_CODES, DEST_COLORS)
 	_refresh_boosters()
@@ -121,21 +131,24 @@ func _position_luggage() -> void:
 		view.z_index = int(item.get("z_index", 0))
 
 func _refresh_boosters() -> void:
-	for child in booster_row.get_children():
-		child.queue_free()
-	for booster_id in ["undo", "shuffle", "extra_slot"]:
+	for booster_id in ["undo", "shuffle", "extra_slot", "reveal"]:
 		var count := int(profile.get("boosters", {}).get(booster_id, 0))
 		if booster_id == "undo" and free_undo_available:
 			count += 1
-		var button := BoosterButton.new()
-		button.configure(booster_id, "res://assets/icons/%s.svg" % booster_id, count, count > 0 and not (booster_id == "extra_slot" and game_state.extra_slot_active))
-		button.pressed.connect(func(id: String = String(booster_id)) -> void: booster_requested.emit(id))
-		booster_row.add_child(button)
-	if reveal_available:
-		var reveal := BoosterButton.new()
-		reveal.configure("reveal", "res://assets/icons/reveal.svg", 1, _has_hidden_mystery())
-		reveal.pressed.connect(func() -> void: booster_requested.emit("reveal"))
-		booster_row.add_child(reveal)
+		if not booster_nodes.has(booster_id):
+			var node := BoosterButton.new()
+			node.pressed.connect(func(id := String(booster_id)) -> void:
+				if not SaveService.tutorial_seen("booster_"+id):
+					SaveService.complete_tutorial("booster_"+id)
+					UiKit.toast(self,tr("booster.help."+id))
+					return
+				booster_requested.emit(id))
+			booster_row.add_child(node)
+			booster_nodes[booster_id] = node
+		var button: BoosterButton = booster_nodes[booster_id]
+		if booster_id == "reveal": count = int(reveal_available)
+		button.configure(booster_id,"res://assets/icons/%s.svg" % booster_id,count,count>0 and not (booster_id == "extra_slot" and game_state.extra_slot_active))
+		button.visible = booster_id != "reveal" or reveal_available
 
 func _has_hidden_mystery() -> bool:
 	for item: Dictionary in game_state.items.values():
@@ -162,6 +175,31 @@ func animate_pickup(view: LuggageView, reduced_motion: bool) -> void:
 	travel.tween_property(view, "scale", Vector2(0.48, 0.48), 0.20)
 	travel.tween_property(view, "rotation_degrees", 0.0, 0.20)
 	await travel.finished
+	AudioService.play_sfx("insert")
+
+func show_tutorial(id: String, key: String, item_id: String) -> void:
+	if is_instance_valid(tutorial): tutorial.queue_free()
+	tutorial = TutorialOverlay.new()
+	add_child(tutorial)
+	tutorial.configure(id,key,luggage_nodes.get(item_id, tray_view))
+
+func clear_tutorial() -> void:
+	if is_instance_valid(tutorial): tutorial.queue_free()
+	tutorial = null
+
+func event_intro() -> void:
+	var id := String(definition.get("shift_event", ""))
+	if id.is_empty(): return
+	var banner := UiKit.label(tr("shift.event."+id),24,true)
+	banner.add_theme_color_override("font_color",UiKit.GOLD)
+	banner.add_theme_stylebox_override("normal",UiKit.panel(UiKit.NAVY,20))
+	banner.set_anchors_and_offsets_preset(Control.PRESET_TOP_WIDE)
+	banner.offset_left = 20; banner.offset_right = -20
+	banner.offset_top = 175; banner.offset_bottom = 275
+	banner.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	banner.z_index = 4080
+	add_child(banner)
+	create_tween().tween_callback(banner.queue_free).set_delay(1.4)
 
 func finish_transition() -> void:
 	transition_locked = false

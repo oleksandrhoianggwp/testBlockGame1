@@ -9,9 +9,9 @@ func _initialize() -> void:
 	var campaign_count := generator.campaign_count()
 	var report_lines: Array[String] = [
 		"Lost & Sorted campaign validation",
-		"Godot 4.7.2 | schema 2 | content version 2",
+		"Godot 4.7.2 | quality revision 3 | content version 3",
 		"",
-		"id result seed attempt items initial avg_select branching meaningful forced peak dead_ends nodes depth solve_ms difficulty"
+		"id result seed attempt items initial avg_select branching meaningful forced peak dead_ends nodes depth solve_ms difficulty random_win greedy_win balanced_win meaningful_choice"
 	]
 	var index: Array[Dictionary] = []
 	var passed := 0
@@ -23,10 +23,12 @@ func _initialize() -> void:
 	for level_id in range(1, campaign_count + 1):
 		var parameters: Dictionary = generator.campaign_parameters(level_id)
 		var level: Dictionary = generator.generate_level(parameters)
-		var validation := _validate_structure(level)
+		var validation := "generation_failed" if level.get("generation_failed", false) else _validate_structure(level)
 		var solver = SolverScript.new()
 		solver.node_limit = 5000
 		var result: Dictionary = solver.solve_level(level) if validation.is_empty() else {"solved": false, "reason": validation}
+		for key: String in ["random_win_rate", "greedy_win_rate", "balanced_win_rate", "average_failure_pressure", "average_moves_to_failure", "average_simulated_pressure", "simulation_runs_per_profile"]:
+			result[key] = level.get("quality", {}).get(key, 0)
 		var quality_ok := validation.is_empty() and generator._quality_passes(result, parameters)
 		if quality_ok:
 			passed += 1
@@ -46,18 +48,19 @@ func _initialize() -> void:
 			"quality": generator._quality_payload(result)
 		}
 		index.append(entry)
-		report_lines.append("%02d %s %d %d %d %d %.2f %.2f %d %.3f %d %d %d %d %d %.3f" % [
+		report_lines.append("%02d %s %d %d %d %d %.2f %.2f %d %.3f %d %d %d %d %d %.3f %.3f %.3f %.3f %.3f" % [
 			level_id, "PASS" if quality_ok else "FAIL:%s" % result.get("reason", validation),
 			int(level["seed"]), int(level["generation_attempt"]), level["items"].size(),
 			int(result.get("initial_selectable_count", 0)), float(result.get("average_selectable_count", 0.0)),
 			float(result.get("average_branching_factor", 0.0)), int(result.get("meaningful_decision_count", 0)),
 			float(result.get("forced_move_ratio", 1.0)), int(result.get("peak_expected_tray_pressure", 0)),
 			int(result.get("dead_end_count", 0)), int(result.get("nodes_explored", 0)),
-			int(result.get("solution_depth", 0)), int(result.get("solve_ms", 0)), float(result.get("difficulty_score", 0.0))
+			int(result.get("solution_depth", 0)), int(result.get("solve_ms", 0)), float(result.get("difficulty_score", 0.0)),
+			float(result.get("random_win_rate",0.0)),float(result.get("greedy_win_rate",0.0)),float(result.get("balanced_win_rate",0.0)),float(result.get("meaningful_choice_score",0.0))
 		])
 	if not _write_json("res://data/campaign/index.json", {
 		"schema_version": 2,
-		"content_version": 2,
+		"content_version": 3,
 		"campaign_count": campaign_count,
 		"world_count": generator.campaign_config().get("worlds", []).size(),
 		"levels": index
@@ -65,7 +68,8 @@ func _initialize() -> void:
 		write_failures += 1
 	report_lines.append("")
 	report_lines.append("%d/%d levels passed solver and decision-quality thresholds" % [passed, campaign_count])
-	report_lines.append("%d rejected" % failed)
+	report_lines.append("%d failed accepted boards" % failed)
+	report_lines.append("%d total candidates; %d rejected candidates; %.2f%% rejection" % [total_attempts,total_attempts-campaign_count,100.0*(total_attempts-campaign_count)/maxi(1,total_attempts)])
 	report_lines.append("%.2f average generation attempts" % (float(total_attempts) / float(maxi(1, campaign_count))))
 	report_lines.append("%.2f average solver ms" % (float(total_ms) / float(maxi(1, campaign_count))))
 	report_lines.append("%d inspected solver nodes" % total_nodes)

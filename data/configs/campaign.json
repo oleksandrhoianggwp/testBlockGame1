@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "content_version": 2,
+  "content_version": 3,
   "levels_per_world": 15,
   "worlds": [
     {"id": 1, "name_key": "world.regional", "background": "regional", "stage_count": 15, "groups": [4, 6], "destinations": [3, 4], "mechanic": "basic", "color": "#DDF2EE"},

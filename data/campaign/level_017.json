@@ -1,5 +1,5 @@
 {
-  "content_version": 2,
+  "content_version": 3,
   "difficulty_template": 0.216,
   "generation_attempt": 1,
   "id": 17,
@@ -12,7 +12,7 @@
       "id": "l00017_g00_0",
       "lock_group": "",
       "position": [
-        0.270860195159912,
+        0.267813175916672,
         0.559312760829926
       ],
       "region": 2,
@@ -35,7 +35,7 @@
       "id": "l00017_g00_1",
       "lock_group": "",
       "position": [
-        0.779154002666473,
+        0.79547518491745,
         0.430000007152557
       ],
       "region": 0,
@@ -58,7 +58,7 @@
       "id": "l00017_g00_2",
       "lock_group": "",
       "position": [
-        0.273821771144867,
+        0.27416929602623,
         0.300687253475189
       ],
       "region": 0,
@@ -81,7 +81,7 @@
       "id": "l00017_g01_0",
       "lock_group": "",
       "position": [
-        0.592043042182922,
+        0.599355161190033,
         0.220767572522163
       ],
       "region": 1,
@@ -104,7 +104,7 @@
       "id": "l00017_g01_1",
       "lock_group": "",
       "position": [
-        0.597089290618896,
+        0.598051607608795,
         0.639232456684113
       ],
       "region": 1,
@@ -129,7 +129,7 @@
       "id": "l00017_g01_2",
       "lock_group": "",
       "position": [
-        0.268443763256073,
+        0.267925888299942,
         0.309687256813049
       ],
       "region": 0,
@@ -154,7 +154,7 @@
       "id": "l00017_g02_0",
       "lock_group": "",
       "position": [
-        0.588699698448181,
+        0.592673659324646,
         0.648232460021973
       ],
       "region": 1,
@@ -179,7 +179,7 @@
       "id": "l00017_g02_1",
       "lock_group": "",
       "position": [
-        0.58260840177536,
+        0.585303902626038,
         0.229767575860024
       ],
       "region": 1,
@@ -196,7 +196,8 @@
     },
     {
       "blocker_ids": [
-        "l00017_g00_1"
+        "l00017_g00_1",
+        "l00017_g04_1"
       ],
       "destination_id": "osl",
       "destination_options": [],
@@ -204,8 +205,8 @@
       "id": "l00017_g02_2",
       "lock_group": "",
       "position": [
-        0.798746168613434,
-        0.439000010490417
+        0.782452762126923,
+        0.448000013828278
       ],
       "region": 0,
       "rotation": 3.47190093994141,
@@ -217,7 +218,7 @@
       "special_data": {},
       "special_type": "mystery",
       "stack_index": 0,
-      "z_index": 990
+      "z_index": 980
     },
     {
       "blocker_ids": [
@@ -229,7 +230,7 @@
       "id": "l00017_g03_0",
       "lock_group": "",
       "position": [
-        0.256560653448105,
+        0.25837853550911,
         0.568312764167786
       ],
       "region": 2,
@@ -255,7 +256,7 @@
       "id": "l00017_g03_1",
       "lock_group": "",
       "position": [
-        0.272650390863419,
+        0.27691787481308,
         0.318687260150909
       ],
       "region": 0,
@@ -281,7 +282,7 @@
       "id": "l00017_g03_2",
       "lock_group": "",
       "position": [
-        0.585750997066498,
+        0.585830509662628,
         0.238767564296722
       ],
       "region": 1,
@@ -307,7 +308,7 @@
       "id": "l00017_g04_0",
       "lock_group": "",
       "position": [
-        0.25783783197403,
+        0.261521100997925,
         0.577312767505646
       ],
       "region": 2,
@@ -324,8 +325,7 @@
     },
     {
       "blocker_ids": [
-        "l00017_g00_1",
-        "l00017_g02_2"
+        "l00017_g00_1"
       ],
       "destination_id": "sel",
       "destination_options": [],
@@ -333,8 +333,8 @@
       "id": "l00017_g04_1",
       "lock_group": "",
       "position": [
-        0.788182079792023,
-        0.448000013828278
+        0.78117561340332,
+        0.439000010490417
       ],
       "region": 0,
       "rotation": 3.6674919128418,
@@ -346,7 +346,7 @@
       "special_data": {},
       "special_type": "",
       "stack_index": 0,
-      "z_index": 980
+      "z_index": 990
     },
     {
       "blocker_ids": [
@@ -359,7 +359,7 @@
       "id": "l00017_g04_2",
       "lock_group": "",
       "position": [
-        0.598607838153839,
+        0.596880257129669,
         0.657232463359833
       ],
       "region": 1,
@@ -387,15 +387,23 @@
     "vip": {}
   },
   "quality": {
-    "average_branching_factor": 4.33,
-    "average_selectable_count": 4.33,
+    "average_branching_factor": 4.2,
+    "average_failure_pressure": 7.0,
+    "average_moves_to_failure": 9.25,
+    "average_selectable_count": 4.2,
+    "average_simulated_pressure": 6.0,
+    "balanced_win_rate": 1.0,
     "dead_end_count": 0,
-    "difficulty_score": 0.567,
+    "difficulty_score": 0.634,
     "forced_move_ratio": 0.067,
+    "greedy_win_rate": 1.0,
     "initial_selectable_count": 5,
-    "meaningful_decision_count": 12,
-    "nodes_explored": 80,
-    "peak_expected_tray_pressure": 3,
+    "meaningful_choice_score": 0.728,
+    "meaningful_decision_count": 13,
+    "nodes_explored": 78,
+    "peak_expected_tray_pressure": 5,
+    "random_win_rate": 0.333,
+    "simulation_runs_per_profile": 6,
     "solution_depth": 15,
     "solved": true
   },

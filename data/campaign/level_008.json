@@ -1,19 +1,21 @@
 {
-  "content_version": 2,
+  "content_version": 3,
   "difficulty_template": 0.095,
   "generation_attempt": 1,
   "id": 8,
   "items": [
     {
-      "blocker_ids": [],
+      "blocker_ids": [
+        "l00008_g03_2"
+      ],
       "destination_id": "rio",
       "destination_options": [],
       "group_index": 0,
       "id": "l00008_g00_0",
       "lock_group": "",
       "position": [
-        0.798521816730499,
-        0.270000010728836
+        0.804147601127625,
+        0.279000014066696
       ],
       "region": 2,
       "rotation": 2.75321578979492,
@@ -25,7 +27,7 @@
       "special_data": {},
       "special_type": "",
       "stack_index": 2,
-      "z_index": 998
+      "z_index": 988
     },
     {
       "blocker_ids": [],
@@ -35,7 +37,7 @@
       "id": "l00008_g00_1",
       "lock_group": "",
       "position": [
-        0.808486759662628,
+        0.804897546768188,
         0.540000021457672
       ],
       "region": 2,
@@ -58,7 +60,7 @@
       "id": "l00008_g00_2",
       "lock_group": "",
       "position": [
-        0.211054086685181,
+        0.197774723172188,
         0.270000010728836
       ],
       "region": 0,
@@ -81,7 +83,7 @@
       "id": "l00008_g01_0",
       "lock_group": "",
       "position": [
-        0.197211772203445,
+        0.2083989828825,
         0.540000021457672
       ],
       "region": 0,
@@ -104,7 +106,7 @@
       "id": "l00008_g01_1",
       "lock_group": "",
       "position": [
-        0.505618333816528,
+        0.490412563085556,
         0.509999990463257
       ],
       "region": 1,
@@ -127,7 +129,7 @@
       "id": "l00008_g01_2",
       "lock_group": "",
       "position": [
-        0.491590142250061,
+        0.502012014389038,
         0.239999994635582
       ],
       "region": 1,
@@ -152,7 +154,7 @@
       "id": "l00008_g02_0",
       "lock_group": "",
       "position": [
-        0.509838044643402,
+        0.503009378910065,
         0.248999997973442
       ],
       "region": 1,
@@ -177,7 +179,7 @@
       "id": "l00008_g02_1",
       "lock_group": "",
       "position": [
-        0.809049189090729,
+        0.794761598110199,
         0.549000024795532
       ],
       "region": 2,
@@ -202,7 +204,7 @@
       "id": "l00008_g02_2",
       "lock_group": "",
       "position": [
-        0.199677169322968,
+        0.199154987931252,
         0.279000014066696
       ],
       "region": 0,
@@ -227,7 +229,7 @@
       "id": "l00008_g03_0",
       "lock_group": "",
       "position": [
-        0.199924513697624,
+        0.194221809506416,
         0.549000024795532
       ],
       "region": 0,
@@ -252,7 +254,7 @@
       "id": "l00008_g03_1",
       "lock_group": "",
       "position": [
-        0.492123484611511,
+        0.511594355106354,
         0.518999993801117
       ],
       "region": 1,
@@ -268,17 +270,15 @@
       "z_index": 986
     },
     {
-      "blocker_ids": [
-        "l00008_g00_0"
-      ],
+      "blocker_ids": [],
       "destination_id": "yto",
       "destination_options": [],
       "group_index": 3,
       "id": "l00008_g03_2",
       "lock_group": "",
       "position": [
-        0.809270679950714,
-        0.279000014066696
+        0.791174054145813,
+        0.270000010728836
       ],
       "region": 2,
       "rotation": 4.32818794250488,
@@ -290,7 +290,7 @@
       "special_data": {},
       "special_type": "",
       "stack_index": 2,
-      "z_index": 988
+      "z_index": 998
     },
     {
       "blocker_ids": [
@@ -303,7 +303,7 @@
       "id": "l00008_g04_0",
       "lock_group": "",
       "position": [
-        0.510847330093384,
+        0.511886179447174,
         0.527999997138977
       ],
       "region": 1,
@@ -329,7 +329,7 @@
       "id": "l00008_g04_1",
       "lock_group": "",
       "position": [
-        0.189774706959724,
+        0.19883531332016,
         0.558000028133392
       ],
       "region": 0,
@@ -355,7 +355,7 @@
       "id": "l00008_g04_2",
       "lock_group": "",
       "position": [
-        0.509653806686401,
+        0.492056578397751,
         0.257999986410141
       ],
       "region": 1,
@@ -383,15 +383,23 @@
     "vip": {}
   },
   "quality": {
-    "average_branching_factor": 4.73,
-    "average_selectable_count": 4.73,
+    "average_branching_factor": 4.93,
+    "average_failure_pressure": 7.0,
+    "average_moves_to_failure": 7.0,
+    "average_selectable_count": 4.93,
+    "average_simulated_pressure": 4.72,
+    "balanced_win_rate": 1.0,
     "dead_end_count": 0,
-    "difficulty_score": 0.541,
+    "difficulty_score": 0.548,
     "forced_move_ratio": 0.067,
+    "greedy_win_rate": 1.0,
     "initial_selectable_count": 6,
-    "meaningful_decision_count": 9,
-    "nodes_explored": 86,
+    "meaningful_choice_score": 0.606,
+    "meaningful_decision_count": 10,
+    "nodes_explored": 89,
     "peak_expected_tray_pressure": 3,
+    "random_win_rate": 0.667,
+    "simulation_runs_per_profile": 6,
     "solution_depth": 15,
     "solved": true
   },

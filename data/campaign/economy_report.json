@@ -1,0 +1,31 @@
+{
+  "assumption": "alternating 2/3 stars; first clears; priority success; cheapest upgrade policy; no Daily/Shift/replays",
+  "baseline_total_renovation_cost": 49350,
+  "campaign_income_with_initial_wallet": 7375,
+  "campaign_levels_per_upgrade": 4.17,
+  "completion_percent": 86,
+  "global_total_renovation_cost": 9050,
+  "remaining_wallet": 725,
+  "total_upgrade_stages": 21,
+  "upgrade_levels": [
+    1,
+    2,
+    4,
+    7,
+    9,
+    12,
+    15,
+    18,
+    22,
+    26,
+    30,
+    35,
+    40,
+    45,
+    51,
+    57,
+    63,
+    69
+  ],
+  "upgrades_purchased": 18
+}

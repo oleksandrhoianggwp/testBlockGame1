@@ -22,6 +22,11 @@ func _initialize() -> void:
 	_test_campaign_files_and_progression()
 	_test_save_migration()
 	_test_generated_solver_integration()
+	_test_economy_and_global_airport()
+	_test_shift_banking()
+	_test_tutorial_contracts()
+	_test_simulation_and_campaign_quality()
+	_test_localization()
 	print("TESTS: %d passed, %d failed" % [passed, failed])
 	quit(0 if failed == 0 else 1)
 
@@ -80,6 +85,14 @@ func _test_blockers_mystery_and_geometry() -> void:
 	for item_id: String in available:
 		if String(state.items[item_id].get("special_type", "")) == "mystery" and bool(state.items[item_id].get("revealed", false)) and available.size() > 1:
 			mystery_has_choice = true
+	var path_solver = SolverScript.new()
+	var solved: Dictionary = path_solver.solve_level(level)
+	for encoded: String in solved.get("solution", []):
+		for item_id: String in state.accessible_item_ids():
+			if String(state.items[item_id].get("special_type", "")) == "mystery" and bool(state.items[item_id].get("revealed", false)) and state.accessible_item_ids().size() > 1:
+				mystery_has_choice = true
+		var action: Dictionary = path_solver.decode_action(encoded)
+		state.select_item(action["item_id"], action["destination_id"])
 	_expect(mystery_has_choice, "accessible mystery reveals while other choices remain")
 
 func _test_locks_and_priority() -> void:
@@ -220,8 +233,8 @@ func _test_save_migration() -> void:
 		"endless": {"high_score": 777}
 	}
 	var migrated: Dictionary = service.migrate(old)
-	_expect(migrated["save_version"] == 2 and migrated["current_level"] == 75 and migrated["campaign_seeds"].is_empty(), "save migration resets stale seeds and maps campaign progress")
-	_expect(migrated["airport_progress"]["1"]["baggage"] == 2 and migrated["shift"]["high_score"] == 777, "save migration preserves airport and endless value in new schema")
+	_expect(migrated["save_version"] == 3 and migrated["current_level"] == 75 and migrated["campaign_seeds"].is_empty(), "save migration resets stale seeds and maps campaign progress")
+	_expect(migrated["airport"]["baggage"] == 2 and migrated["shift"]["high_score"] == 777 and migrated["coins"] >= 321, "save migration preserves airport and endless value in new schema")
 	var merged := service.defaults()
 	service._merge_known(merged, {"levels": {"3": {"completed": true, "stars": 2}}, "campaign_seeds": {"4": 4444}})
 	_expect(merged["levels"].has("3") and merged["campaign_seeds"].get("4") == 4444, "save loading preserves dynamic progress and seed keys")
@@ -242,3 +255,104 @@ func _test_generated_solver_integration() -> void:
 		if state.phase != state.Phase.WON:
 			all_won = false
 	_expect(all_won, "solver solutions win representative levels across all tiers")
+
+func _test_economy_and_global_airport() -> void:
+	var economy = preload("res://core/progression/airport_economy.gd")
+	var total: int = economy.total_cost()
+	var campaign_income := 75 * 85 + 200
+	_expect(total > campaign_income * 0.9 and total < campaign_income * 1.4, "renovation cost is comparable to full campaign income")
+	_expect(economy.cost("cafe",0) >= 150 and economy.cost("runway",0) <= 250, "early upgrades cost about 2-4 clears")
+	var service = SaveServiceScript.new()
+	service.data = service.defaults()
+	service.data["coins"] = 9999
+	var before := int(service.data["coins"])
+	var bought := service.purchase_airport_upgrade(5,"baggage",[],false)
+	_expect(bought and service.data["airport"]["baggage"] == 1 and before-int(service.data["coins"]) == economy.cost("baggage",0), "global upgrade price does not multiply by world")
+	service.purchase_airport_upgrade(1,"baggage",[],false)
+	service.purchase_airport_upgrade(3,"baggage",[],false)
+	_expect(service.data["airport_perks"]["undo_charge"] == 1 and not service.purchase_airport_upgrade(1,"baggage",[],false), "global final stage grants exactly one perk and cannot overbuy")
+	var old := {"save_version":2,"coins":321,"current_level":42,"boosters":{"undo":4},"levels":{"41":{"completed":true}},"airport_progress":{"1":{"baggage":2},"5":{"baggage":3,"cafe":1}},"campaign_content_version":2}
+	var migrated: Dictionary = service.migrate(old)
+	_expect(migrated["airport"]["baggage"] == 3 and migrated["airport"]["cafe"] == 1 and migrated["coins"] > 321, "per-world migration preserves highest stage and refunds surplus value")
+	_expect(migrated["current_level"] == 42 and migrated["levels"]["41"]["completed"] and migrated["boosters"]["undo"] == 4, "schema 2 migration preserves completed levels and boosters")
+	_expect(service.migrate(migrated) == migrated, "airport migration is idempotent")
+	service.free()
+
+func _test_shift_banking() -> void:
+	var service = SaveServiceScript.new()
+	service.data = service.defaults()
+	service.begin_shift(424242,false)
+	var wallet := int(service.data["coins"])
+	var earned := service.advance_shift(500,"heavy_load",100,false)
+	_expect(earned == 100 and int(service.data["coins"]) == wallet and service.data["shift"]["earnings"] == 100, "Shift earnings stay unbanked after a win")
+	_expect(service.advance_shift(500,"heavy_load",100,false) == 0 and service.data["shift"]["earnings"] == 100, "pending Shift result cannot award twice after reload")
+	service.continue_shift(false)
+	var next := service.advance_shift(500,"lost_tag",100,false)
+	_expect(next == 125 and service.data["shift"]["earnings"] == 225, "continuing Shift increases its reward multiplier")
+	var paid := service.cash_out_shift(false,false)
+	_expect(paid == 225 and service.data["coins"] == wallet+225 and service.data["shift"]["active_seed"] == 0, "Cash Out transfers the entire bank and closes run")
+	_expect(service.cash_out_shift(false,false) == 0, "Cash Out is idempotent")
+	service.begin_shift(7,false)
+	service.advance_shift(500,"vip_baggage",100,false)
+	var safe_wallet := int(service.data["coins"])
+	_expect(service.cash_out_shift(true,false) == 60 and service.data["coins"] == safe_wallet+60, "failure loses 40 percent of unbanked earnings and preserves wallet")
+	service.begin_shift(8,false)
+	service.data["shift"]["board_snapshot"] = {"level_id":20001,"tray":["par"]}
+	var merged := service.defaults()
+	service._merge_known(merged,service.data)
+	_expect(merged["shift"]["board_snapshot"]["tray"] == ["par"], "active Shift snapshot survives profile merge")
+	service.data["coins"] = 987
+	service.data["current_level"] = 23
+	var roundtrip := service.defaults()
+	service._merge_known(roundtrip,service.migrate(JSON.parse_string(JSON.stringify(service.data))))
+	_expect(roundtrip["coins"] == 987 and roundtrip["current_level"] == 23 and roundtrip["shift"]["active_seed"] == 8, "JSON save roundtrip preserves numeric wallet and active run fields")
+	service.free()
+
+func _test_tutorial_contracts() -> void:
+	var service = SaveServiceScript.new()
+	service.data = service.defaults()
+	_expect(not service.tutorial_seen("pickup"), "fresh install requires interactive tutorial")
+	service.complete_tutorial("pickup",false)
+	_expect(service.tutorial_seen("pickup") and not service.tutorial_seen("transfer"), "tutorial completion is tracked per mechanic")
+	service.replay_tutorials(false)
+	_expect(not service.tutorial_seen("pickup") and service.data["current_level"] == 1 and service.data["coins"] == 200, "Replay Tutorials resets only tutorial completion")
+	service.free()
+
+func _test_simulation_and_campaign_quality() -> void:
+	var simulator = preload("res://core/solver/difficulty_simulator.gd").new()
+	var open := _simple_level(["par","par","par","tyo","tyo","tyo","rom","rom","rom","iev","iev","iev"])
+	var result: Dictionary = simulator.analyze(open,24)
+	_expect(result == simulator.analyze(open,24), "difficulty simulations reproduce from seed")
+	_expect(float(result["random_win_rate"]) < float(result["greedy_win_rate"]) and float(result["greedy_win_rate"]) == 1.0, "simulation distinguishes random choices from matching strategy")
+	var same := _simple_level(["par","par","par"])
+	var solver = SolverScript.new()
+	var same_result: Dictionary = solver.solve_level(same)
+	_expect(same_result["meaningful_decision_count"] == 0, "equivalent taps without different consequences are not meaningful")
+	var generator = GeneratorScript.new()
+	var weak := {"solved":true,"initial_selectable_count":6,"solution_depth":24,"average_branching_factor":5.0,"meaningful_decision_count":18,"forced_move_ratio":0.1,"peak_expected_tray_pressure":3,"meaningful_choice_score":0.8}
+	_expect(not generator._quality_passes(weak,generator.campaign_parameters(61,1)), "late validator rejects safe low-pressure boards despite high branching")
+	var rejected := 0
+	for index in 15:
+		var level: Dictionary = generator.generate_level(generator.campaign_parameters(20,700001+index*104729))
+		rejected += int(level.get("generation_attempt",1))-1
+	_expect(rejected > 0, "quality filtering actually rejects seeded weak candidates")
+	var all_quality := true
+	for id in range(1,76):
+		var level: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/campaign/level_%03d.json" % id))
+		if not generator._quality_passes(level.get("quality",{}),generator.campaign_parameters(id)):
+			all_quality = false
+	_expect(all_quality, "all 75 baked boards meet strengthened campaign quality")
+
+func _test_localization() -> void:
+	var file := FileAccess.open("res://data/localization/strings.csv",FileAccess.READ)
+	file.get_csv_line()
+	var keys := {}
+	var valid := true
+	while not file.eof_reached():
+		var row := file.get_csv_line()
+		if row.size() == 1 and row[0].is_empty(): continue
+		if row.size() != 3 or row[1].is_empty() or row[2].is_empty() or keys.has(row[0]): valid = false
+		keys[row[0]] = true
+	_expect(valid, "every localization key has unique English and Ukrainian copy")
+	var ui_source := FileAccess.get_file_as_string("res://app/screens/gameplay_screen.gd")
+	_expect(not ui_source.contains('tr("game.moves_used")') and not ui_source.contains("tooltip_text"), "normal HUD has no irrelevant move count or hover-only help")

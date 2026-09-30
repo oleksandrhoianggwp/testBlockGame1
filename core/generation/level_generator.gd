@@ -2,6 +2,7 @@ class_name LevelGenerator
 extends RefCounted
 
 const SolverScript = preload("res://core/solver/level_solver.gd")
+const SimulatorScript = preload("res://core/solver/difficulty_simulator.gd")
 const CAMPAIGN_PATH := "res://data/configs/campaign.json"
 const DESTINATIONS := ["par", "tyo", "iev", "rom", "cai", "sel", "syd", "rio", "osl", "yto", "lim", "nbo"]
 const LAYOUTS := ["terminal_rows", "carousel", "split_belt", "gate_cluster", "runway_cross", "cargo_bays"]
@@ -87,20 +88,23 @@ func generate_level(parameters: Dictionary) -> Dictionary:
 	var base_seed := int(parameters.get("seed", 1))
 	var best_level: Dictionary = {}
 	var best_result: Dictionary = {}
-	for attempt in 12:
+	var budget := int(parameters.get("retry_budget", 96))
+	for attempt in budget:
 		var candidate_seed := base_seed + attempt * 104729
 		var candidate := _build_candidate(parameters, candidate_seed, attempt)
 		var solver = SolverScript.new()
-		solver.node_limit = 1500
+		solver.node_limit = 350
 		var result: Dictionary = solver.solve_level(candidate)
+		if bool(result.get("solved", false)):
+			result.merge(SimulatorScript.new().analyze(candidate, 6), true)
 		candidate["quality"] = _quality_payload(result)
 		if best_level.is_empty() or _quality_rank(result) > _quality_rank(best_result):
 			best_level = candidate
 			best_result = result
 		if _quality_passes(result, parameters):
 			return candidate
-	best_level["quality"]["accepted_with_fallback"] = true
-	return best_level
+	push_error("Generation quality exhausted %d attempts: level=%d seed=%d best=%s" % [budget, int(parameters.get("id", 0)), base_seed, JSON.stringify(best_result)])
+	return {"generation_failed": true, "seed": base_seed, "generation_attempt": budget, "quality": best_result}
 
 func generate_daily(date_key: String, salt: String) -> Dictionary:
 	var seed_value := int(hash(date_key + salt)) & 0x7fffffff
@@ -111,7 +115,7 @@ func generate_daily(date_key: String, salt: String) -> Dictionary:
 	level["date_key"] = date_key
 	return level
 
-func generate_shift(run_seed: int, round_number: int) -> Dictionary:
+func generate_shift(run_seed: int, round_number: int, retry_budget: int = 96) -> Dictionary:
 	var round_seed := int(hash("%d:%d:airport-shift" % [run_seed, round_number])) & 0x7fffffff
 	var rng := RandomNumberGenerator.new()
 	rng.seed = round_seed
@@ -122,6 +126,7 @@ func generate_shift(run_seed: int, round_number: int) -> Dictionary:
 	params["mode"] = "shift"
 	params["shift_round"] = round_number
 	params["shift_event"] = event_id
+	params["retry_budget"] = retry_budget
 	if event_id == "heavy_load":
 		params["group_count"] = mini(11, int(params["group_count"]) + 1)
 	if event_id == "lost_tag":
@@ -191,6 +196,13 @@ func _build_candidate(parameters: Dictionary, layout_seed: int, attempt: int) ->
 			}
 			stacks[stack_index].append(item)
 			items.append(item)
+	# Physical stack order is independent of destination group order. A seeded
+	# partial scramble increases with world; it creates exposure tradeoffs while
+	# keeping early boards approachable. Every resulting candidate is validated.
+	var world_id := int(parameters.get("world", 1))
+	for stack: Array in stacks:
+		if rng.randf() < 0.10 + world_id * 0.08:
+			_shuffle(stack, rng)
 	if bool(parameters.get("lock_enabled", false)):
 		var lock_group_index := clampi(2 + int(rng.randi() % maxi(1, group_count - 2)), 2, group_count - 1)
 		for item: Dictionary in items:
@@ -281,18 +293,36 @@ func _quality_passes(result: Dictionary, parameters: Dictionary) -> bool:
 	var min_initial := 3 if onboarding else 4
 	var min_branching := 2.2 if onboarding else 2.8
 	var depth := maxi(1, int(result.get("solution_depth", 0)))
-	return int(result.get("initial_selectable_count", 0)) >= min_initial \
+	var world := int(parameters.get("world", 1))
+	var pressure_floor := 3 if world == 1 else 4 if world <= 3 else 5
+	if bool(parameters.get("challenge", false)) and world >= 3:
+		pressure_floor = 5
+	var structural := int(result.get("initial_selectable_count", 0)) >= min_initial \
 		and float(result.get("average_branching_factor", 0.0)) >= min_branching \
 		and int(result.get("meaningful_decision_count", 0)) >= int(ceil(depth * (0.25 if onboarding else 0.45))) \
 		and float(result.get("forced_move_ratio", 1.0)) <= (0.35 if onboarding else 0.20) \
-		and int(result.get("peak_expected_tray_pressure", 0)) >= 3
+		and float(result.get("meaningful_choice_score", 0.0)) >= (0.35 if onboarding else 0.48) \
+		and int(result.get("peak_expected_tray_pressure", 0)) >= pressure_floor \
+		and int(result.get("peak_expected_tray_pressure", 0)) <= (4 if world == 1 and not bool(parameters.get("challenge", false)) else 6)
+	if not structural:
+		return false
+	if result.has("random_win_rate"):
+		if world >= 4 and float(result["balanced_win_rate"]) < 0.33:
+			return false
+		if world >= 4 and float(result["random_win_rate"]) > 0.5:
+			return false
+		if bool(parameters.get("challenge", false)) and world >= 2 and float(result["greedy_win_rate"]) > 0.85:
+			return false
+	return true
 
 func _quality_payload(result: Dictionary) -> Dictionary:
 	var keys := [
 		"solved", "solution_depth", "nodes_explored", "average_branching_factor",
 		"initial_selectable_count", "average_selectable_count", "meaningful_decision_count",
 		"forced_move_ratio", "peak_expected_tray_pressure", "dead_end_count",
-		"difficulty_score"
+		"difficulty_score", "meaningful_choice_score", "random_win_rate", "greedy_win_rate",
+		"balanced_win_rate", "average_failure_pressure", "average_moves_to_failure",
+		"average_simulated_pressure", "simulation_runs_per_profile"
 	]
 	var payload: Dictionary = {}
 	for key: String in keys:

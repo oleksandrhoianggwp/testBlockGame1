@@ -1,18 +1,25 @@
-# Implementation checklist
+# Implementation checklist — polish revision 3
 
-- [x] Inspect the existing repository, baseline tests, generator, solver, saves, campaign, localization, assets, services, Android presets, and documentation.
-- [x] Replace triplet-as-layer generation with seed-shuffled individual luggage and geometric overlap blockers.
-- [x] Add solver decision metrics and reject unsolved, linear, forced, or low-choice boards.
-- [x] Replace the hardcoded 150-stage grid with a data-driven five-world, 75-stage journey.
-- [x] Persist campaign first-open seeds; keep Retry stable; allow post-clear regeneration.
-- [x] Implement deterministic Daily and seeded Airport Shift events.
-- [x] Implement Transfer Baggage and preserve/improve Mystery, Locks/Keys, and Priority Flights.
-- [x] Migrate schema-1 debug saves into campaign seeds, renovation, Shift, perks, and new progression.
-- [x] Split presentation into reusable screens/components and keep gameplay nodes persistent after taps.
-- [x] Replace prototype luggage and airport blocks with original reproducible vector art.
-- [x] Expand EN/UK localization and remove mixed player-facing strings.
-- [x] Expand unit/integration coverage for all required domain and randomness contracts.
-- [x] Bake and validate 75 representative campaign boards.
-- [x] Complete and record the 10,000-board stress run.
-- [x] Build, sign-check, and smoke-test the updated debug APK.
-- [ ] Physical-device FPS, safe-area, haptic, update-install, and airplane-mode QA.
+- [x] Inspect existing project/baseline commit and run original tests.
+- [x] Preserve generation/solver/GameState mechanics, seed contracts and offline modes.
+- [x] Establish palette, depth, typography, geometry and motion in VISUAL_BIBLE.
+- [x] Replace checklist brand with suitcase/tag/aircraft identity.
+- [x] Produce original airport illustration and premium conveyor feature art.
+- [x] Six luggage silhouettes and actual booster pictograms.
+- [x] Connected clickable airport scene on Home/Airport, not seven cards.
+- [x] 28 building stages, before/after sheets, costs, perks and upgrade feedback.
+- [x] Global airport migration/refunds with preserved profile state.
+- [x] Rebalance economy against actual campaign first-clear income.
+- [x] Illustrated five-world journey, varied special nodes and locked fog.
+- [x] Contextual HUD, persistent luggage nodes and tag conveyor dispatch.
+- [x] Interactive stages 1/2/3/mechanic tutorials and working Replay Tutorials.
+- [x] Stronger pressure/outcome choice/profile simulation quality.
+- [x] Explicit failed generation and wider runtime retry; no weak silent fallback.
+- [x] Shift cash-out/continue, multipliers, 60% failure payout and persistence.
+- [x] Daily/result/failure/settings/EN/UK/animation/sound polish.
+- [x] 55 tests, 75 baked boards, 10000 unique stress boards, two locale flows.
+- [x] Real raw screenshots, framed store posters and exact mobile layout audit.
+- [x] Debug APK exported; v2 signature/manifest/ABIs verified; stale developer assets absent.
+- [ ] Physical-device performance, safe-area, haptics, install/update and offline QA.
+- [ ] Human difficulty calibration, especially later rejection >15–35% guide.
+- [ ] Publisher-signed Play release AAB and publication inputs.
